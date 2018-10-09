@@ -13,13 +13,13 @@
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
-                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FFDAE9F5"></GradientStop>
                     <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
-                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                    <GradientStop Color="#FF6142" Offset="0.5"></GradientStop>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Image Source="Assets/img1.jpeg" Width="100" Height="85" VerticalAlignment="Top" Margin="20">
+        <Image Source="Assets/img1.jpeg" Width="100" Height="85" VerticalAlignment="Top" Margin="124,46,126,0">
         </Image>
         <Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="35,0,35,106">
             <Rectangle.Effect>
