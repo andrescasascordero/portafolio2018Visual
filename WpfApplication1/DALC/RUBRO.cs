@@ -16,14 +16,12 @@ namespace DALC
     {
         public RUBRO()
         {
-            this.CUPON_RUBRO = new HashSet<CUPON_RUBRO>();
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
         public decimal ID_RUBRO { get; set; }
-        public string NOMBRE { get; set; }
+        public string NOMBRE_RUBRO { get; set; }
     
-        public virtual ICollection<CUPON_RUBRO> CUPON_RUBRO { get; set; }
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

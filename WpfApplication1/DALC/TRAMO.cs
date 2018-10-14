@@ -12,13 +12,17 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class CUPON_CONSUMIDOR
+    public partial class TRAMO
     {
-        public decimal ID_CUPON_CONSUMIDOR { get; set; }
-        public decimal CUPON_FK { get; set; }
-        public decimal CONSUMIDOR_FK { get; set; }
+        public TRAMO()
+        {
+            this.CUPON = new HashSet<CUPON>();
+        }
     
-        public virtual CONSUMIDOR CONSUMIDOR { get; set; }
-        public virtual CUPON CUPON { get; set; }
+        public decimal ID_TRAMO { get; set; }
+        public decimal MINIMO { get; set; }
+        public decimal MAXIMO { get; set; }
+    
+        public virtual ICollection<CUPON> CUPON { get; set; }
     }
 }

@@ -14,18 +14,17 @@ namespace DALC
     
     public partial class CUPON
     {
-        public CUPON()
-        {
-            this.CUPON_RUBRO = new HashSet<CUPON_RUBRO>();
-            this.CUPON_CONSUMIDOR = new HashSet<CUPON_CONSUMIDOR>();
-        }
-    
         public decimal ID_CUPON { get; set; }
         public string PDF { get; set; }
         public decimal TOPE_MAXIMO { get; set; }
+        public decimal DESCUENTO { get; set; }
         public System.DateTime FECHA { get; set; }
+        public System.DateTime VENCIMIENTO { get; set; }
+        public string CONDICIONES { get; set; }
+        public decimal USUARIO_FK { get; set; }
+        public decimal TRAMO_FK { get; set; }
     
-        public virtual ICollection<CUPON_RUBRO> CUPON_RUBRO { get; set; }
-        public virtual ICollection<CUPON_CONSUMIDOR> CUPON_CONSUMIDOR { get; set; }
+        public virtual TRAMO TRAMO { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

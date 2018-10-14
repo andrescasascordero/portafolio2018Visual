@@ -12,16 +12,12 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class ESCALA
+    public partial class PUNTOS
     {
-        public ESCALA()
-        {
-            this.VALORACION = new HashSet<VALORACION>();
-        }
+        public decimal ID_PUNTOS { get; set; }
+        public decimal CANTIDAD { get; set; }
+        public decimal USUARIO_FK { get; set; }
     
-        public decimal ID_ESCALA { get; set; }
-        public string NOMBRE { get; set; }
-    
-        public virtual ICollection<VALORACION> VALORACION { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace DALC
         }
     
         public decimal ID_CAMPANA { get; set; }
-        public string NOMBRE { get; set; }
+        public string NOMBRE_CAMPANA { get; set; }
         public string DESCRIPCION { get; set; }
         public System.DateTime FECHA_INICIO { get; set; }
         public System.DateTime FECHA_FIN { get; set; }

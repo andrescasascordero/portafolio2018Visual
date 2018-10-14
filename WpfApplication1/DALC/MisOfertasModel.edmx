@@ -1,0 +1,1451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MOEntidades.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAMPANA">
+          <Key>
+            <PropertyRef Name="ID_CAMPANA" />
+          </Key>
+          <Property Name="ID_CAMPANA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_CAMPANA" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
+          <Property Name="FECHA_FIN" Type="date" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUPON">
+          <Key>
+            <PropertyRef Name="ID_CUPON" />
+          </Key>
+          <Property Name="ID_CUPON" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PDF" Type="clob" Nullable="false" />
+          <Property Name="TOPE_MAXIMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCUENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="VENCIMIENTO" Type="date" Nullable="false" />
+          <Property Name="CONDICIONES" Type="clob" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TRAMO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MAILLIST">
+          <Key>
+            <PropertyRef Name="ID_MAILLIST" />
+          </Key>
+          <Property Name="ID_MAILLIST" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SUSCRITO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFERTA">
+          <Key>
+            <PropertyRef Name="ID_OFERTA" />
+          </Key>
+          <Property Name="ID_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD_MINIMA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD_MAXIMA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_NORMAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="IMAGEN" Type="clob" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="CAMPANA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="varchar2" MaxLength="300" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
+          <Property Name="COLOR" Type="varchar2" MaxLength="50" />
+          <Property Name="PERECIBLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="MARCA" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="RUBRO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PUNTOS">
+          <Key>
+            <PropertyRef Name="ID_PUNTOS" />
+          </Key>
+          <Property Name="ID_PUNTOS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_ROL_USUARIO" />
+          </Key>
+          <Property Name="ID_ROL_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="clob" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RUBRO">
+          <Key>
+            <PropertyRef Name="ID_RUBRO" />
+          </Key>
+          <Property Name="ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_RUBRO" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIENDA">
+          <Key>
+            <PropertyRef Name="ID_TIENDA" />
+          </Key>
+          <Property Name="ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_TIENDA" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="EMPRESA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRAMO">
+          <Key>
+            <PropertyRef Name="ID_TRAMO" />
+          </Key>
+          <Property Name="ID_TRAMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINIMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAXIMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRES_USUARIO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO_PATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="APELLIDO_MATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="CORREO" Type="clob" Nullable="false" />
+          <Property Name="CONTRASENA" Type="clob" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ROL_USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+        </EntityType>
+        <EntityType Name="VALORACION">
+          <Key>
+            <PropertyRef Name="ID_VALORACION" />
+          </Key>
+          <Property Name="ID_VALORACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="IMAGEN" Type="clob" Nullable="false" />
+          <Property Name="CALIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ATENCION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMENTARIO" Type="clob" Nullable="false" />
+          <Property Name="OFERTA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="CAMPANA_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CAMPANA" Type="Self.CAMPANA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CAMPANA">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUPON_TRAMO_FK">
+          <End Role="TRAMO" Type="Self.TRAMO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRAMO">
+              <PropertyRef Name="ID_TRAMO" />
+            </Principal>
+            <Dependent Role="CUPON">
+              <PropertyRef Name="TRAMO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUPON_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CUPON">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MAILLIST_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="MAILLIST" Type="Self.MAILLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="MAILLIST">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OFERTA_CAMPANA_FK">
+          <End Role="CAMPANA" Type="Self.CAMPANA" Multiplicity="1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPANA">
+              <PropertyRef Name="ID_CAMPANA" />
+            </Principal>
+            <Dependent Role="OFERTA">
+              <PropertyRef Name="CAMPANA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OFERTA_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="OFERTA">
+              <PropertyRef Name="PRODUCTO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_RUBRO_FK">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUBRO">
+              <PropertyRef Name="ID_RUBRO" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="RUBRO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PUNTOS_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="PUNTOS" Type="Self.PUNTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="PUNTOS">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIENDA_EMPRESA_FK">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="EMPRESA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIENDA_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIO_ROL_USUARIO_FK">
+          <End Role="ROL_USUARIO" Type="Self.ROL_USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL_USUARIO">
+              <PropertyRef Name="ID_ROL_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ROL_USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACION_OFERTA_FK">
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFERTA">
+              <PropertyRef Name="ID_OFERTA" />
+            </Principal>
+            <Dependent Role="VALORACION">
+              <PropertyRef Name="OFERTA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACION_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="VALORACION">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DELETECAMPANA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_CAMPANA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETECUPON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_CUPON" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEEMPRESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_EMPRESA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEMAILLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_MAILLIST" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEOFERTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEPUNTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_PUNTOS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEROLUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_ROL_USUARIO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETERUBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETETIENDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_TIENDA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETETRAMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_TRAMO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DELETEVALORACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_VALORACION" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTCAMPANA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRE_CAMPANA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="clob" Mode="In" />
+          <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
+          <Parameter Name="P_FECHA_FIN" Type="date" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTCUPON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_PDF" Type="clob" Mode="In" />
+          <Parameter Name="P_TOPE_MAXIMO" Type="number" Mode="In" />
+          <Parameter Name="P_DESCUENTO" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_VENCIMIENTO" Type="date" Mode="In" />
+          <Parameter Name="P_CONDICIONES" Type="clob" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+          <Parameter Name="P_TRAMO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTEMPRESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRE_EMPRESA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RAZON_SOCIAL" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_RUT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INSERTMAILLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_MAILLIST" Type="number" Mode="In" />
+          <Parameter Name="P_SUSCRITO" Type="char" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTOFERTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_CANTIDAD_MINIMA" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD_MAXIMA" Type="number" Mode="In" />
+          <Parameter Name="P_PRECIO_NORMAL" Type="number" Mode="In" />
+          <Parameter Name="P_PRECIO_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_IMAGEN" Type="clob" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_CAMPANA_FK" Type="number" Mode="In" />
+          <Parameter Name="P_PRODUCTO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRE_PRODUCTO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="clob" Mode="In" />
+          <Parameter Name="P_COLOR" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PERECIBLE" Type="char" Mode="In" />
+          <Parameter Name="P_MARCA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RUBRO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTPUNTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_CANTIDAD" Type="number" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTROLUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRE" Type="clob" Mode="In" />
+        </Function>
+        <Function Name="INSERTRUBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRE_RUBRO" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INSERTTIENDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRE_TIENDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_EMPRESA_FK" Type="number" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTTRAMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_MAXIMO" Type="number" Mode="In" />
+          <Parameter Name="P_MINIMO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_NOMBRES_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APELLIDO_PATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APELLIDO_MATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="clob" Mode="In" />
+          <Parameter Name="P_CONTRASENA" Type="clob" Mode="In" />
+          <Parameter Name="P_RUT" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_ROL_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INSERTVALORACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_IMAGEN" Type="clob" Mode="In" />
+          <Parameter Name="P_CALIDAD" Type="number" Mode="In" />
+          <Parameter Name="P_ATENCION" Type="number" Mode="In" />
+          <Parameter Name="P_PRECIO" Type="number" Mode="In" />
+          <Parameter Name="P_COMENTARIO" Type="clob" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+          <Parameter Name="P_OFERTA_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATECAMPANA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_CAMPANA" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_CAMPANA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="clob" Mode="In" />
+          <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
+          <Parameter Name="P_FECHA_FIN" Type="date" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATECUPON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_CUPON" Type="number" Mode="In" />
+          <Parameter Name="P_PDF" Type="clob" Mode="In" />
+          <Parameter Name="P_TOPE_MAXIMO" Type="number" Mode="In" />
+          <Parameter Name="P_DESCUENTO" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_VENCIMIENTO" Type="date" Mode="In" />
+          <Parameter Name="P_CONDICIONES" Type="clob" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+          <Parameter Name="P_TRAMO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATEEMPRESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_EMPRESA" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_EMPRESA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RAZON_SOCIAL" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_RUT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="UPDATEMAILLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+          <Parameter Name="P_ID_MAILLIST" Type="number" Mode="In" />
+          <Parameter Name="P_SUSCRITO" Type="char" Mode="In" />
+        </Function>
+        <Function Name="UPDATEOFERTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD_MINIMA" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD_MAXIMA" Type="number" Mode="In" />
+          <Parameter Name="P_PRECIO_NORMAL" Type="number" Mode="In" />
+          <Parameter Name="P_PRECIO_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_IMAGEN" Type="clob" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_CAMPANA_FK" Type="number" Mode="In" />
+          <Parameter Name="P_PRODUCTO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATEPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_PRODUCTO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="clob" Mode="In" />
+          <Parameter Name="P_COLOR" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PERECIBLE" Type="char" Mode="In" />
+          <Parameter Name="P_MARCA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RUBRO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATEPUNTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_PUNTOS" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD" Type="number" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATEROLUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_ROL_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="clob" Mode="In" />
+        </Function>
+        <Function Name="UPDATERUBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_RUBRO" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="UPDATETIENDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_TIENDA" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_TIENDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_EMPRESA_FK" Type="number" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATETRAMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_TRAMO" Type="number" Mode="In" />
+          <Parameter Name="P_MAXIMO" Type="number" Mode="In" />
+          <Parameter Name="P_MINIMO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATEUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRES_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APELLIDO_PATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APELLIDO_MATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="clob" Mode="In" />
+          <Parameter Name="P_CONTRASENA" Type="clob" Mode="In" />
+          <Parameter Name="P_RUT" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_ROL_USUARIO_FK" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATEVALORACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_VALORACION" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_IMAGEN" Type="clob" Mode="In" />
+          <Parameter Name="P_CALIDAD" Type="number" Mode="In" />
+          <Parameter Name="P_ATENCION" Type="number" Mode="In" />
+          <Parameter Name="P_PRECIO" Type="number" Mode="In" />
+          <Parameter Name="P_COMENTARIO" Type="clob" Mode="In" />
+          <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
+          <Parameter Name="P_OFERTA_FK" Type="number" Mode="In" />
+        </Function>
+        <EntityContainer Name="MOEntidadesStoreContainer">
+          <EntitySet Name="CAMPANA" EntityType="Self.CAMPANA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="CUPON" EntityType="Self.CUPON" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="MAILLIST" EntityType="Self.MAILLIST" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="PUNTOS" EntityType="Self.PUNTOS" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="ROL_USUARIO" EntityType="Self.ROL_USUARIO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="TIENDA" EntityType="Self.TIENDA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="TRAMO" EntityType="Self.TRAMO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="VALORACION" EntityType="Self.VALORACION" Schema="PORTAFOLIO" store:Type="Tables" />
+          <AssociationSet Name="CAMPANA_USUARIO_FK" Association="Self.CAMPANA_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CAMPANA" EntitySet="CAMPANA" />
+          </AssociationSet>
+          <AssociationSet Name="CUPON_TRAMO_FK" Association="Self.CUPON_TRAMO_FK">
+            <End Role="TRAMO" EntitySet="TRAMO" />
+            <End Role="CUPON" EntitySet="CUPON" />
+          </AssociationSet>
+          <AssociationSet Name="CUPON_USUARIO_FK" Association="Self.CUPON_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CUPON" EntitySet="CUPON" />
+          </AssociationSet>
+          <AssociationSet Name="MAILLIST_USUARIO_FK" Association="Self.MAILLIST_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="MAILLIST" EntitySet="MAILLIST" />
+          </AssociationSet>
+          <AssociationSet Name="OFERTA_CAMPANA_FK" Association="Self.OFERTA_CAMPANA_FK">
+            <End Role="CAMPANA" EntitySet="CAMPANA" />
+            <End Role="OFERTA" EntitySet="OFERTA" />
+          </AssociationSet>
+          <AssociationSet Name="OFERTA_PRODUCTO_FK" Association="Self.OFERTA_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="OFERTA" EntitySet="OFERTA" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_RUBRO_FK" Association="Self.PRODUCTO_RUBRO_FK">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="PUNTOS_USUARIO_FK" Association="Self.PUNTOS_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PUNTOS" EntitySet="PUNTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TIENDA_EMPRESA_FK" Association="Self.TIENDA_EMPRESA_FK">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="TIENDA_USUARIO_FK" Association="Self.TIENDA_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_ROL_USUARIO_FK" Association="Self.USUARIO_ROL_USUARIO_FK">
+            <End Role="ROL_USUARIO" EntitySet="ROL_USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACION_OFERTA_FK" Association="Self.VALORACION_OFERTA_FK">
+            <End Role="OFERTA" EntitySet="OFERTA" />
+            <End Role="VALORACION" EntitySet="VALORACION" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACION_USUARIO_FK" Association="Self.VALORACION_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="VALORACION" EntitySet="VALORACION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MOEntidades" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAMPANA">
+          <Key>
+            <PropertyRef Name="ID_CAMPANA" />
+          </Key>
+          <Property Name="ID_CAMPANA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_CAMPANA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.CAMPANA_USUARIO_FK" FromRole="CAMPANA" ToRole="USUARIO" />
+          <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_CAMPANA_FK" FromRole="CAMPANA" ToRole="OFERTA" />
+        </EntityType>
+        <EntityType Name="CUPON">
+          <Key>
+            <PropertyRef Name="ID_CUPON" />
+          </Key>
+          <Property Name="ID_CUPON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PDF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TOPE_MAXIMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCUENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="VENCIMIENTO" Type="DateTime" Nullable="false" />
+          <Property Name="CONDICIONES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TRAMO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TRAMO" Relationship="Self.CUPON_TRAMO_FK" FromRole="CUPON" ToRole="TRAMO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.CUPON_USUARIO_FK" FromRole="CUPON" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_EMPRESA_FK" FromRole="EMPRESA" ToRole="TIENDA" />
+        </EntityType>
+        <EntityType Name="MAILLIST">
+          <Key>
+            <PropertyRef Name="ID_MAILLIST" />
+          </Key>
+          <Property Name="ID_MAILLIST" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SUSCRITO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.MAILLIST_USUARIO_FK" FromRole="MAILLIST" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="OFERTA">
+          <Key>
+            <PropertyRef Name="ID_OFERTA" />
+          </Key>
+          <Property Name="ID_OFERTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD_MINIMA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD_MAXIMA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_NORMAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO_OFERTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="CAMPANA_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CAMPANA" Relationship="Self.OFERTA_CAMPANA_FK" FromRole="OFERTA" ToRole="CAMPANA" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.OFERTA_PRODUCTO_FK" FromRole="OFERTA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_OFERTA_FK" FromRole="OFERTA" ToRole="VALORACION" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERECIBLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MARCA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUBRO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="OFERTA" />
+          <NavigationProperty Name="RUBRO" Relationship="Self.PRODUCTO_RUBRO_FK" FromRole="PRODUCTO" ToRole="RUBRO" />
+        </EntityType>
+        <EntityType Name="PUNTOS">
+          <Key>
+            <PropertyRef Name="ID_PUNTOS" />
+          </Key>
+          <Property Name="ID_PUNTOS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.PUNTOS_USUARIO_FK" FromRole="PUNTOS" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="ROL_USUARIO">
+          <Key>
+            <PropertyRef Name="ID_ROL_USUARIO" />
+          </Key>
+          <Property Name="ID_ROL_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_ROL_USUARIO_FK" FromRole="ROL_USUARIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="RUBRO">
+          <Key>
+            <PropertyRef Name="ID_RUBRO" />
+          </Key>
+          <Property Name="ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_RUBRO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_RUBRO_FK" FromRole="RUBRO" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="TIENDA">
+          <Key>
+            <PropertyRef Name="ID_TIENDA" />
+          </Key>
+          <Property Name="ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_TIENDA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EMPRESA_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="EMPRESA" Relationship="Self.TIENDA_EMPRESA_FK" FromRole="TIENDA" ToRole="EMPRESA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.TIENDA_USUARIO_FK" FromRole="TIENDA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="TRAMO">
+          <Key>
+            <PropertyRef Name="ID_TRAMO" />
+          </Key>
+          <Property Name="ID_TRAMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINIMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAXIMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CUPON" Relationship="Self.CUPON_TRAMO_FK" FromRole="TRAMO" ToRole="CUPON" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRES_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ROL_USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" />
+          <NavigationProperty Name="CAMPANA" Relationship="Self.CAMPANA_USUARIO_FK" FromRole="USUARIO" ToRole="CAMPANA" />
+          <NavigationProperty Name="CUPON" Relationship="Self.CUPON_USUARIO_FK" FromRole="USUARIO" ToRole="CUPON" />
+          <NavigationProperty Name="MAILLIST" Relationship="Self.MAILLIST_USUARIO_FK" FromRole="USUARIO" ToRole="MAILLIST" />
+          <NavigationProperty Name="PUNTOS" Relationship="Self.PUNTOS_USUARIO_FK" FromRole="USUARIO" ToRole="PUNTOS" />
+          <NavigationProperty Name="ROL_USUARIO" Relationship="Self.USUARIO_ROL_USUARIO_FK" FromRole="USUARIO" ToRole="ROL_USUARIO" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_USUARIO_FK" FromRole="USUARIO" ToRole="TIENDA" />
+          <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_USUARIO_FK" FromRole="USUARIO" ToRole="VALORACION" />
+        </EntityType>
+        <EntityType Name="VALORACION">
+          <Key>
+            <PropertyRef Name="ID_VALORACION" />
+          </Key>
+          <Property Name="ID_VALORACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CALIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ATENCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OFERTA_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="OFERTA" Relationship="Self.VALORACION_OFERTA_FK" FromRole="VALORACION" ToRole="OFERTA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.VALORACION_USUARIO_FK" FromRole="VALORACION" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="CAMPANA_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CAMPANA" Type="Self.CAMPANA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CAMPANA">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OFERTA_CAMPANA_FK">
+          <End Role="CAMPANA" Type="Self.CAMPANA" Multiplicity="1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPANA">
+              <PropertyRef Name="ID_CAMPANA" />
+            </Principal>
+            <Dependent Role="OFERTA">
+              <PropertyRef Name="CAMPANA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUPON_TRAMO_FK">
+          <End Role="TRAMO" Type="Self.TRAMO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRAMO">
+              <PropertyRef Name="ID_TRAMO" />
+            </Principal>
+            <Dependent Role="CUPON">
+              <PropertyRef Name="TRAMO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUPON_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CUPON">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIENDA_EMPRESA_FK">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="EMPRESA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MAILLIST_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="MAILLIST" Type="Self.MAILLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="MAILLIST">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OFERTA_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="OFERTA">
+              <PropertyRef Name="PRODUCTO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACION_OFERTA_FK">
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFERTA">
+              <PropertyRef Name="ID_OFERTA" />
+            </Principal>
+            <Dependent Role="VALORACION">
+              <PropertyRef Name="OFERTA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_RUBRO_FK">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUBRO">
+              <PropertyRef Name="ID_RUBRO" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="RUBRO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PUNTOS_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="PUNTOS" Type="Self.PUNTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="PUNTOS">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIO_ROL_USUARIO_FK">
+          <End Role="ROL_USUARIO" Type="Self.ROL_USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL_USUARIO">
+              <PropertyRef Name="ID_ROL_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ROL_USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIENDA_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACION_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="VALORACION">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntidadesMO" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAMPANA" EntityType="Self.CAMPANA" />
+          <EntitySet Name="CUPON" EntityType="Self.CUPON" />
+          <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" />
+          <EntitySet Name="MAILLIST" EntityType="Self.MAILLIST" />
+          <EntitySet Name="OFERTA" EntityType="Self.OFERTA" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="PUNTOS" EntityType="Self.PUNTOS" />
+          <EntitySet Name="ROL_USUARIO" EntityType="Self.ROL_USUARIO" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" />
+          <EntitySet Name="TIENDA" EntityType="Self.TIENDA" />
+          <EntitySet Name="TRAMO" EntityType="Self.TRAMO" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="VALORACION" EntityType="Self.VALORACION" />
+          <AssociationSet Name="CAMPANA_USUARIO_FK" Association="Self.CAMPANA_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CAMPANA" EntitySet="CAMPANA" />
+          </AssociationSet>
+          <AssociationSet Name="OFERTA_CAMPANA_FK" Association="Self.OFERTA_CAMPANA_FK">
+            <End Role="CAMPANA" EntitySet="CAMPANA" />
+            <End Role="OFERTA" EntitySet="OFERTA" />
+          </AssociationSet>
+          <AssociationSet Name="CUPON_TRAMO_FK" Association="Self.CUPON_TRAMO_FK">
+            <End Role="TRAMO" EntitySet="TRAMO" />
+            <End Role="CUPON" EntitySet="CUPON" />
+          </AssociationSet>
+          <AssociationSet Name="CUPON_USUARIO_FK" Association="Self.CUPON_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CUPON" EntitySet="CUPON" />
+          </AssociationSet>
+          <AssociationSet Name="TIENDA_EMPRESA_FK" Association="Self.TIENDA_EMPRESA_FK">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="MAILLIST_USUARIO_FK" Association="Self.MAILLIST_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="MAILLIST" EntitySet="MAILLIST" />
+          </AssociationSet>
+          <AssociationSet Name="OFERTA_PRODUCTO_FK" Association="Self.OFERTA_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="OFERTA" EntitySet="OFERTA" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACION_OFERTA_FK" Association="Self.VALORACION_OFERTA_FK">
+            <End Role="OFERTA" EntitySet="OFERTA" />
+            <End Role="VALORACION" EntitySet="VALORACION" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_RUBRO_FK" Association="Self.PRODUCTO_RUBRO_FK">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="PUNTOS_USUARIO_FK" Association="Self.PUNTOS_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PUNTOS" EntitySet="PUNTOS" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_ROL_USUARIO_FK" Association="Self.USUARIO_ROL_USUARIO_FK">
+            <End Role="ROL_USUARIO" EntitySet="ROL_USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="TIENDA_USUARIO_FK" Association="Self.TIENDA_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACION_USUARIO_FK" Association="Self.VALORACION_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="VALORACION" EntitySet="VALORACION" />
+          </AssociationSet>
+          <FunctionImport Name="BorrarCampana">
+            <Parameter Name="P_ID_CAMPANA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="BorrarCupon">
+            <Parameter Name="P_ID_CUPON" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEEMPRESA">
+            <Parameter Name="P_ID_EMPRESA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEMAILLIST">
+            <Parameter Name="P_ID_MAILLIST" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEOFERTA">
+            <Parameter Name="P_ID_OFERTA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEPRODUCTO">
+            <Parameter Name="P_ID_PRODUCTO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEPUNTOS">
+            <Parameter Name="P_ID_PUNTOS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEROLUSUARIO">
+            <Parameter Name="P_ID_ROL_USUARIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETERUBRO">
+            <Parameter Name="P_ID_RUBRO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETETIENDA">
+            <Parameter Name="P_ID_TIENDA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETETRAMO">
+            <Parameter Name="P_ID_TRAMO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEUSUARIO">
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEVALORACION">
+            <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTCAMPANA">
+            <Parameter Name="P_NOMBRE_CAMPANA" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHA_FIN" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTCUPON">
+            <Parameter Name="P_PDF" Mode="In" Type="String" />
+            <Parameter Name="P_TOPE_MAXIMO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCUENTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_VENCIMIENTO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CONDICIONES" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TRAMO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="InsertarEmpresa">
+            <Parameter Name="P_NOMBRE_EMPRESA" Mode="In" Type="String" />
+            <Parameter Name="P_RAZON_SOCIAL" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_RUT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTMAILLIST">
+            <Parameter Name="P_ID_MAILLIST" Mode="In" Type="Decimal" />
+            <Parameter Name="P_SUSCRITO" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTOFERTA">
+            <Parameter Name="P_CANTIDAD_MINIMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD_MAXIMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRECIO_NORMAL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRECIO_OFERTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IMAGEN" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CAMPANA_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRODUCTO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTPRODUCTO">
+            <Parameter Name="P_NOMBRE_PRODUCTO" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_COLOR" Mode="In" Type="String" />
+            <Parameter Name="P_PERECIBLE" Mode="In" Type="String" />
+            <Parameter Name="P_MARCA" Mode="In" Type="String" />
+            <Parameter Name="P_RUBRO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTPUNTOS">
+            <Parameter Name="P_CANTIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTROLUSUARIO">
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTRUBRO">
+            <Parameter Name="P_NOMBRE_RUBRO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTTIENDA">
+            <Parameter Name="P_NOMBRE_TIENDA" Mode="In" Type="String" />
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_EMPRESA_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTTRAMO">
+            <Parameter Name="P_MAXIMO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MINIMO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTUSUARIO">
+            <Parameter Name="P_NOMBRES_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_APELLIDO_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELLIDO_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_CONTRASENA" Mode="In" Type="String" />
+            <Parameter Name="P_RUT" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ROL_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INSERTVALORACION">
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_IMAGEN" Mode="In" Type="String" />
+            <Parameter Name="P_CALIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ATENCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRECIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COMENTARIO" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_OFERTA_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATECAMPANA">
+            <Parameter Name="P_ID_CAMPANA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_CAMPANA" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHA_FIN" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATECUPON">
+            <Parameter Name="P_ID_CUPON" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PDF" Mode="In" Type="String" />
+            <Parameter Name="P_TOPE_MAXIMO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCUENTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_VENCIMIENTO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CONDICIONES" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TRAMO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEEMPRESA">
+            <Parameter Name="P_ID_EMPRESA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_EMPRESA" Mode="In" Type="String" />
+            <Parameter Name="P_RAZON_SOCIAL" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_RUT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEMAILLIST">
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_MAILLIST" Mode="In" Type="Decimal" />
+            <Parameter Name="P_SUSCRITO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEOFERTA">
+            <Parameter Name="P_ID_OFERTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD_MINIMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD_MAXIMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRECIO_NORMAL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRECIO_OFERTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IMAGEN" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CAMPANA_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRODUCTO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEPRODUCTO">
+            <Parameter Name="P_ID_PRODUCTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_PRODUCTO" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_COLOR" Mode="In" Type="String" />
+            <Parameter Name="P_PERECIBLE" Mode="In" Type="String" />
+            <Parameter Name="P_MARCA" Mode="In" Type="String" />
+            <Parameter Name="P_RUBRO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEPUNTOS">
+            <Parameter Name="P_ID_PUNTOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEROLUSUARIO">
+            <Parameter Name="P_ID_ROL_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATERUBRO">
+            <Parameter Name="P_ID_RUBRO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_RUBRO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATETIENDA">
+            <Parameter Name="P_ID_TIENDA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_TIENDA" Mode="In" Type="String" />
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_EMPRESA_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATETRAMO">
+            <Parameter Name="P_ID_TRAMO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MAXIMO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MINIMO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEUSUARIO">
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRES_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_APELLIDO_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELLIDO_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_CONTRASENA" Mode="In" Type="String" />
+            <Parameter Name="P_RUT" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ROL_USUARIO_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATEVALORACION">
+            <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_IMAGEN" Mode="In" Type="String" />
+            <Parameter Name="P_CALIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ATENCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PRECIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COMENTARIO" Mode="In" Type="String" />
+            <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
+            <Parameter Name="P_OFERTA_FK" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MOEntidadesStoreContainer" CdmEntityContainer="EntidadesMO">
+          <EntitySetMapping Name="CAMPANA">
+            <EntityTypeMapping TypeName="MOEntidades.CAMPANA">
+              <MappingFragment StoreEntitySet="CAMPANA">
+                <ScalarProperty Name="ID_CAMPANA" ColumnName="ID_CAMPANA" />
+                <ScalarProperty Name="NOMBRE_CAMPANA" ColumnName="NOMBRE_CAMPANA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUPON">
+            <EntityTypeMapping TypeName="MOEntidades.CUPON">
+              <MappingFragment StoreEntitySet="CUPON">
+                <ScalarProperty Name="ID_CUPON" ColumnName="ID_CUPON" />
+                <ScalarProperty Name="PDF" ColumnName="PDF" />
+                <ScalarProperty Name="TOPE_MAXIMO" ColumnName="TOPE_MAXIMO" />
+                <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="VENCIMIENTO" ColumnName="VENCIMIENTO" />
+                <ScalarProperty Name="CONDICIONES" ColumnName="CONDICIONES" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+                <ScalarProperty Name="TRAMO_FK" ColumnName="TRAMO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPRESA">
+            <EntityTypeMapping TypeName="MOEntidades.EMPRESA">
+              <MappingFragment StoreEntitySet="EMPRESA">
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="NOMBRE_EMPRESA" ColumnName="NOMBRE_EMPRESA" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAILLIST">
+            <EntityTypeMapping TypeName="MOEntidades.MAILLIST">
+              <MappingFragment StoreEntitySet="MAILLIST">
+                <ScalarProperty Name="ID_MAILLIST" ColumnName="ID_MAILLIST" />
+                <ScalarProperty Name="SUSCRITO" ColumnName="SUSCRITO" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFERTA">
+            <EntityTypeMapping TypeName="MOEntidades.OFERTA">
+              <MappingFragment StoreEntitySet="OFERTA">
+                <ScalarProperty Name="ID_OFERTA" ColumnName="ID_OFERTA" />
+                <ScalarProperty Name="CANTIDAD_MINIMA" ColumnName="CANTIDAD_MINIMA" />
+                <ScalarProperty Name="CANTIDAD_MAXIMA" ColumnName="CANTIDAD_MAXIMA" />
+                <ScalarProperty Name="PRECIO_NORMAL" ColumnName="PRECIO_NORMAL" />
+                <ScalarProperty Name="PRECIO_OFERTA" ColumnName="PRECIO_OFERTA" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CAMPANA_FK" ColumnName="CAMPANA_FK" />
+                <ScalarProperty Name="PRODUCTO_FK" ColumnName="PRODUCTO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="MOEntidades.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+                <ScalarProperty Name="PERECIBLE" ColumnName="PERECIBLE" />
+                <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+                <ScalarProperty Name="RUBRO_FK" ColumnName="RUBRO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUNTOS">
+            <EntityTypeMapping TypeName="MOEntidades.PUNTOS">
+              <MappingFragment StoreEntitySet="PUNTOS">
+                <ScalarProperty Name="ID_PUNTOS" ColumnName="ID_PUNTOS" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL_USUARIO">
+            <EntityTypeMapping TypeName="MOEntidades.ROL_USUARIO">
+              <MappingFragment StoreEntitySet="ROL_USUARIO">
+                <ScalarProperty Name="ID_ROL_USUARIO" ColumnName="ID_ROL_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUBRO">
+            <EntityTypeMapping TypeName="MOEntidades.RUBRO">
+              <MappingFragment StoreEntitySet="RUBRO">
+                <ScalarProperty Name="ID_RUBRO" ColumnName="ID_RUBRO" />
+                <ScalarProperty Name="NOMBRE_RUBRO" ColumnName="NOMBRE_RUBRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIENDA">
+            <EntityTypeMapping TypeName="MOEntidades.TIENDA">
+              <MappingFragment StoreEntitySet="TIENDA">
+                <ScalarProperty Name="ID_TIENDA" ColumnName="ID_TIENDA" />
+                <ScalarProperty Name="NOMBRE_TIENDA" ColumnName="NOMBRE_TIENDA" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="EMPRESA_FK" ColumnName="EMPRESA_FK" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAMO">
+            <EntityTypeMapping TypeName="MOEntidades.TRAMO">
+              <MappingFragment StoreEntitySet="TRAMO">
+                <ScalarProperty Name="ID_TRAMO" ColumnName="ID_TRAMO" />
+                <ScalarProperty Name="MINIMO" ColumnName="MINIMO" />
+                <ScalarProperty Name="MAXIMO" ColumnName="MAXIMO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="MOEntidades.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRES_USUARIO" ColumnName="NOMBRES_USUARIO" />
+                <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+                <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ROL_USUARIO_FK" ColumnName="ROL_USUARIO_FK" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VALORACION">
+            <EntityTypeMapping TypeName="MOEntidades.VALORACION">
+              <MappingFragment StoreEntitySet="VALORACION">
+                <ScalarProperty Name="ID_VALORACION" ColumnName="ID_VALORACION" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="CALIDAD" ColumnName="CALIDAD" />
+                <ScalarProperty Name="ATENCION" ColumnName="ATENCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="OFERTA_FK" ColumnName="OFERTA_FK" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BorrarCampana" FunctionName="MOEntidades.Store.DELETECAMPANA" />
+          <FunctionImportMapping FunctionImportName="BorrarCupon" FunctionName="MOEntidades.Store.DELETECUPON" />
+          <FunctionImportMapping FunctionImportName="DELETEEMPRESA" FunctionName="MOEntidades.Store.DELETEEMPRESA" />
+          <FunctionImportMapping FunctionImportName="DELETEMAILLIST" FunctionName="MOEntidades.Store.DELETEMAILLIST" />
+          <FunctionImportMapping FunctionImportName="DELETEOFERTA" FunctionName="MOEntidades.Store.DELETEOFERTA" />
+          <FunctionImportMapping FunctionImportName="DELETEPRODUCTO" FunctionName="MOEntidades.Store.DELETEPRODUCTO" />
+          <FunctionImportMapping FunctionImportName="DELETEPUNTOS" FunctionName="MOEntidades.Store.DELETEPUNTOS" />
+          <FunctionImportMapping FunctionImportName="DELETEROLUSUARIO" FunctionName="MOEntidades.Store.DELETEROLUSUARIO" />
+          <FunctionImportMapping FunctionImportName="DELETERUBRO" FunctionName="MOEntidades.Store.DELETERUBRO" />
+          <FunctionImportMapping FunctionImportName="DELETETIENDA" FunctionName="MOEntidades.Store.DELETETIENDA" />
+          <FunctionImportMapping FunctionImportName="DELETETRAMO" FunctionName="MOEntidades.Store.DELETETRAMO" />
+          <FunctionImportMapping FunctionImportName="DELETEUSUARIO" FunctionName="MOEntidades.Store.DELETEUSUARIO" />
+          <FunctionImportMapping FunctionImportName="DELETEVALORACION" FunctionName="MOEntidades.Store.DELETEVALORACION" />
+          <FunctionImportMapping FunctionImportName="INSERTCAMPANA" FunctionName="MOEntidades.Store.INSERTCAMPANA" />
+          <FunctionImportMapping FunctionImportName="INSERTCUPON" FunctionName="MOEntidades.Store.INSERTCUPON" />
+          <FunctionImportMapping FunctionImportName="InsertarEmpresa" FunctionName="MOEntidades.Store.INSERTEMPRESA" />
+          <FunctionImportMapping FunctionImportName="INSERTMAILLIST" FunctionName="MOEntidades.Store.INSERTMAILLIST" />
+          <FunctionImportMapping FunctionImportName="INSERTOFERTA" FunctionName="MOEntidades.Store.INSERTOFERTA" />
+          <FunctionImportMapping FunctionImportName="INSERTPRODUCTO" FunctionName="MOEntidades.Store.INSERTPRODUCTO" />
+          <FunctionImportMapping FunctionImportName="INSERTPUNTOS" FunctionName="MOEntidades.Store.INSERTPUNTOS" />
+          <FunctionImportMapping FunctionImportName="INSERTROLUSUARIO" FunctionName="MOEntidades.Store.INSERTROLUSUARIO" />
+          <FunctionImportMapping FunctionImportName="INSERTRUBRO" FunctionName="MOEntidades.Store.INSERTRUBRO" />
+          <FunctionImportMapping FunctionImportName="INSERTTIENDA" FunctionName="MOEntidades.Store.INSERTTIENDA" />
+          <FunctionImportMapping FunctionImportName="INSERTTRAMO" FunctionName="MOEntidades.Store.INSERTTRAMO" />
+          <FunctionImportMapping FunctionImportName="INSERTUSUARIO" FunctionName="MOEntidades.Store.INSERTUSUARIO" />
+          <FunctionImportMapping FunctionImportName="INSERTVALORACION" FunctionName="MOEntidades.Store.INSERTVALORACION" />
+          <FunctionImportMapping FunctionImportName="UPDATECAMPANA" FunctionName="MOEntidades.Store.UPDATECAMPANA" />
+          <FunctionImportMapping FunctionImportName="UPDATECUPON" FunctionName="MOEntidades.Store.UPDATECUPON" />
+          <FunctionImportMapping FunctionImportName="UPDATEEMPRESA" FunctionName="MOEntidades.Store.UPDATEEMPRESA" />
+          <FunctionImportMapping FunctionImportName="UPDATEMAILLIST" FunctionName="MOEntidades.Store.UPDATEMAILLIST" />
+          <FunctionImportMapping FunctionImportName="UPDATEOFERTA" FunctionName="MOEntidades.Store.UPDATEOFERTA" />
+          <FunctionImportMapping FunctionImportName="UPDATEPRODUCTO" FunctionName="MOEntidades.Store.UPDATEPRODUCTO" />
+          <FunctionImportMapping FunctionImportName="UPDATEPUNTOS" FunctionName="MOEntidades.Store.UPDATEPUNTOS" />
+          <FunctionImportMapping FunctionImportName="UPDATEROLUSUARIO" FunctionName="MOEntidades.Store.UPDATEROLUSUARIO" />
+          <FunctionImportMapping FunctionImportName="UPDATERUBRO" FunctionName="MOEntidades.Store.UPDATERUBRO" />
+          <FunctionImportMapping FunctionImportName="UPDATETIENDA" FunctionName="MOEntidades.Store.UPDATETIENDA" />
+          <FunctionImportMapping FunctionImportName="UPDATETRAMO" FunctionName="MOEntidades.Store.UPDATETRAMO" />
+          <FunctionImportMapping FunctionImportName="UPDATEUSUARIO" FunctionName="MOEntidades.Store.UPDATEUSUARIO" />
+          <FunctionImportMapping FunctionImportName="UPDATEVALORACION" FunctionName="MOEntidades.Store.UPDATEVALORACION" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

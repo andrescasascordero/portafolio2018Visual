@@ -12,13 +12,12 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class CUPON_RUBRO
+    public partial class MAILLIST
     {
-        public decimal CUPON_RUBRO_ID { get; set; }
-        public decimal CUPON_FK { get; set; }
-        public decimal RUBRO_FK { get; set; }
+        public decimal ID_MAILLIST { get; set; }
+        public string SUSCRITO { get; set; }
+        public decimal USUARIO_FK { get; set; }
     
-        public virtual CUPON CUPON { get; set; }
-        public virtual RUBRO RUBRO { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

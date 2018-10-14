@@ -9,14 +9,14 @@ namespace Negocio
 {
     public class CommonBC
     {
-        private static Entidades _Entidades;
+        private static EntidadesMO _Entidades;
 
-        public static Entidades Entidades
+        public static EntidadesMO Entidades
         {
             get
             {
                 if (_Entidades == null) {
-                    _Entidades = new Entidades();
+                    _Entidades = new EntidadesMO();
                 }
                 return _Entidades;
             }

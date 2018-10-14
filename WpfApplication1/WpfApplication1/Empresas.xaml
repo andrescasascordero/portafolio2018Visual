@@ -8,6 +8,16 @@
         Title="Empresas" Height="350" Width="586.058" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid>
         <DataGrid x:Name="dtgEmpresa" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Height="299" Width="346"/>
+        <Label x:Name="label" Content="Nombre:" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Razón social:" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.692"/>
+        <Label x:Name="label1_Copy" Content="Rut: " HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBNombre" HorizontalAlignment="Left" Height="23" Margin="10,64,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged"/>
+        <TextBox x:Name="txtBRazonSocial" HorizontalAlignment="Left" Height="23" Margin="10,118,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435"/>
+        <TextBox x:Name="txtBRut" HorizontalAlignment="Left" Height="23" Margin="10,177,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435"/>
+        <Button x:Name="btnInsertar" Content="Button" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnEditar" Content="Button" HorizontalAlignment="Left" Margin="90,235,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button1_Copy" Content="Button" HorizontalAlignment="Left" Margin="90,268,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

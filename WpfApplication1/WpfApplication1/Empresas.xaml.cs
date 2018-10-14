@@ -66,5 +66,10 @@ namespace WpfApplication1
         {
             this.actualizarGrilla();
         }
+
+        private void txtBNombre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
