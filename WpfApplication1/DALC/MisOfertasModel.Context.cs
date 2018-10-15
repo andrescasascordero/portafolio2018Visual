@@ -848,5 +848,88 @@ namespace DALC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATEVALORACION", p_ID_VALORACIONParameter, p_FECHAParameter, p_IMAGENParameter, p_CALIDADParameter, p_ATENCIONParameter, p_PRECIOParameter, p_COMENTARIOParameter, p_USUARIO_FKParameter, p_OFERTA_FKParameter);
         }
+    
+        public virtual ObjectResult<EMPRESA> selectEmpresa()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EMPRESA>("selectEmpresa");
+        }
+    
+        public virtual ObjectResult<EMPRESA> selectEmpresa(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EMPRESA>("selectEmpresa", mergeOption);
+        }
+    
+        public virtual int ELIMINAREMPRESA(Nullable<decimal> p_ID_EMPRESA, string p_ESTADO)
+        {
+            var p_ID_EMPRESAParameter = p_ID_EMPRESA.HasValue ?
+                new ObjectParameter("P_ID_EMPRESA", p_ID_EMPRESA) :
+                new ObjectParameter("P_ID_EMPRESA", typeof(decimal));
+    
+            var p_ESTADOParameter = p_ESTADO != null ?
+                new ObjectParameter("P_ESTADO", p_ESTADO) :
+                new ObjectParameter("P_ESTADO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ELIMINAREMPRESA", p_ID_EMPRESAParameter, p_ESTADOParameter);
+        }
+    
+        public virtual int SELECTCAMPANA()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTCAMPANA");
+        }
+    
+        public virtual int SELECTCUPON()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTCUPON");
+        }
+    
+        public virtual int SELECTMAILLIST()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTMAILLIST");
+        }
+    
+        public virtual int SELECTOFERTA()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTOFERTA");
+        }
+    
+        public virtual int SELECTPRODUCTO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTPRODUCTO");
+        }
+    
+        public virtual int SELECTPUNTOS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTPUNTOS");
+        }
+    
+        public virtual int SELECTROLUSUARIO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTROLUSUARIO");
+        }
+    
+        public virtual int SELECTRUBRO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTRUBRO");
+        }
+    
+        public virtual int SELECTTIENDA()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTTIENDA");
+        }
+    
+        public virtual int SELECTTRAMO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTTRAMO");
+        }
+    
+        public virtual int SELECTUSUARIO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTUSUARIO");
+        }
+    
+        public virtual int SELECTVALORACION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SELECTVALORACION");
+        }
     }
 }

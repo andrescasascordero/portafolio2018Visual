@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MOEntidades.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MOEntidades.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CAMPANA">
           <Key>
             <PropertyRef Name="ID_CAMPANA" />
@@ -15,7 +15,7 @@
           <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
           <Property Name="FECHA_FIN" Type="date" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
-          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CUPON">
@@ -39,7 +39,7 @@
           <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_EMPRESA" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="200" Nullable="false" />
-          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
         </EntityType>
         <EntityType Name="MAILLIST">
@@ -105,7 +105,7 @@
           <Property Name="ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_TIENDA" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="DIRECCION" Type="varchar2" MaxLength="200" Nullable="false" />
-          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="EMPRESA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -128,7 +128,7 @@
           <Property Name="CORREO" Type="clob" Nullable="false" />
           <Property Name="CONTRASENA" Type="clob" Nullable="false" />
           <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
-          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="ROL_USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="date" />
         </EntityType>
@@ -341,6 +341,10 @@
         <Function Name="DELETEVALORACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
           <Parameter Name="P_ID_VALORACION" Type="number" Mode="In" />
         </Function>
+        <Function Name="ELIMINAREMPRESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
+          <Parameter Name="P_ID_EMPRESA" Type="number" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
+        </Function>
         <Function Name="INSERTCAMPANA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
           <Parameter Name="P_NOMBRE_CAMPANA" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="clob" Mode="In" />
@@ -363,7 +367,7 @@
         <Function Name="INSERTEMPRESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
           <Parameter Name="P_NOMBRE_EMPRESA" Type="varchar2" Mode="In" />
           <Parameter Name="P_RAZON_SOCIAL" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
           <Parameter Name="P_RUT" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="INSERTMAILLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
@@ -431,6 +435,19 @@
           <Parameter Name="P_USUARIO_FK" Type="number" Mode="In" />
           <Parameter Name="P_OFERTA_FK" Type="number" Mode="In" />
         </Function>
+        <Function Name="SELECTCAMPANA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTCUPON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTEMPRESA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTMAILLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTOFERTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTPRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTPUNTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTROLUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTRUBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTTIENDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTTRAMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
+        <Function Name="SELECTVALORACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO" />
         <Function Name="UPDATECAMPANA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
           <Parameter Name="P_ID_CAMPANA" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_CAMPANA" Type="varchar2" Mode="In" />
@@ -456,7 +473,7 @@
           <Parameter Name="P_ID_EMPRESA" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_EMPRESA" Type="varchar2" Mode="In" />
           <Parameter Name="P_RAZON_SOCIAL" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
           <Parameter Name="P_RUT" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="UPDATEMAILLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO">
@@ -600,8 +617,7 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MOEntidades" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -995,43 +1011,43 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
           <FunctionImport Name="BorrarCampana">
-            <Parameter Name="P_ID_CAMPANA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_CAMPANA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="BorrarCupon">
-            <Parameter Name="P_ID_CUPON" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_CUPON" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEEMPRESA">
-            <Parameter Name="P_ID_EMPRESA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_EMPRESA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEMAILLIST">
-            <Parameter Name="P_ID_MAILLIST" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_MAILLIST" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEOFERTA">
-            <Parameter Name="P_ID_OFERTA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_OFERTA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEPRODUCTO">
-            <Parameter Name="P_ID_PRODUCTO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_PRODUCTO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEPUNTOS">
-            <Parameter Name="P_ID_PUNTOS" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_PUNTOS" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEROLUSUARIO">
-            <Parameter Name="P_ID_ROL_USUARIO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ROL_USUARIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETERUBRO">
-            <Parameter Name="P_ID_RUBRO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_RUBRO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETETIENDA">
-            <Parameter Name="P_ID_TIENDA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_TIENDA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETETRAMO">
-            <Parameter Name="P_ID_TRAMO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_TRAMO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEUSUARIO">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DELETEVALORACION">
-            <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="INSERTCAMPANA">
             <Parameter Name="P_NOMBRE_CAMPANA" Mode="In" Type="String" />
@@ -1086,10 +1102,10 @@
             <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="INSERTROLUSUARIO">
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="INSERTRUBRO">
-            <Parameter Name="P_NOMBRE_RUBRO" Mode="In" Type="String" />
+          <Parameter Name="P_NOMBRE_RUBRO" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="INSERTTIENDA">
             <Parameter Name="P_NOMBRE_TIENDA" Mode="In" Type="String" />
@@ -1225,6 +1241,23 @@
             <Parameter Name="P_USUARIO_FK" Mode="In" Type="Decimal" />
             <Parameter Name="P_OFERTA_FK" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="selectEmpresa" EntitySet="EMPRESA" ReturnType="Collection(MOEntidades.EMPRESA)" />
+          <FunctionImport Name="ELIMINAREMPRESA">
+            <Parameter Name="P_ID_EMPRESA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SELECTCAMPANA" />
+          <FunctionImport Name="SELECTCUPON" />
+          <FunctionImport Name="SELECTMAILLIST" />
+          <FunctionImport Name="SELECTOFERTA" />
+          <FunctionImport Name="SELECTPRODUCTO" />
+          <FunctionImport Name="SELECTPUNTOS" />
+          <FunctionImport Name="SELECTROLUSUARIO" />
+          <FunctionImport Name="SELECTRUBRO" />
+          <FunctionImport Name="SELECTTIENDA" />
+          <FunctionImport Name="SELECTTRAMO" />
+          <FunctionImport Name="SELECTUSUARIO" />
+          <FunctionImport Name="SELECTVALORACION" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1425,6 +1458,20 @@
           <FunctionImportMapping FunctionImportName="UPDATETRAMO" FunctionName="MOEntidades.Store.UPDATETRAMO" />
           <FunctionImportMapping FunctionImportName="UPDATEUSUARIO" FunctionName="MOEntidades.Store.UPDATEUSUARIO" />
           <FunctionImportMapping FunctionImportName="UPDATEVALORACION" FunctionName="MOEntidades.Store.UPDATEVALORACION" />
+          <FunctionImportMapping FunctionImportName="selectEmpresa" FunctionName="MOEntidades.Store.SELECTEMPRESA" />
+          <FunctionImportMapping FunctionImportName="ELIMINAREMPRESA" FunctionName="MOEntidades.Store.ELIMINAREMPRESA" />
+          <FunctionImportMapping FunctionImportName="SELECTCAMPANA" FunctionName="MOEntidades.Store.SELECTCAMPANA" />
+          <FunctionImportMapping FunctionImportName="SELECTCUPON" FunctionName="MOEntidades.Store.SELECTCUPON" />
+          <FunctionImportMapping FunctionImportName="SELECTMAILLIST" FunctionName="MOEntidades.Store.SELECTMAILLIST" />
+          <FunctionImportMapping FunctionImportName="SELECTOFERTA" FunctionName="MOEntidades.Store.SELECTOFERTA" />
+          <FunctionImportMapping FunctionImportName="SELECTPRODUCTO" FunctionName="MOEntidades.Store.SELECTPRODUCTO" />
+          <FunctionImportMapping FunctionImportName="SELECTPUNTOS" FunctionName="MOEntidades.Store.SELECTPUNTOS" />
+          <FunctionImportMapping FunctionImportName="SELECTROLUSUARIO" FunctionName="MOEntidades.Store.SELECTROLUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SELECTRUBRO" FunctionName="MOEntidades.Store.SELECTRUBRO" />
+          <FunctionImportMapping FunctionImportName="SELECTTIENDA" FunctionName="MOEntidades.Store.SELECTTIENDA" />
+          <FunctionImportMapping FunctionImportName="SELECTTRAMO" FunctionName="MOEntidades.Store.SELECTTRAMO" />
+          <FunctionImportMapping FunctionImportName="SELECTUSUARIO" FunctionName="MOEntidades.Store.SELECTUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SELECTVALORACION" FunctionName="MOEntidades.Store.SELECTVALORACION" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -29,13 +29,55 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -49,16 +91,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAMPANA.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="CUPON.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPRESA.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="MAILLIST.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="MisOfertasModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,33 +117,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MisOfertasModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Modelo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="OFERTA.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTO.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PUNTOS.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="ROL_USUARIO.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="RUBRO.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="TIENDA.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="TRAMO.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="USUARIO.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="VALORACION.cs">
-      <DependentUpon>MisOfertasModel.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +157,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MisOfertasModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="MisOfertasModel.edmx.diagram">
       <DependentUpon>MisOfertasModel.edmx</DependentUpon>
     </None>
@@ -131,6 +179,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MisOfertasModel.edmx</DependentUpon>
       <LastGenOutput>MisOfertasModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Modelo.cs</LastGenOutput>
+      <DependentUpon>MisOfertasModel.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
