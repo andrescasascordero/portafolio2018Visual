@@ -1,0 +1,42 @@
+﻿<Window x:Class="WpfApplication1.Usuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="Usuario" Height="509.558" Width="803.677" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="237,10,0,0" VerticalAlignment="Top" Height="459" Width="549" SelectionChanged="dtgUsuario_SelectionChanged"/>
+        <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblNombre" Content="Nombres:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblApellidoP" Content="Apellido&#xD;&#xA;Paterno:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Apellido &#xD;&#xA;Materno:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.532,-0.475"/>
+        <Label x:Name="label4" Content="Correo:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="Rol:" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label6" Content="Rut:" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.159,-0.233"/>
+        <Label x:Name="label7" Content="Contraseña:" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label8" Content="Estado:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.35,-0.613"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.idUsuario}" IsEnabled="False"/>
+        <TextBox x:Name="txtNombres" HorizontalAlignment="Left" Height="23" Margin="87,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.nombres}"/>
+        <TextBox x:Name="txtApellidoP" HorizontalAlignment="Left" Height="23" Margin="87,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoPaterno}"/>
+        <TextBox x:Name="txtApellidoM" HorizontalAlignment="Left" Height="23" Margin="87,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoMaterno}"/>
+        <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="87,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.correo}"/>
+        <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="87,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rut}"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="87,191,0,0" VerticalAlignment="Top" Width="145" Height="21" RenderTransformOrigin="0.479,-0.695"/>
+        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="87,217,0,0" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.estado}">
+            <ComboBoxItem Content="Pendiente"/>
+            <ComboBoxItem Content="Inscrita"/>
+            <ComboBoxItem Content="Eliminada"/>
+            <ComboBoxItem Content="Suspendida"/>
+        </ComboBox>
+        <ComboBox x:Name="cbxRol" HorizontalAlignment="Left" Margin="87,248,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="cbxRol_SelectionChanged" Loaded="cbxRol_Loaded"           
+          SelectedValue="{Binding Path=rolUsuario.idRolUsuario}" SelectedValuePath="idRolUsuario"
+                  Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rolUsuarioFK}"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="129" Click="btnAgregar_Click"/>
+        <Button x:Name="btnActualizar" Content="Editar" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="129" Click="btnActualizar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="129" Click="btnEliminar_Click"/>
+        <CheckBox x:Name="chkEliminar" Content="Eliminar Permanentemente" HorizontalAlignment="Left" Margin="10,433,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.072,-0.324" Checked="chkEliminar_Checked"/>
+
+    </Grid>
+</Window>

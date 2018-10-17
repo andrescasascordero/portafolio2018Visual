@@ -32,20 +32,6 @@ namespace WpfApplication1
             InitializeComponent();
         }
 
-        //private void setConnection()
-        //{
-        //    String connectionString = ConfigurationManager.ConnectionStrings["conectar"].ConnectionString;
-        //    con = new OracleConnection(connectionString);
-        //    try
-        //    {
-        //        con.Open();
-        //    }
-        //    catch (Exception exp)
-        //    {
-
-        //        throw;
-        //    }
-        //}
         private void actualizarGrilla() {
             Negocio.Empresa emp = new Empresa();
             var list = emp.getEmpresa();
@@ -130,6 +116,11 @@ namespace WpfApplication1
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Esta acción no se podrá deshacer, seleccione eliminar para continuar");
+        }
+
+        private void txtBRut_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

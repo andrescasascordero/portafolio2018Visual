@@ -11,22 +11,21 @@
         <Label x:Name="lblNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblRazonSocial" Content="Razón social:" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.692"/>
         <Label x:Name="lblRut" Content="Rut: " HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBNombre" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.nombre}"/>
-        <TextBox x:Name="txtBRazonSocial" HorizontalAlignment="Left" Height="23" Margin="10,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.razonSocial}" />
-        <TextBox x:Name="txtBRut" HorizontalAlignment="Left" Height="23" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.rut}"/>
-        <Button x:Name="btnInsertar" Content="Insertar" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top" Width="120" Click="btnInsertar_Click"/>
-        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="120" Click="btnEditar_Click"/>
+        <TextBox x:Name="txtBNombre" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.nombre}"/>
+        <TextBox x:Name="txtBRazonSocial" HorizontalAlignment="Left" Height="23" Margin="10,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.razonSocial}" />
+        <TextBox x:Name="txtBRut" HorizontalAlignment="Left" Height="23" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.rut}" TextChanged="txtBRut_TextChanged"/>
+        <Button x:Name="btnInsertar" Content="Insertar" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top" Width="120" Click="btnInsertar_Click"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Width="120" Click="btnEditar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,428,0,0" VerticalAlignment="Top" Width="120" Click="btnEliminar_Click"/>
-        <Button x:Name="btnActualizarLista" Content="Actualizar" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.estado}">
+            <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="207" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.estado}">
             <ComboBoxItem Content="Pendiente"/>
             <ComboBoxItem Content="Inscrita"/>
             <ComboBoxItem Content="Eliminada"/>
             <ComboBoxItem Content="Suspendida"/>
         </ComboBox>
         <Label x:Name="lblNombre_Copy" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBId" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding SelectedItem.idEmpresa, ElementName=dtgEmpresa}" IsEnabled="False"/>
+        <TextBox x:Name="txtBId" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding SelectedItem.idEmpresa, ElementName=dtgEmpresa}" IsEnabled="False"/>
         <CheckBox x:Name="checkBox" Content="Eliminar permanentemente" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" Checked="checkBox_Checked"/>
 
     </Grid>

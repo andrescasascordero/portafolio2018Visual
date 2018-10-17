@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfApplication1.Rubros"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="Rubros" Height="300" Width="432.353" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="dtgRubro" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top" Height="249" Width="276"/>
+        <Label x:Name="label" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding SelectedItem.idRubro, ElementName=dtgRubro}" IsEnabled="False"/>
+        <Label x:Name="label1" Content="Nombre rubro:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.01,0.121"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="10,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding SelectedItem.nombreRubro, ElementName=dtgRubro}"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="89" Click="btnAgregar_Click"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" Width="89" Click="btnEditar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="89" Click="btnEliminar_Click"/>
+
+    </Grid>
+</Window>

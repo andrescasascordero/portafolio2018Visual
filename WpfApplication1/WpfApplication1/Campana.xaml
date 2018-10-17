@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApplication1.Campana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="Campana" Height="484.559" Width="912.501" Loaded="Window_Loaded">
+    <Grid>
+        <Label x:Name="label" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" Margin="118,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Text="{Binding ElementName=dtgCampana,Path=SelectedItem.idCampana}" IsEnabled="False"/>
+        <Label x:Name="label1" Content="Nombre:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="118,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Text="{Binding ElementName=dtgCampana,Path=SelectedItem.nombre}"/>
+        <Label x:Name="label2" Content="Descripción:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top"/>
+        <RichTextBox x:Name="rtDescripcion" HorizontalAlignment="Left" Height="119" Margin="118,218,0,0" VerticalAlignment="Top" Width="188">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding ElementName=dtgCampana,Path=SelectedItem.descripcion}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Label x:Name="label3" Content="Fecha de Inicio:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="Fecha de Término:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpInicio" HorizontalAlignment="Left" Margin="118,74,0,0" VerticalAlignment="Top" Width="188" SelectedDate="{Binding ElementName=dtgCampana,Path=SelectedItem.fechaInicio}"/>
+        <DatePicker x:Name="dpFin" HorizontalAlignment="Left" Margin="118,104,0,0" VerticalAlignment="Top" Width="188" SelectedDate="{Binding ElementName=dtgCampana,Path=SelectedItem.fechaFin}"/>
+        <Label x:Name="label5" Content="Estado:" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dtgCampana" Margin="311,10,0,0" Height="434" Width="584" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="118,139,0,0" VerticalAlignment="Top" Width="188" Text="{Binding ElementName=dtgCampana,Path=SelectedItem.estado}">
+            <ComboBoxItem Content="Pendiente"/>
+            <ComboBoxItem Content="Inscrita"/>
+            <ComboBoxItem Content="Eliminada"/>
+            <ComboBoxItem Content="Suspendida"/>
+        </ComboBox>
+        <Label x:Name="label5_Copy" Content="Dueño:" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbxDueno" HorizontalAlignment="Left" Margin="118,179,0,0" VerticalAlignment="Top" Width="188" SelectionChanged="cbxDueno_SelectionChanged" Loaded="cbxDueno_Loaded" SelectedValue="{Binding ElementName=dtgCampana,Path=SelectedItem.usuarioFK}"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,347,0,0" VerticalAlignment="Top" Width="104" Click="btnAgregar_Click" />
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="154,347,0,0" VerticalAlignment="Top" Width="104" Click="btnEditar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top" Width="104" Click="btnEliminar_Click"/>
+        <CheckBox x:Name="chkEliminar" Content="Borrar registro" HorizontalAlignment="Left" Margin="154,389,0,0" VerticalAlignment="Top" Width="152" Height="17" Checked="chkEliminar_Checked"/>
+
+    </Grid>
+</Window>
