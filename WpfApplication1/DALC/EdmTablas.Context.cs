@@ -13,10 +13,10 @@ namespace DALC
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entidades : DbContext
+    public partial class tablas : DbContext
     {
-        public Entidades()
-            : base("name=Entidades")
+        public tablas()
+            : base("name=tablas")
         {
         }
     
@@ -26,17 +26,16 @@ namespace DALC
         }
     
         public DbSet<CAMPANA> CAMPANA { get; set; }
-        public DbSet<CONSUMIDOR> CONSUMIDOR { get; set; }
         public DbSet<CUPON> CUPON { get; set; }
-        public DbSet<CUPON_CONSUMIDOR> CUPON_CONSUMIDOR { get; set; }
-        public DbSet<CUPON_RUBRO> CUPON_RUBRO { get; set; }
         public DbSet<EMPRESA> EMPRESA { get; set; }
-        public DbSet<ESCALA> ESCALA { get; set; }
+        public DbSet<MAILLIST> MAILLIST { get; set; }
         public DbSet<OFERTA> OFERTA { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public DbSet<PUNTOS> PUNTOS { get; set; }
         public DbSet<ROL_USUARIO> ROL_USUARIO { get; set; }
         public DbSet<RUBRO> RUBRO { get; set; }
         public DbSet<TIENDA> TIENDA { get; set; }
+        public DbSet<TRAMO> TRAMO { get; set; }
         public DbSet<USUARIO> USUARIO { get; set; }
         public DbSet<VALORACION> VALORACION { get; set; }
     }

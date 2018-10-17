@@ -15,8 +15,9 @@ namespace DALC
     public partial class TIENDA
     {
         public decimal ID_TIENDA { get; set; }
-        public string NOMBRE { get; set; }
+        public string NOMBRE_TIENDA { get; set; }
         public string DIRECCION { get; set; }
+        public string ESTADO { get; set; }
         public decimal EMPRESA_FK { get; set; }
         public decimal USUARIO_FK { get; set; }
     

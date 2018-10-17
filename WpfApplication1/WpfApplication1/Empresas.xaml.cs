@@ -15,6 +15,7 @@ using System.Data;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Configuration;
+using Negocio;
 
 namespace WpfApplication1
 {
@@ -23,7 +24,7 @@ namespace WpfApplication1
     /// </summary>
     public partial class Empresas : Window
     {
-        OracleConnection con = null;
+        //OracleConnection con = null;
 
         public Empresas()
         {   
@@ -31,40 +32,104 @@ namespace WpfApplication1
             InitializeComponent();
         }
 
-        private void setConnection()
-        {
-            String connectionString = ConfigurationManager.ConnectionStrings["conectar"].ConnectionString;
-            con = new OracleConnection(connectionString);
-            try
-            {
-                con.Open();
-            }
-            catch (Exception exp)
-            {
+        //private void setConnection()
+        //{
+        //    String connectionString = ConfigurationManager.ConnectionStrings["conectar"].ConnectionString;
+        //    con = new OracleConnection(connectionString);
+        //    try
+        //    {
+        //        con.Open();
+        //    }
+        //    catch (Exception exp)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
         private void actualizarGrilla() {
-            OracleCommand cmd = con.CreateCommand();
-            cmd.CommandText = "Select ID_EMPRESA, NOMBRE, RAZON_SOCIAL from EMPRESA order by ID_EMPRESA ASC";
-            cmd.CommandType = CommandType.Text;
-            OracleDataReader odr = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(odr);
-            dtgEmpresa.ItemsSource = dt.DefaultView;
-            odr.Close();
+            Negocio.Empresa emp = new Empresa();
+            var list = emp.getEmpresa();
+
+            dtgEmpresa.ItemsSource = list; 
 
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            con.Close();
+        
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.actualizarGrilla();
+        }
+
+        private void txtBNombre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void dtgEmpresa_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void btnInsertar_Click(object sender, RoutedEventArgs e)
+        {
+            Empresa empresa = new Empresa();
+            empresa.nombre = txtBNombre.Text;
+            empresa.razonSocial = txtBRazonSocial.Text;
+            empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+            empresa.rut = txtBRut.Text;
+
+            empresa.insertarEmpresa(empresa);
+            actualizarGrilla();
+        }
+
+        private void dtgEmpresa_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e){}
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Empresa empresa = new Empresa();
+            empresa.idEmpresa = Int32.Parse(txtBId.Text);
+            empresa.nombre = txtBNombre.Text;
+            empresa.razonSocial = txtBRazonSocial.Text;
+            empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+            empresa.rut = txtBRut.Text;
+
+            empresa.editarEmpresa(empresa);
+            actualizarGrilla();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkBox.IsChecked ?? true)
+            {
+                Empresa empresa = new Empresa();
+                empresa.idEmpresa = Int32.Parse(txtBId.Text);
+                empresa.nombre = txtBNombre.Text;
+                empresa.razonSocial = txtBRazonSocial.Text;
+                empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+                empresa.rut = txtBRut.Text;
+                empresa.eliminarPermanenteEmpresa(empresa);
+            }
+            else
+            {
+                Empresa empresa = new Empresa();
+                empresa.idEmpresa = Int32.Parse(txtBId.Text);
+                empresa.nombre = txtBNombre.Text;
+                empresa.razonSocial = txtBRazonSocial.Text;
+                empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+                empresa.rut = txtBRut.Text;
+                empresa.eliminarEmpresa(empresa);
+            }
+
+            actualizarGrilla();
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Esta acción no se podrá deshacer, seleccione eliminar para continuar");
         }
     }
 }

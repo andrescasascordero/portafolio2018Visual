@@ -4,31 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EDM.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="entidadesTablas.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CAMPANA">
           <Key>
             <PropertyRef Name="ID_CAMPANA" />
           </Key>
           <Property Name="ID_CAMPANA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="NOMBRE_CAMPANA" Type="varchar2" MaxLength="200" Nullable="false" />
           <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
           <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
           <Property Name="FECHA_FIN" Type="date" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
           <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CONSUMIDOR">
-          <Key>
-            <PropertyRef Name="ID_CONSUMIDOR" />
-          </Key>
-          <Property Name="ID_CONSUMIDOR" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRES" Type="varchar2" MaxLength="50" Nullable="false" />
-          <Property Name="APELLIDO_PATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
-          <Property Name="APELLIDO_MATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
-          <Property Name="RUT" Type="varchar2" MaxLength="10" Nullable="false" />
-          <Property Name="MAILING" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="PUNTOS" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CUPON">
           <Key>
@@ -37,38 +25,30 @@
           <Property Name="ID_CUPON" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PDF" Type="clob" Nullable="false" />
           <Property Name="TOPE_MAXIMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCUENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CUPON_CONSUMIDOR">
-          <Key>
-            <PropertyRef Name="ID_CUPON_CONSUMIDOR" />
-          </Key>
-          <Property Name="ID_CUPON_CONSUMIDOR" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUPON_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CONSUMIDOR_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CUPON_RUBRO">
-          <Key>
-            <PropertyRef Name="CUPON_RUBRO_ID" />
-          </Key>
-          <Property Name="CUPON_RUBRO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUPON_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="RUBRO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="VENCIMIENTO" Type="date" Nullable="false" />
+          <Property Name="CONDICIONES" Type="clob" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TRAMO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="EMPRESA">
           <Key>
             <PropertyRef Name="ID_EMPRESA" />
           </Key>
           <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
         </EntityType>
-        <EntityType Name="ESCALA">
+        <EntityType Name="MAILLIST">
           <Key>
-            <PropertyRef Name="ID_ESCALA" />
+            <PropertyRef Name="ID_MAILLIST" />
           </Key>
-          <Property Name="ID_ESCALA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ID_MAILLIST" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SUSCRITO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="OFERTA">
           <Key>
@@ -89,12 +69,20 @@
             <PropertyRef Name="ID_PRODUCTO" />
           </Key>
           <Property Name="ID_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="300" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="varchar2" MaxLength="300" Nullable="false" />
           <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
           <Property Name="COLOR" Type="varchar2" MaxLength="50" />
           <Property Name="PERECIBLE" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="MARCA" Type="varchar2" MaxLength="200" Nullable="false" />
           <Property Name="RUBRO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PUNTOS">
+          <Key>
+            <PropertyRef Name="ID_PUNTOS" />
+          </Key>
+          <Property Name="ID_PUNTOS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ROL_USUARIO">
           <Key>
@@ -108,28 +96,39 @@
             <PropertyRef Name="ID_RUBRO" />
           </Key>
           <Property Name="ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="NOMBRE_RUBRO" Type="varchar2" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="TIENDA">
           <Key>
             <PropertyRef Name="ID_TIENDA" />
           </Key>
           <Property Name="ID_TIENDA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="NOMBRE_TIENDA" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="DIRECCION" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="EMPRESA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRAMO">
+          <Key>
+            <PropertyRef Name="ID_TRAMO" />
+          </Key>
+          <Property Name="ID_TRAMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINIMO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAXIMO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="ID_USUARIO" />
           </Key>
           <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRES" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRES_USUARIO" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="APELLIDO_PATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
           <Property Name="APELLIDO_MATERNO" Type="varchar2" MaxLength="25" Nullable="false" />
           <Property Name="CORREO" Type="clob" Nullable="false" />
           <Property Name="CONTRASENA" Type="clob" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="ROL_USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="VALORACION">
@@ -139,9 +138,12 @@
           <Property Name="ID_VALORACION" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
           <Property Name="IMAGEN" Type="clob" Nullable="false" />
-          <Property Name="ESCALA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CONSUMIDOR_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CALIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ATENCION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMENTARIO" Type="clob" Nullable="false" />
           <Property Name="OFERTA_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="CAMPANA_USUARIO_FK">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
@@ -155,51 +157,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CUPON_RUBRO_CUPON_FK">
-          <End Role="CUPON" Type="Self.CUPON" Multiplicity="1" />
-          <End Role="CUPON_RUBRO" Type="Self.CUPON_RUBRO" Multiplicity="*" />
+        <Association Name="CUPON_TRAMO_FK">
+          <End Role="TRAMO" Type="Self.TRAMO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CUPON">
-              <PropertyRef Name="ID_CUPON" />
+            <Principal Role="TRAMO">
+              <PropertyRef Name="ID_TRAMO" />
             </Principal>
-            <Dependent Role="CUPON_RUBRO">
-              <PropertyRef Name="CUPON_FK" />
+            <Dependent Role="CUPON">
+              <PropertyRef Name="TRAMO_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CUPON_RUBRO_RUBRO_FK">
-          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
-          <End Role="CUPON_RUBRO" Type="Self.CUPON_RUBRO" Multiplicity="*" />
+        <Association Name="CUPON_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RUBRO">
-              <PropertyRef Name="ID_RUBRO" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
             </Principal>
-            <Dependent Role="CUPON_RUBRO">
-              <PropertyRef Name="RUBRO_FK" />
+            <Dependent Role="CUPON">
+              <PropertyRef Name="USUARIO_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CUPON_USUARIO_CONSUMIDOR_FK">
-          <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
-          <End Role="CUPON_CONSUMIDOR" Type="Self.CUPON_CONSUMIDOR" Multiplicity="*" />
+        <Association Name="MAILLIST_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="MAILLIST" Type="Self.MAILLIST" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CONSUMIDOR">
-              <PropertyRef Name="ID_CONSUMIDOR" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
             </Principal>
-            <Dependent Role="CUPON_CONSUMIDOR">
-              <PropertyRef Name="CONSUMIDOR_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CUPON_USUARIO_CUPON_FK">
-          <End Role="CUPON" Type="Self.CUPON" Multiplicity="1" />
-          <End Role="CUPON_CONSUMIDOR" Type="Self.CUPON_CONSUMIDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CUPON">
-              <PropertyRef Name="ID_CUPON" />
-            </Principal>
-            <Dependent Role="CUPON_CONSUMIDOR">
-              <PropertyRef Name="CUPON_FK" />
+            <Dependent Role="MAILLIST">
+              <PropertyRef Name="USUARIO_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,6 +229,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PUNTOS_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="PUNTOS" Type="Self.PUNTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="PUNTOS">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="TIENDA_EMPRESA_FK">
           <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
           <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
@@ -275,30 +277,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="VALORACION_CONSUMIDOR_FK">
-          <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
-          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONSUMIDOR">
-              <PropertyRef Name="ID_CONSUMIDOR" />
-            </Principal>
-            <Dependent Role="VALORACION">
-              <PropertyRef Name="CONSUMIDOR_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="VALORACION_ESCALA_FK">
-          <End Role="ESCALA" Type="Self.ESCALA" Multiplicity="1" />
-          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESCALA">
-              <PropertyRef Name="ID_ESCALA" />
-            </Principal>
-            <Dependent Role="VALORACION">
-              <PropertyRef Name="ESCALA_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="VALORACION_OFERTA_FK">
           <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
           <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
@@ -311,40 +289,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EDMStoreContainer">
+        <Association Name="VALORACION_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="VALORACION">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="entidadesTablasStoreContainer">
           <EntitySet Name="CAMPANA" EntityType="Self.CAMPANA" Schema="PORTAFOLIO" store:Type="Tables" />
-          <EntitySet Name="CONSUMIDOR" EntityType="Self.CONSUMIDOR" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="CUPON" EntityType="Self.CUPON" Schema="PORTAFOLIO" store:Type="Tables" />
-          <EntitySet Name="CUPON_CONSUMIDOR" EntityType="Self.CUPON_CONSUMIDOR" Schema="PORTAFOLIO" store:Type="Tables" />
-          <EntitySet Name="CUPON_RUBRO" EntityType="Self.CUPON_RUBRO" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="PORTAFOLIO" store:Type="Tables" />
-          <EntitySet Name="ESCALA" EntityType="Self.ESCALA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="MAILLIST" EntityType="Self.MAILLIST" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="PUNTOS" EntityType="Self.PUNTOS" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="ROL_USUARIO" EntityType="Self.ROL_USUARIO" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="RUBRO" EntityType="Self.RUBRO" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="TIENDA" EntityType="Self.TIENDA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="TRAMO" EntityType="Self.TRAMO" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="PORTAFOLIO" store:Type="Tables" />
           <EntitySet Name="VALORACION" EntityType="Self.VALORACION" Schema="PORTAFOLIO" store:Type="Tables" />
           <AssociationSet Name="CAMPANA_USUARIO_FK" Association="Self.CAMPANA_USUARIO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="CAMPANA" EntitySet="CAMPANA" />
           </AssociationSet>
-          <AssociationSet Name="CUPON_RUBRO_CUPON_FK" Association="Self.CUPON_RUBRO_CUPON_FK">
+          <AssociationSet Name="CUPON_TRAMO_FK" Association="Self.CUPON_TRAMO_FK">
+            <End Role="TRAMO" EntitySet="TRAMO" />
             <End Role="CUPON" EntitySet="CUPON" />
-            <End Role="CUPON_RUBRO" EntitySet="CUPON_RUBRO" />
           </AssociationSet>
-          <AssociationSet Name="CUPON_RUBRO_RUBRO_FK" Association="Self.CUPON_RUBRO_RUBRO_FK">
-            <End Role="RUBRO" EntitySet="RUBRO" />
-            <End Role="CUPON_RUBRO" EntitySet="CUPON_RUBRO" />
-          </AssociationSet>
-          <AssociationSet Name="CUPON_USUARIO_CONSUMIDOR_FK" Association="Self.CUPON_USUARIO_CONSUMIDOR_FK">
-            <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
-            <End Role="CUPON_CONSUMIDOR" EntitySet="CUPON_CONSUMIDOR" />
-          </AssociationSet>
-          <AssociationSet Name="CUPON_USUARIO_CUPON_FK" Association="Self.CUPON_USUARIO_CUPON_FK">
+          <AssociationSet Name="CUPON_USUARIO_FK" Association="Self.CUPON_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="CUPON" EntitySet="CUPON" />
-            <End Role="CUPON_CONSUMIDOR" EntitySet="CUPON_CONSUMIDOR" />
+          </AssociationSet>
+          <AssociationSet Name="MAILLIST_USUARIO_FK" Association="Self.MAILLIST_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="MAILLIST" EntitySet="MAILLIST" />
           </AssociationSet>
           <AssociationSet Name="OFERTA_CAMPANA_FK" Association="Self.OFERTA_CAMPANA_FK">
             <End Role="CAMPANA" EntitySet="CAMPANA" />
@@ -358,6 +343,10 @@
             <End Role="RUBRO" EntitySet="RUBRO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <AssociationSet Name="PUNTOS_USUARIO_FK" Association="Self.PUNTOS_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PUNTOS" EntitySet="PUNTOS" />
+          </AssociationSet>
           <AssociationSet Name="TIENDA_EMPRESA_FK" Association="Self.TIENDA_EMPRESA_FK">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="TIENDA" EntitySet="TIENDA" />
@@ -370,16 +359,12 @@
             <End Role="ROL_USUARIO" EntitySet="ROL_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="VALORACION_CONSUMIDOR_FK" Association="Self.VALORACION_CONSUMIDOR_FK">
-            <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
-            <End Role="VALORACION" EntitySet="VALORACION" />
-          </AssociationSet>
-          <AssociationSet Name="VALORACION_ESCALA_FK" Association="Self.VALORACION_ESCALA_FK">
-            <End Role="ESCALA" EntitySet="ESCALA" />
-            <End Role="VALORACION" EntitySet="VALORACION" />
-          </AssociationSet>
           <AssociationSet Name="VALORACION_OFERTA_FK" Association="Self.VALORACION_OFERTA_FK">
             <End Role="OFERTA" EntitySet="OFERTA" />
+            <End Role="VALORACION" EntitySet="VALORACION" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACION_USUARIO_FK" Association="Self.VALORACION_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
         </EntityContainer>
@@ -387,13 +372,13 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EDM" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="entidadesTablas" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CAMPANA">
           <Key>
             <PropertyRef Name="ID_CAMPANA" />
           </Key>
           <Property Name="ID_CAMPANA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_CAMPANA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
           <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" />
@@ -403,20 +388,6 @@
           <NavigationProperty Name="USUARIO" Relationship="Self.CAMPANA_USUARIO_FK" FromRole="CAMPANA" ToRole="USUARIO" />
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_CAMPANA_FK" FromRole="CAMPANA" ToRole="OFERTA" />
         </EntityType>
-        <EntityType Name="CONSUMIDOR">
-          <Key>
-            <PropertyRef Name="ID_CONSUMIDOR" />
-          </Key>
-          <Property Name="ID_CONSUMIDOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MAILING" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="PUNTOS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CUPON_CONSUMIDOR" Relationship="Self.CUPON_USUARIO_CONSUMIDOR_FK" FromRole="CONSUMIDOR" ToRole="CUPON_CONSUMIDOR" />
-          <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_CONSUMIDOR_FK" FromRole="CONSUMIDOR" ToRole="VALORACION" />
-        </EntityType>
         <EntityType Name="CUPON">
           <Key>
             <PropertyRef Name="ID_CUPON" />
@@ -424,46 +395,34 @@
           <Property Name="ID_CUPON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PDF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TOPE_MAXIMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCUENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="CUPON_RUBRO" Relationship="Self.CUPON_RUBRO_CUPON_FK" FromRole="CUPON" ToRole="CUPON_RUBRO" />
-          <NavigationProperty Name="CUPON_CONSUMIDOR" Relationship="Self.CUPON_USUARIO_CUPON_FK" FromRole="CUPON" ToRole="CUPON_CONSUMIDOR" />
-        </EntityType>
-        <EntityType Name="CUPON_CONSUMIDOR">
-          <Key>
-            <PropertyRef Name="ID_CUPON_CONSUMIDOR" />
-          </Key>
-          <Property Name="ID_CUPON_CONSUMIDOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUPON_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CONSUMIDOR_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CONSUMIDOR" Relationship="Self.CUPON_USUARIO_CONSUMIDOR_FK" FromRole="CUPON_CONSUMIDOR" ToRole="CONSUMIDOR" />
-          <NavigationProperty Name="CUPON" Relationship="Self.CUPON_USUARIO_CUPON_FK" FromRole="CUPON_CONSUMIDOR" ToRole="CUPON" />
-        </EntityType>
-        <EntityType Name="CUPON_RUBRO">
-          <Key>
-            <PropertyRef Name="CUPON_RUBRO_ID" />
-          </Key>
-          <Property Name="CUPON_RUBRO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUPON_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="RUBRO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CUPON" Relationship="Self.CUPON_RUBRO_CUPON_FK" FromRole="CUPON_RUBRO" ToRole="CUPON" />
-          <NavigationProperty Name="RUBRO" Relationship="Self.CUPON_RUBRO_RUBRO_FK" FromRole="CUPON_RUBRO" ToRole="RUBRO" />
+          <Property Name="VENCIMIENTO" Type="DateTime" Nullable="false" />
+          <Property Name="CONDICIONES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TRAMO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TRAMO" Relationship="Self.CUPON_TRAMO_FK" FromRole="CUPON" ToRole="TRAMO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.CUPON_USUARIO_FK" FromRole="CUPON" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="EMPRESA">
           <Key>
             <PropertyRef Name="ID_EMPRESA" />
           </Key>
           <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RAZON_SOCIAL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_EMPRESA_FK" FromRole="EMPRESA" ToRole="TIENDA" />
         </EntityType>
-        <EntityType Name="ESCALA">
+        <EntityType Name="MAILLIST">
           <Key>
-            <PropertyRef Name="ID_ESCALA" />
+            <PropertyRef Name="ID_MAILLIST" />
           </Key>
-          <Property Name="ID_ESCALA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_ESCALA_FK" FromRole="ESCALA" ToRole="VALORACION" />
+          <Property Name="ID_MAILLIST" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SUSCRITO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.MAILLIST_USUARIO_FK" FromRole="MAILLIST" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="OFERTA">
           <Key>
@@ -487,7 +446,7 @@
             <PropertyRef Name="ID_PRODUCTO" />
           </Key>
           <Property Name="ID_PRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="COLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PERECIBLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
@@ -495,6 +454,15 @@
           <Property Name="RUBRO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="OFERTA" />
           <NavigationProperty Name="RUBRO" Relationship="Self.PRODUCTO_RUBRO_FK" FromRole="PRODUCTO" ToRole="RUBRO" />
+        </EntityType>
+        <EntityType Name="PUNTOS">
+          <Key>
+            <PropertyRef Name="ID_PUNTOS" />
+          </Key>
+          <Property Name="ID_PUNTOS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.PUNTOS_USUARIO_FK" FromRole="PUNTOS" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="ROL_USUARIO">
           <Key>
@@ -509,8 +477,7 @@
             <PropertyRef Name="ID_RUBRO" />
           </Key>
           <Property Name="ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CUPON_RUBRO" Relationship="Self.CUPON_RUBRO_RUBRO_FK" FromRole="RUBRO" ToRole="CUPON_RUBRO" />
+          <Property Name="NOMBRE_RUBRO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_RUBRO_FK" FromRole="RUBRO" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="TIENDA">
@@ -518,27 +485,43 @@
             <PropertyRef Name="ID_TIENDA" />
           </Key>
           <Property Name="ID_TIENDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_TIENDA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="EMPRESA_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="EMPRESA" Relationship="Self.TIENDA_EMPRESA_FK" FromRole="TIENDA" ToRole="EMPRESA" />
           <NavigationProperty Name="USUARIO" Relationship="Self.TIENDA_USUARIO_FK" FromRole="TIENDA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="TRAMO">
+          <Key>
+            <PropertyRef Name="ID_TRAMO" />
+          </Key>
+          <Property Name="ID_TRAMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINIMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAXIMO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CUPON" Relationship="Self.CUPON_TRAMO_FK" FromRole="TRAMO" ToRole="CUPON" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="ID_USUARIO" />
           </Key>
           <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRES_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CORREO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CONTRASENA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ROL_USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="CAMPANA" Relationship="Self.CAMPANA_USUARIO_FK" FromRole="USUARIO" ToRole="CAMPANA" />
+          <NavigationProperty Name="CUPON" Relationship="Self.CUPON_USUARIO_FK" FromRole="USUARIO" ToRole="CUPON" />
+          <NavigationProperty Name="MAILLIST" Relationship="Self.MAILLIST_USUARIO_FK" FromRole="USUARIO" ToRole="MAILLIST" />
+          <NavigationProperty Name="PUNTOS" Relationship="Self.PUNTOS_USUARIO_FK" FromRole="USUARIO" ToRole="PUNTOS" />
           <NavigationProperty Name="ROL_USUARIO" Relationship="Self.USUARIO_ROL_USUARIO_FK" FromRole="USUARIO" ToRole="ROL_USUARIO" />
           <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_USUARIO_FK" FromRole="USUARIO" ToRole="TIENDA" />
+          <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_USUARIO_FK" FromRole="USUARIO" ToRole="VALORACION" />
         </EntityType>
         <EntityType Name="VALORACION">
           <Key>
@@ -547,12 +530,14 @@
           <Property Name="ID_VALORACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" Nullable="false" />
           <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ESCALA_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CONSUMIDOR_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CALIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ATENCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OFERTA_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CONSUMIDOR" Relationship="Self.VALORACION_CONSUMIDOR_FK" FromRole="VALORACION" ToRole="CONSUMIDOR" />
-          <NavigationProperty Name="ESCALA" Relationship="Self.VALORACION_ESCALA_FK" FromRole="VALORACION" ToRole="ESCALA" />
+          <Property Name="USUARIO_FK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="OFERTA" Relationship="Self.VALORACION_OFERTA_FK" FromRole="VALORACION" ToRole="OFERTA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.VALORACION_USUARIO_FK" FromRole="VALORACION" ToRole="USUARIO" />
         </EntityType>
         <Association Name="CAMPANA_USUARIO_FK">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
@@ -578,63 +563,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CUPON_USUARIO_CONSUMIDOR_FK">
-          <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
-          <End Role="CUPON_CONSUMIDOR" Type="Self.CUPON_CONSUMIDOR" Multiplicity="*" />
+        <Association Name="CUPON_TRAMO_FK">
+          <End Role="TRAMO" Type="Self.TRAMO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CONSUMIDOR">
-              <PropertyRef Name="ID_CONSUMIDOR" />
+            <Principal Role="TRAMO">
+              <PropertyRef Name="ID_TRAMO" />
             </Principal>
-            <Dependent Role="CUPON_CONSUMIDOR">
-              <PropertyRef Name="CONSUMIDOR_FK" />
+            <Dependent Role="CUPON">
+              <PropertyRef Name="TRAMO_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="VALORACION_CONSUMIDOR_FK">
-          <End Role="CONSUMIDOR" Type="Self.CONSUMIDOR" Multiplicity="1" />
-          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+        <Association Name="CUPON_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CONSUMIDOR">
-              <PropertyRef Name="ID_CONSUMIDOR" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
             </Principal>
-            <Dependent Role="VALORACION">
-              <PropertyRef Name="CONSUMIDOR_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CUPON_RUBRO_CUPON_FK">
-          <End Role="CUPON" Type="Self.CUPON" Multiplicity="1" />
-          <End Role="CUPON_RUBRO" Type="Self.CUPON_RUBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CUPON">
-              <PropertyRef Name="ID_CUPON" />
-            </Principal>
-            <Dependent Role="CUPON_RUBRO">
-              <PropertyRef Name="CUPON_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CUPON_USUARIO_CUPON_FK">
-          <End Role="CUPON" Type="Self.CUPON" Multiplicity="1" />
-          <End Role="CUPON_CONSUMIDOR" Type="Self.CUPON_CONSUMIDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CUPON">
-              <PropertyRef Name="ID_CUPON" />
-            </Principal>
-            <Dependent Role="CUPON_CONSUMIDOR">
-              <PropertyRef Name="CUPON_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CUPON_RUBRO_RUBRO_FK">
-          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
-          <End Role="CUPON_RUBRO" Type="Self.CUPON_RUBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RUBRO">
-              <PropertyRef Name="ID_RUBRO" />
-            </Principal>
-            <Dependent Role="CUPON_RUBRO">
-              <PropertyRef Name="RUBRO_FK" />
+            <Dependent Role="CUPON">
+              <PropertyRef Name="USUARIO_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -650,15 +599,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="VALORACION_ESCALA_FK">
-          <End Role="ESCALA" Type="Self.ESCALA" Multiplicity="1" />
-          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+        <Association Name="MAILLIST_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="MAILLIST" Type="Self.MAILLIST" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESCALA">
-              <PropertyRef Name="ID_ESCALA" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
             </Principal>
-            <Dependent Role="VALORACION">
-              <PropertyRef Name="ESCALA_FK" />
+            <Dependent Role="MAILLIST">
+              <PropertyRef Name="USUARIO_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -698,6 +647,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PUNTOS_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="PUNTOS" Type="Self.PUNTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="PUNTOS">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="USUARIO_ROL_USUARIO_FK">
           <End Role="ROL_USUARIO" Type="Self.ROL_USUARIO" Multiplicity="1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
@@ -722,19 +683,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
+        <Association Name="VALORACION_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="VALORACION">
+              <PropertyRef Name="USUARIO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tablas" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CAMPANA" EntityType="Self.CAMPANA" />
-          <EntitySet Name="CONSUMIDOR" EntityType="Self.CONSUMIDOR" />
           <EntitySet Name="CUPON" EntityType="Self.CUPON" />
-          <EntitySet Name="CUPON_CONSUMIDOR" EntityType="Self.CUPON_CONSUMIDOR" />
-          <EntitySet Name="CUPON_RUBRO" EntityType="Self.CUPON_RUBRO" />
           <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" />
-          <EntitySet Name="ESCALA" EntityType="Self.ESCALA" />
+          <EntitySet Name="MAILLIST" EntityType="Self.MAILLIST" />
           <EntitySet Name="OFERTA" EntityType="Self.OFERTA" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="PUNTOS" EntityType="Self.PUNTOS" />
           <EntitySet Name="ROL_USUARIO" EntityType="Self.ROL_USUARIO" />
           <EntitySet Name="RUBRO" EntityType="Self.RUBRO" />
           <EntitySet Name="TIENDA" EntityType="Self.TIENDA" />
+          <EntitySet Name="TRAMO" EntityType="Self.TRAMO" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <EntitySet Name="VALORACION" EntityType="Self.VALORACION" />
           <AssociationSet Name="CAMPANA_USUARIO_FK" Association="Self.CAMPANA_USUARIO_FK">
@@ -745,33 +717,21 @@
             <End Role="CAMPANA" EntitySet="CAMPANA" />
             <End Role="OFERTA" EntitySet="OFERTA" />
           </AssociationSet>
-          <AssociationSet Name="CUPON_USUARIO_CONSUMIDOR_FK" Association="Self.CUPON_USUARIO_CONSUMIDOR_FK">
-            <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
-            <End Role="CUPON_CONSUMIDOR" EntitySet="CUPON_CONSUMIDOR" />
-          </AssociationSet>
-          <AssociationSet Name="VALORACION_CONSUMIDOR_FK" Association="Self.VALORACION_CONSUMIDOR_FK">
-            <End Role="CONSUMIDOR" EntitySet="CONSUMIDOR" />
-            <End Role="VALORACION" EntitySet="VALORACION" />
-          </AssociationSet>
-          <AssociationSet Name="CUPON_RUBRO_CUPON_FK" Association="Self.CUPON_RUBRO_CUPON_FK">
+          <AssociationSet Name="CUPON_TRAMO_FK" Association="Self.CUPON_TRAMO_FK">
+            <End Role="TRAMO" EntitySet="TRAMO" />
             <End Role="CUPON" EntitySet="CUPON" />
-            <End Role="CUPON_RUBRO" EntitySet="CUPON_RUBRO" />
           </AssociationSet>
-          <AssociationSet Name="CUPON_USUARIO_CUPON_FK" Association="Self.CUPON_USUARIO_CUPON_FK">
+          <AssociationSet Name="CUPON_USUARIO_FK" Association="Self.CUPON_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="CUPON" EntitySet="CUPON" />
-            <End Role="CUPON_CONSUMIDOR" EntitySet="CUPON_CONSUMIDOR" />
-          </AssociationSet>
-          <AssociationSet Name="CUPON_RUBRO_RUBRO_FK" Association="Self.CUPON_RUBRO_RUBRO_FK">
-            <End Role="RUBRO" EntitySet="RUBRO" />
-            <End Role="CUPON_RUBRO" EntitySet="CUPON_RUBRO" />
           </AssociationSet>
           <AssociationSet Name="TIENDA_EMPRESA_FK" Association="Self.TIENDA_EMPRESA_FK">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="TIENDA" EntitySet="TIENDA" />
           </AssociationSet>
-          <AssociationSet Name="VALORACION_ESCALA_FK" Association="Self.VALORACION_ESCALA_FK">
-            <End Role="ESCALA" EntitySet="ESCALA" />
-            <End Role="VALORACION" EntitySet="VALORACION" />
+          <AssociationSet Name="MAILLIST_USUARIO_FK" Association="Self.MAILLIST_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="MAILLIST" EntitySet="MAILLIST" />
           </AssociationSet>
           <AssociationSet Name="OFERTA_PRODUCTO_FK" Association="Self.OFERTA_PRODUCTO_FK">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
@@ -785,6 +745,10 @@
             <End Role="RUBRO" EntitySet="RUBRO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <AssociationSet Name="PUNTOS_USUARIO_FK" Association="Self.PUNTOS_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PUNTOS" EntitySet="PUNTOS" />
+          </AssociationSet>
           <AssociationSet Name="USUARIO_ROL_USUARIO_FK" Association="Self.USUARIO_ROL_USUARIO_FK">
             <End Role="ROL_USUARIO" EntitySet="ROL_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
@@ -793,18 +757,22 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="TIENDA" EntitySet="TIENDA" />
           </AssociationSet>
+          <AssociationSet Name="VALORACION_USUARIO_FK" Association="Self.VALORACION_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="VALORACION" EntitySet="VALORACION" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EDMStoreContainer" CdmEntityContainer="Entidades">
+        <EntityContainerMapping StorageEntityContainer="entidadesTablasStoreContainer" CdmEntityContainer="tablas">
           <EntitySetMapping Name="CAMPANA">
-            <EntityTypeMapping TypeName="EDM.CAMPANA">
+            <EntityTypeMapping TypeName="entidadesTablas.CAMPANA">
               <MappingFragment StoreEntitySet="CAMPANA">
                 <ScalarProperty Name="ID_CAMPANA" ColumnName="ID_CAMPANA" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_CAMPANA" ColumnName="NOMBRE_CAMPANA" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
                 <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
@@ -814,66 +782,43 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CONSUMIDOR">
-            <EntityTypeMapping TypeName="EDM.CONSUMIDOR">
-              <MappingFragment StoreEntitySet="CONSUMIDOR">
-                <ScalarProperty Name="ID_CONSUMIDOR" ColumnName="ID_CONSUMIDOR" />
-                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
-                <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
-                <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
-                <ScalarProperty Name="RUT" ColumnName="RUT" />
-                <ScalarProperty Name="MAILING" ColumnName="MAILING" />
-                <ScalarProperty Name="PUNTOS" ColumnName="PUNTOS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CUPON">
-            <EntityTypeMapping TypeName="EDM.CUPON">
+            <EntityTypeMapping TypeName="entidadesTablas.CUPON">
               <MappingFragment StoreEntitySet="CUPON">
                 <ScalarProperty Name="ID_CUPON" ColumnName="ID_CUPON" />
                 <ScalarProperty Name="PDF" ColumnName="PDF" />
                 <ScalarProperty Name="TOPE_MAXIMO" ColumnName="TOPE_MAXIMO" />
+                <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CUPON_CONSUMIDOR">
-            <EntityTypeMapping TypeName="EDM.CUPON_CONSUMIDOR">
-              <MappingFragment StoreEntitySet="CUPON_CONSUMIDOR">
-                <ScalarProperty Name="ID_CUPON_CONSUMIDOR" ColumnName="ID_CUPON_CONSUMIDOR" />
-                <ScalarProperty Name="CUPON_FK" ColumnName="CUPON_FK" />
-                <ScalarProperty Name="CONSUMIDOR_FK" ColumnName="CONSUMIDOR_FK" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CUPON_RUBRO">
-            <EntityTypeMapping TypeName="EDM.CUPON_RUBRO">
-              <MappingFragment StoreEntitySet="CUPON_RUBRO">
-                <ScalarProperty Name="CUPON_RUBRO_ID" ColumnName="CUPON_RUBRO_ID" />
-                <ScalarProperty Name="CUPON_FK" ColumnName="CUPON_FK" />
-                <ScalarProperty Name="RUBRO_FK" ColumnName="RUBRO_FK" />
+                <ScalarProperty Name="VENCIMIENTO" ColumnName="VENCIMIENTO" />
+                <ScalarProperty Name="CONDICIONES" ColumnName="CONDICIONES" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+                <ScalarProperty Name="TRAMO_FK" ColumnName="TRAMO_FK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPRESA">
-            <EntityTypeMapping TypeName="EDM.EMPRESA">
+            <EntityTypeMapping TypeName="entidadesTablas.EMPRESA">
               <MappingFragment StoreEntitySet="EMPRESA">
                 <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_EMPRESA" ColumnName="NOMBRE_EMPRESA" />
                 <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ESCALA">
-            <EntityTypeMapping TypeName="EDM.ESCALA">
-              <MappingFragment StoreEntitySet="ESCALA">
-                <ScalarProperty Name="ID_ESCALA" ColumnName="ID_ESCALA" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <EntitySetMapping Name="MAILLIST">
+            <EntityTypeMapping TypeName="entidadesTablas.MAILLIST">
+              <MappingFragment StoreEntitySet="MAILLIST">
+                <ScalarProperty Name="ID_MAILLIST" ColumnName="ID_MAILLIST" />
+                <ScalarProperty Name="SUSCRITO" ColumnName="SUSCRITO" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OFERTA">
-            <EntityTypeMapping TypeName="EDM.OFERTA">
+            <EntityTypeMapping TypeName="entidadesTablas.OFERTA">
               <MappingFragment StoreEntitySet="OFERTA">
                 <ScalarProperty Name="ID_OFERTA" ColumnName="ID_OFERTA" />
                 <ScalarProperty Name="CANTIDAD_MINIMA" ColumnName="CANTIDAD_MINIMA" />
@@ -888,10 +833,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTO">
-            <EntityTypeMapping TypeName="EDM.PRODUCTO">
+            <EntityTypeMapping TypeName="entidadesTablas.PRODUCTO">
               <MappingFragment StoreEntitySet="PRODUCTO">
                 <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="COLOR" ColumnName="COLOR" />
                 <ScalarProperty Name="PERECIBLE" ColumnName="PERECIBLE" />
@@ -900,8 +845,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PUNTOS">
+            <EntityTypeMapping TypeName="entidadesTablas.PUNTOS">
+              <MappingFragment StoreEntitySet="PUNTOS">
+                <ScalarProperty Name="ID_PUNTOS" ColumnName="ID_PUNTOS" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ROL_USUARIO">
-            <EntityTypeMapping TypeName="EDM.ROL_USUARIO">
+            <EntityTypeMapping TypeName="entidadesTablas.ROL_USUARIO">
               <MappingFragment StoreEntitySet="ROL_USUARIO">
                 <ScalarProperty Name="ID_ROL_USUARIO" ColumnName="ID_ROL_USUARIO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
@@ -909,46 +863,61 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RUBRO">
-            <EntityTypeMapping TypeName="EDM.RUBRO">
+            <EntityTypeMapping TypeName="entidadesTablas.RUBRO">
               <MappingFragment StoreEntitySet="RUBRO">
                 <ScalarProperty Name="ID_RUBRO" ColumnName="ID_RUBRO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_RUBRO" ColumnName="NOMBRE_RUBRO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIENDA">
-            <EntityTypeMapping TypeName="EDM.TIENDA">
+            <EntityTypeMapping TypeName="entidadesTablas.TIENDA">
               <MappingFragment StoreEntitySet="TIENDA">
                 <ScalarProperty Name="ID_TIENDA" ColumnName="ID_TIENDA" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_TIENDA" ColumnName="NOMBRE_TIENDA" />
                 <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="EMPRESA_FK" ColumnName="EMPRESA_FK" />
                 <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TRAMO">
+            <EntityTypeMapping TypeName="entidadesTablas.TRAMO">
+              <MappingFragment StoreEntitySet="TRAMO">
+                <ScalarProperty Name="ID_TRAMO" ColumnName="ID_TRAMO" />
+                <ScalarProperty Name="MINIMO" ColumnName="MINIMO" />
+                <ScalarProperty Name="MAXIMO" ColumnName="MAXIMO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
-            <EntityTypeMapping TypeName="EDM.USUARIO">
+            <EntityTypeMapping TypeName="entidadesTablas.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
-                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="NOMBRES_USUARIO" ColumnName="NOMBRES_USUARIO" />
                 <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
                 <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
                 <ScalarProperty Name="CORREO" ColumnName="CORREO" />
                 <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="ROL_USUARIO_FK" ColumnName="ROL_USUARIO_FK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VALORACION">
-            <EntityTypeMapping TypeName="EDM.VALORACION">
+            <EntityTypeMapping TypeName="entidadesTablas.VALORACION">
               <MappingFragment StoreEntitySet="VALORACION">
                 <ScalarProperty Name="ID_VALORACION" ColumnName="ID_VALORACION" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
-                <ScalarProperty Name="ESCALA_FK" ColumnName="ESCALA_FK" />
-                <ScalarProperty Name="CONSUMIDOR_FK" ColumnName="CONSUMIDOR_FK" />
+                <ScalarProperty Name="CALIDAD" ColumnName="CALIDAD" />
+                <ScalarProperty Name="ATENCION" ColumnName="ATENCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
                 <ScalarProperty Name="OFERTA_FK" ColumnName="OFERTA_FK" />
+                <ScalarProperty Name="USUARIO_FK" ColumnName="USUARIO_FK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
