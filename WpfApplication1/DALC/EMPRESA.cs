@@ -20,8 +20,10 @@ namespace DALC
         }
     
         public decimal ID_EMPRESA { get; set; }
-        public string NOMBRE { get; set; }
+        public string NOMBRE_EMPRESA { get; set; }
         public string RAZON_SOCIAL { get; set; }
+        public string ESTADO { get; set; }
+        public string RUT { get; set; }
     
         public virtual ICollection<TIENDA> TIENDA { get; set; }
     }

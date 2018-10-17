@@ -20,7 +20,7 @@ namespace DALC
         }
     
         public decimal ID_PRODUCTO { get; set; }
-        public string NOMBRE { get; set; }
+        public string NOMBRE_PRODUCTO { get; set; }
         public string DESCRIPCION { get; set; }
         public string COLOR { get; set; }
         public string PERECIBLE { get; set; }

@@ -28,24 +28,10 @@ namespace WpfApplication1
         OracleConnection con = null;
         public Usuarios()
         {
-            this.setConnection();
             InitializeComponent();
         }
 
-        private void setConnection()
-        {
-            String connectionString = ConfigurationManager.ConnectionStrings["conectar"].ConnectionString;
-            con = new OracleConnection(connectionString);
-            try
-            {
-                con.Open();
-            }
-            catch (Exception exp)
-            {
 
-                throw;
-            }
-        }
 
         private void actualizaGrilla() {
             OracleCommand cmd = con.CreateCommand();
