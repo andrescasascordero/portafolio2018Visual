@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Usuario" Height="509.558" Width="803.677" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="237,10,0,0" VerticalAlignment="Top" Height="459" Width="549" SelectionChanged="dtgUsuario_SelectionChanged"/>
+        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="237,8,0,0" VerticalAlignment="Top" SelectionChanged="dtgUsuario_SelectionChanged" UseLayoutRounding="True"/>
         <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblNombre" Content="Nombres:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblApellidoP" Content="Apellido&#xD;&#xA;Paterno:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
@@ -30,9 +30,7 @@
             <ComboBoxItem Content="Eliminada"/>
             <ComboBoxItem Content="Suspendida"/>
         </ComboBox>
-        <ComboBox x:Name="cbxRol" HorizontalAlignment="Left" Margin="87,248,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="cbxRol_SelectionChanged" Loaded="cbxRol_Loaded"           
-          SelectedValue="{Binding Path=rolUsuario.idRolUsuario}" SelectedValuePath="idRolUsuario"
-                  Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rolUsuarioFK}"/>
+        <ComboBox x:Name="cbxRol" HorizontalAlignment="Left" Margin="87,248,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="cbxRol_SelectionChanged" Loaded="cbxRol_Loaded" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rolUsuarioFk}"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="129" Click="btnAgregar_Click"/>
         <Button x:Name="btnActualizar" Content="Editar" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="129" Click="btnActualizar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="129" Click="btnEliminar_Click"/>

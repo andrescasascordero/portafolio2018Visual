@@ -72,7 +72,7 @@ namespace WpfApplication1
             usuarios.rut = txtRut.Text;
             usuarios.estado = cbxEstado.SelectionBoxItem.ToString();
             usuarios.fecha =  DateTime.Now;
-            usuarios.rolUsuarioFk = int.Parse(cbxRol.SelectedValue.ToString()); 
+            usuarios.rolUsuarioFk = (cbxRol.SelectedValue.ToString()); 
 
 
 

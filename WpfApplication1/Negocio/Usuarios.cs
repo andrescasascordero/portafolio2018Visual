@@ -22,14 +22,14 @@ namespace Negocio
         public string rut { get; set; }
         public string estado { get; set; }
         public DateTime fecha { get; set; }
-        public decimal rolUsuarioFk { get; set; }
+        public string rolUsuarioFk { get; set; }
 
         public Usuarios()
         {
 
         }
 
-        public Usuarios(string nombres, string apellidoPaterno, string apellidoMaterno, string contrasena, string correo, string rut, string estado, DateTime fecha, decimal rolUsuarioFk)
+        public Usuarios(string nombres, string apellidoPaterno, string apellidoMaterno, string contrasena, string correo, string rut, string estado, DateTime fecha, string rolUsuarioFk)
         {
             this.idUsuario = idUsuario;
             this.nombres = nombres;
@@ -72,7 +72,7 @@ namespace Negocio
                 objUsuario.apellidoMaterno = dr["apellido_materno"].ToString();
                 objUsuario.rut = dr["rut"].ToString();
                 objUsuario.estado = dr["estado"].ToString();
-                objUsuario.rolUsuarioFk = Convert.ToInt32(dr["rol_usuario_FK"]);
+                objUsuario.rolUsuarioFk = dr["nombre_rol"].ToString();
                 objUsuario.fecha = Convert.ToDateTime(dr["fecha"]);
                 objUsuario.correo = dr["correo"].ToString();
 
@@ -121,7 +121,7 @@ namespace Negocio
             parametro7.Value = pUsuario.estado;
             parametro8.OracleDbType = OracleDbType.Date;
             parametro8.Value = pUsuario.fecha;
-            parametro9.OracleDbType = OracleDbType.Int32;
+            parametro9.OracleDbType = OracleDbType.Varchar2;
             parametro9.Value = pUsuario.rolUsuarioFk;
             cmd.Parameters.Add(parametro1);
             cmd.Parameters.Add(parametro2);

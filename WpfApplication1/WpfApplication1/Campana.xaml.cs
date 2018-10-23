@@ -90,10 +90,12 @@ namespace WpfApplication1
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            string rich = new TextRange(rtDescripcion.Document.ContentStart, rtDescripcion.Document.ContentEnd).Text;
+
             Negocio.Campana campana = new Negocio.Campana();
             campana.idCampana = Int32.Parse(txtID.Text);
             campana.nombre = txtNombre.Text;
-            campana.descripcion = rtDescripcion.Document.ToString();
+            campana.descripcion = rich;
             campana.fechaInicio = dpInicio.SelectedDate.Value;
             campana.fechaFin = dpFin.SelectedDate.Value;
             campana.fecha = DateTime.Now;
