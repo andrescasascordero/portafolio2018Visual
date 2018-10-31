@@ -7,6 +7,7 @@ using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using DALC;
 using System.Reflection;
+using System.IO;
 
 namespace Negocio
 {
@@ -17,16 +18,16 @@ namespace Negocio
         public decimal cantidadMaxima { get; set; }
         public decimal precioNormal { get; set; }
         public decimal precioOferta { get; set; }
-        public string imagen { get; set; }
+        public String imagen { get; set; }
         public DateTime fecha { get; set; }
-        public decimal campanaFk { get; set; }
-        public decimal productoFk { get; set; }
+        public string campanaFk { get; set; }
+        public string productoFk { get; set; }
 
         public Oferta()
         {
 
         }
-        public Oferta(decimal cantidadMinima, decimal cantidadMaxima, decimal precioNormal, decimal precioOferta, string imagen, DateTime fecha, decimal campanaFk, decimal productoFk)
+        public Oferta(decimal cantidadMinima, decimal cantidadMaxima, decimal precioNormal, decimal precioOferta, String imagen, DateTime fecha, string campanaFk, string productoFk)
         {
             this.idOferta = idOferta;
             this.cantidadMinima = cantidadMinima;
@@ -54,23 +55,25 @@ namespace Negocio
             cmd.ExecuteNonQuery();
             OracleRefCursor cursor = (OracleRefCursor)parametro1.Value;
             OracleDataReader dr = cursor.GetDataReader();
+
             FieldInfo fi = dr.GetType().GetField("m_rowSize", BindingFlags.Instance | BindingFlags.NonPublic);
             int rowsize = Convert.ToInt32(fi.GetValue(dr));
-            dr.FetchSize = rowsize * 100;
-
+            dr.FetchSize = rowsize * 100000;
             List<Oferta> listaOferta= new List<Oferta>();
             while (dr.Read())
             {
+                var i = 0;
+               // clob = dr.GetOracleClob(8);
                 Oferta objOferta = new Oferta();
                 objOferta.idOferta= Convert.ToInt32(dr["id_oferta"]);
                 objOferta.cantidadMinima = Convert.ToInt32(dr["cantidad_minima"]);
                 objOferta.cantidadMaxima = Convert.ToInt32(dr["cantidad_maxima"]);
                 objOferta.precioNormal = Convert.ToInt32(dr["precio_normal"]);
                 objOferta.precioOferta = Convert.ToInt32(dr["precio_oferta"]);
-                objOferta.imagen = dr["marca"].ToString();
-                objOferta.fecha = Convert.ToDateTime(dr["fecha"]); 
-                objOferta.campanaFk = Convert.ToInt32(dr["campana_fk"]);
-                objOferta.productoFk = Convert.ToInt32(dr["producto_fk"]);
+                objOferta.fecha = Convert.ToDateTime(dr["fecha"]);
+                //objOferta.imagen = (dr["DBMS_LOB.substr(ofer.IMAGEN, DBMS_LOB.getlength(ofer.IMAGEN), 1)"]).ToString();//(dr["DBMS_LOB.substr(ofer.IMAGEN, DBMS_LOB.getlength(ofer.IMAGEN), 1)"]);
+                objOferta.campanaFk = dr["nombre_campana"].ToString();
+                objOferta.productoFk = dr["nombre_producto"].ToString();
 
                 listaOferta.Add(objOferta);
             }
@@ -88,6 +91,9 @@ namespace Negocio
             Conexion con = new Conexion();
             OracleConnection cn = con.getConexion();
             cn.Open();
+            //OracleClob laImagen = new OracleClob(cn);
+            //int streamLength = (int)imagen.Length;
+            //laImagen.Write(imagen.ToArray(), 0, imagen.Length);
             OracleCommand cmd = cn.CreateCommand();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "InsertOferta";
@@ -165,7 +171,7 @@ namespace Negocio
             parametro3.Value = pOferta.precioNormal;
             parametro4.OracleDbType = OracleDbType.Int32;
             parametro4.Value = pOferta.precioOferta;
-            parametro5.OracleDbType = OracleDbType.Clob;
+            parametro5.OracleDbType = OracleDbType.Byte;
             parametro5.Value = pOferta.imagen;
             parametro6.OracleDbType = OracleDbType.Date;
             parametro6.Value = pOferta.fecha;

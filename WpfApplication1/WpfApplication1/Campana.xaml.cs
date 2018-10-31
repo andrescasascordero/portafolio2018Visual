@@ -52,7 +52,7 @@ namespace WpfApplication1
             campana.fechaFin = dpFin.SelectedDate.Value;
             campana.fecha = DateTime.Now;
             campana.estado = cbxEstado.SelectionBoxItem.ToString();
-            campana.usuarioFk = int.Parse(cbxDueno.SelectedValue.ToString());
+            campana.usuarioFk = cbxDueno.SelectedValue.ToString();
 
             campana.insertarCampana(campana);
             actualizarGrilla();

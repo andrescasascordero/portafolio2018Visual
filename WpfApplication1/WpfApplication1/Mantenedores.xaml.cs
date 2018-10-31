@@ -65,5 +65,11 @@ namespace WpfApplication1
             Rubros rubro = new Rubros();
             rubro.ShowDialog();
         }
+
+        private void button7_Click(object sender, RoutedEventArgs e)
+        {
+            Oferta oferta = new Oferta();
+            oferta.ShowDialog();
+        }
     }
 }

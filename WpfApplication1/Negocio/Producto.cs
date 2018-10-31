@@ -18,13 +18,13 @@ namespace Negocio
         public string color { get; set; }
         public string perecible { get; set; }
         public string marca { get; set; }
-        public decimal rubroFk { get; set; }
+        public string rubroFk { get; set; }
 
         public Producto()
         {
 
         }
-        public Producto(string nombre, string descripcion, string color, string marca, string perecible, decimal rubroFk)
+        public Producto(string nombre, string descripcion, string color, string marca, string perecible, string rubroFk)
         {
             this.idProducto = idProducto;
             this.nombre = nombre;
@@ -64,7 +64,7 @@ namespace Negocio
                 objProducto.color = dr["color"].ToString();
                 objProducto.perecible = dr["perecible"].ToString();
                 objProducto.marca = dr["marca"].ToString();
-                objProducto.rubroFk = Convert.ToInt32(dr["rubro_fk"]);
+                objProducto.rubroFk = dr["nombre_rubro"].ToString();
 
 
                 listaProducto.Add(objProducto);

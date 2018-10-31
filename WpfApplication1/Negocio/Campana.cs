@@ -19,13 +19,13 @@ namespace Negocio
         public DateTime fechaFin { get; set; }
         public DateTime fecha { get; set; }
         public string estado { get; set; }
-        public decimal usuarioFk { get; set; }
+        public string usuarioFk { get; set; }
 
         public Campana()
         {
 
         }
-        public Campana(string nombre, string descripcion, DateTime fechaInicio, DateTime fechaFin, DateTime fecha, string estado, decimal usuarioFk)
+        public Campana(string nombre, string descripcion, DateTime fechaInicio, DateTime fechaFin, DateTime fecha, string estado, string usuarioFk)
         {
             this.idCampana = idCampana;
             this.nombre = nombre;
@@ -67,7 +67,7 @@ namespace Negocio
                 objCampana.fechaFin = Convert.ToDateTime(dr["fecha_fin"]);
                 objCampana.fecha = Convert.ToDateTime(dr["fecha"]);
                 objCampana.estado = dr["estado"].ToString();
-                objCampana.usuarioFk = Convert.ToInt32(dr["usuario_fk"]);
+                objCampana.usuarioFk = dr["creador"].ToString();
 
                 listaCampana.Add(objCampana);
             }
@@ -108,7 +108,7 @@ namespace Negocio
             parametro5.Value = pCampana.fecha;
             parametro6.OracleDbType = OracleDbType.Varchar2;
             parametro6.Value = pCampana.estado;
-            parametro7.OracleDbType = OracleDbType.Int32;
+            parametro7.OracleDbType = OracleDbType.Varchar2;
             parametro7.Value = pCampana.usuarioFk;
             cmd.Parameters.Add(parametro1);
             cmd.Parameters.Add(parametro2);

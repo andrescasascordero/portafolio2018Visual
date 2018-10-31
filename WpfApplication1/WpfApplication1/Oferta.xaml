@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Oferta" Height="595.545" Width="1042.574">
+        Title="Oferta" Height="604.981" Width="1042.574">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" Height="545" Width="720"/>
+        <DataGrid x:Name="dtgOferta" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" Height="545" Width="720" Loaded="dtgOferta_Loaded"/>
         <Label x:Name="label" Content="Cantidad máxima:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="115,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="115,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
         <Label x:Name="label_Copy" Content="Cantidad mínima:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy1" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy2" Content="Precio normal:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
@@ -17,10 +17,18 @@
         <Label x:Name="label_Copy4" Content="Imagen:" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy5" Content="Campaña:" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy6" Content="Producto:" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="115,75,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="115,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Height="23" Margin="115,106,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="115,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCantMax" HorizontalAlignment="Left" Height="23" Margin="115,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+        <TextBox x:Name="txtCantMin" HorizontalAlignment="Left" Height="23" Margin="115,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+        <TextBox x:Name="txtPrecioNormal" HorizontalAlignment="Left" Height="23" Margin="115,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+        <TextBox x:Name="txtPrecioOferta" HorizontalAlignment="Left" Height="23" Margin="115,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+        <TextBox x:Name="txtImagen" HorizontalAlignment="Left" Height="23" Margin="115,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84"/>
+        <ComboBox x:Name="cbxCampana" HorizontalAlignment="Left" Margin="115,200,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxCampana_Loaded"/>
+        <ComboBox x:Name="cbxProducto" HorizontalAlignment="Left" Margin="115,231,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxProducto_Loaded"/>
+        <Button x:Name="btnExaminar" Content="..." HorizontalAlignment="Left" Margin="209,169,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btnExaminar_Click"/>
+        <Image x:Name="vtPrevia" HorizontalAlignment="Left" Height="169" Margin="115,266,0,0" VerticalAlignment="Top" Width="169"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,442,0,0" VerticalAlignment="Top" Width="94" Click="btnAgregar_Click"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="21,488,0,0" VerticalAlignment="Top" Width="92" Click="btnEditar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="21,535,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="-2.075,-0.714" Click="btnEliminar_Click"/>
 
     </Grid>
 </Window>

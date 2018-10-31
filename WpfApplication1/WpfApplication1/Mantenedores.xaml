@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Mantenedores" Height="256.931" Width="300">
+        Title="Mantenedores" Height="293.456" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="159*"/>
@@ -19,5 +19,6 @@
         <Button x:Name="button4" Content="Tiendas" HorizontalAlignment="Left" Margin="2.634,81,0,0" VerticalAlignment="Top" Width="105" Click="button4_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Button x:Name="button5" Content="Tramos" HorizontalAlignment="Left" Margin="14,123,0,0" VerticalAlignment="Top" Width="106" Click="button5_Click"/>
         <Button x:Name="button6" Content="Usuarios" HorizontalAlignment="Left" Margin="61,175,0,0" VerticalAlignment="Top" Width="174" Click="button6_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="button7" Grid.ColumnSpan="3" Content="Ofertas" HorizontalAlignment="Left" Margin="61,216,0,0" VerticalAlignment="Top" Width="174" Click="button7_Click"/>
     </Grid>
 </Window>

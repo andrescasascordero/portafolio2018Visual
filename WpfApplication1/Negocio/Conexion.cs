@@ -22,8 +22,5 @@ namespace Negocio
             }
             return con; 
         }
-
-
-
     }
 }

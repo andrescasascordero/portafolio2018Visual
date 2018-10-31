@@ -39,7 +39,7 @@ namespace WpfApplication1
             producto.color = txtColor.Text;
             producto.perecible = cbxPerecible.SelectionBoxItem.ToString();
             producto.marca = txtMarca.Text;
-            producto.rubroFk = int.Parse(cbxRubro.SelectedValue.ToString());
+            producto.rubroFk = cbxRubro.SelectedValue.ToString();
 
             producto.insertarProducto(producto);
             actualizarGrilla();
