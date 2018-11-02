@@ -72,7 +72,7 @@ namespace Negocio
                 objUsuario.apellidoMaterno = dr["apellido_materno"].ToString();
                 objUsuario.rut = dr["rut"].ToString();
                 objUsuario.estado = dr["estado"].ToString();
-                objUsuario.rolUsuarioFk = dr["nombre_rol"].ToString();
+                objUsuario.rolUsuarioFk = dr["nombre"].ToString();
                 objUsuario.fecha = Convert.ToDateTime(dr["fecha"]);
                 objUsuario.correo = dr["correo"].ToString();
 

@@ -45,8 +45,7 @@ namespace WpfApplication1
                 {
                     bitCoder = BitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
                     vtPrevia.Source = bitCoder.Frames[0];
-                    txtImagen.Text = fd.FileName;
-                    
+                    txtImagen.Text = fd.FileName; 
                 }
             }
             else
@@ -72,10 +71,7 @@ namespace WpfApplication1
         {
             Negocio.Oferta us = new Negocio.Oferta();
             var list = us.getOferta();
-
             dtgOferta.ItemsSource = list;
-
-
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
@@ -86,14 +82,14 @@ namespace WpfApplication1
             oferta.precioNormal = int.Parse(txtPrecioNormal.Text);
             oferta.precioOferta = int.Parse(txtPrecioOferta.Text);
             oferta.fecha = DateTime.Now;
-            oferta.imagen = fd.FileName;
+            oferta.imagen = fd.SafeFileName;
             oferta.campanaFk = cbxCampana.SelectedValue.ToString();
             oferta.productoFk = cbxProducto.SelectedValue.ToString();
 
             string usuario = "usuarioftp";
             string pass = "Portafolio2018";
             string ftp = "ftp://18.222.173.173/";
-            FtpWebRequest req = (FtpWebRequest)WebRequest.Create(txtImagen.Text);
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp+"/"+ fd.SafeFileName);
             req.Proxy = null;
             req.Method = WebRequestMethods.Ftp.UploadFile;
             req.Credentials = new NetworkCredential(usuario, pass);

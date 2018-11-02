@@ -16,15 +16,15 @@ namespace Negocio
         public string nombre { get; set; }
         public string direccion { get; set; }
         public string estado { get; set; }
-        public decimal empresaFk { get; set; }
-        public decimal usuarioFk { get; set; }
+        public string empresaFk { get; set; }
+        public string usuarioFk { get; set; }
 
         public Tienda()
         {
 
         }
 
-        public Tienda(string nombre, string direccion, string estado, decimal empresaFk, decimal usuarioFk)
+        public Tienda(string nombre, string direccion, string estado, string empresaFk, string usuarioFk)
         {
             this.idTienda = idTienda;
             this.nombre = nombre;
@@ -62,8 +62,8 @@ namespace Negocio
                 objTienda.nombre = dr["nombre_tienda"].ToString();
                 objTienda.direccion = dr["direccion"].ToString();
                 objTienda.estado = dr["estado"].ToString();
-                objTienda.empresaFk = Convert.ToInt32(dr["empresa_FK"]);
-                objTienda.usuarioFk = Convert.ToInt32(dr["usuario_FK"]);
+                objTienda.empresaFk = (dr["nombre_empresa"]).ToString();
+                objTienda.usuarioFk = (dr["creador"]).ToString();
                 
                 listaTienda.Add(objTienda);
             }

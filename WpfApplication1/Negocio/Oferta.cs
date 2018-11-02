@@ -18,7 +18,7 @@ namespace Negocio
         public decimal cantidadMaxima { get; set; }
         public decimal precioNormal { get; set; }
         public decimal precioOferta { get; set; }
-        public String imagen { get; set; }
+        public string imagen { get; set; }
         public DateTime fecha { get; set; }
         public string campanaFk { get; set; }
         public string productoFk { get; set; }
@@ -62,8 +62,7 @@ namespace Negocio
             List<Oferta> listaOferta= new List<Oferta>();
             while (dr.Read())
             {
-                var i = 0;
-               // clob = dr.GetOracleClob(8);
+                
                 Oferta objOferta = new Oferta();
                 objOferta.idOferta= Convert.ToInt32(dr["id_oferta"]);
                 objOferta.cantidadMinima = Convert.ToInt32(dr["cantidad_minima"]);
@@ -71,9 +70,9 @@ namespace Negocio
                 objOferta.precioNormal = Convert.ToInt32(dr["precio_normal"]);
                 objOferta.precioOferta = Convert.ToInt32(dr["precio_oferta"]);
                 objOferta.fecha = Convert.ToDateTime(dr["fecha"]);
-                //objOferta.imagen = (dr["DBMS_LOB.substr(ofer.IMAGEN, DBMS_LOB.getlength(ofer.IMAGEN), 1)"]).ToString();//(dr["DBMS_LOB.substr(ofer.IMAGEN, DBMS_LOB.getlength(ofer.IMAGEN), 1)"]);
-                objOferta.campanaFk = dr["nombre_campana"].ToString();
-                objOferta.productoFk = dr["nombre_producto"].ToString();
+                objOferta.imagen = (dr["imagen"]).ToString();
+                objOferta.campanaFk = dr["campana_fk"].ToString();
+                objOferta.productoFk = dr["producto_fk"].ToString();
 
                 listaOferta.Add(objOferta);
             }
@@ -91,9 +90,6 @@ namespace Negocio
             Conexion con = new Conexion();
             OracleConnection cn = con.getConexion();
             cn.Open();
-            //OracleClob laImagen = new OracleClob(cn);
-            //int streamLength = (int)imagen.Length;
-            //laImagen.Write(imagen.ToArray(), 0, imagen.Length);
             OracleCommand cmd = cn.CreateCommand();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "InsertOferta";
@@ -113,7 +109,7 @@ namespace Negocio
             parametro3.Value = pOferta.precioNormal;
             parametro4.OracleDbType = OracleDbType.Int32;
             parametro4.Value = pOferta.precioOferta;
-            parametro5.OracleDbType = OracleDbType.Clob;
+            parametro5.OracleDbType = OracleDbType.Varchar2;
             parametro5.Value = pOferta.imagen;
             parametro6.OracleDbType = OracleDbType.Date;
             parametro6.Value = pOferta.fecha;
@@ -171,7 +167,7 @@ namespace Negocio
             parametro3.Value = pOferta.precioNormal;
             parametro4.OracleDbType = OracleDbType.Int32;
             parametro4.Value = pOferta.precioOferta;
-            parametro5.OracleDbType = OracleDbType.Byte;
+            parametro5.OracleDbType = OracleDbType.Varchar2;
             parametro5.Value = pOferta.imagen;
             parametro6.OracleDbType = OracleDbType.Date;
             parametro6.Value = pOferta.fecha;

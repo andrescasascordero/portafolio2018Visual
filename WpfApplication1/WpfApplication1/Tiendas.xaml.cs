@@ -122,8 +122,8 @@ namespace WpfApplication1
             tienda.nombre = txtNombre.Text;
             tienda.direccion = txtDireccion.Text;
             tienda.estado = cbxEstado.SelectionBoxItem.ToString();
-            tienda.empresaFk = int.Parse(cbxEmpresa.SelectedValue.ToString());
-            tienda.usuarioFk = int.Parse(cbxAdministrador.SelectedValue.ToString());
+            tienda.empresaFk = (cbxEmpresa.SelectedValue.ToString());
+            tienda.usuarioFk = (cbxAdministrador.SelectedValue.ToString());
             tienda.insertarTienda(tienda);
             actualizarGrilla();
         }
