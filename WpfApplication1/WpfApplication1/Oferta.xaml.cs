@@ -71,7 +71,8 @@ namespace WpfApplication1
         {
             Negocio.Oferta us = new Negocio.Oferta();
             var list = us.getOferta();
-            dtgOferta.ItemsSource = list;
+            dtgOferta.ItemsSource = list;          
+
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
@@ -136,6 +137,11 @@ namespace WpfApplication1
 
             cbxProducto.SelectedValuePath = "idProducto";
             cbxProducto.ItemsSource = lista;
+        }
+
+        private void dtgOferta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

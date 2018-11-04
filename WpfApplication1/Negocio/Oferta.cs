@@ -8,6 +8,11 @@ using Oracle.DataAccess.Types;
 using DALC;
 using System.Reflection;
 using System.IO;
+using System.Net;
+using Microsoft.Win32;
+using System.Windows;
+using System.Media;
+
 
 namespace Negocio
 {
@@ -22,6 +27,9 @@ namespace Negocio
         public DateTime fecha { get; set; }
         public string campanaFk { get; set; }
         public string productoFk { get; set; }
+        public Byte[] bvistaPrevia { get; set; }
+        
+
 
         public Oferta()
         {
@@ -73,6 +81,8 @@ namespace Negocio
                 objOferta.imagen = (dr["imagen"]).ToString();
                 objOferta.campanaFk = dr["campana_fk"].ToString();
                 objOferta.productoFk = dr["producto_fk"].ToString();
+                
+                objOferta.bvistaPrevia = descargarImagen(objOferta.imagen);
 
                 listaOferta.Add(objOferta);
             }
@@ -215,6 +225,28 @@ namespace Negocio
             cn.Dispose();
             con = null;
         }
+
+        public Byte[] descargarImagen (string pDireccion)
+        {
+            Stream resultado = null;
+            string usuario = "usuarioftp";
+            string pass = "Portafolio2018";
+            string ftp = "ftp://18.222.173.173/";
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp + "/" + pDireccion);
+            req.Method = WebRequestMethods.Ftp.DownloadFile;
+            req.Credentials = new NetworkCredential(usuario, pass);
+            req.UseBinary = true;
+            req.UsePassive = true;
+            FtpWebResponse respuesta = (FtpWebResponse)req.GetResponse();
+            var webClient = new WebClient();
+            webClient.Credentials = new NetworkCredential(usuario, pass);
+            byte[] imageBytes = webClient.DownloadData(ftp+"/"+pDireccion);
+
+            bvistaPrevia = imageBytes;
+            return bvistaPrevia;
+        }
+
+
 
     }
 

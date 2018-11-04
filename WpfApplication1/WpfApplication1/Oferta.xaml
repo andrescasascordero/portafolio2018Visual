@@ -5,9 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Oferta" Height="604.981" Width="1042.574">
+        Title="Oferta" Height="768.481" Width="1251.074">
     <Grid>
-        <DataGrid x:Name="dtgOferta" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" Height="545" Width="720" Loaded="dtgOferta_Loaded"/>
+        <DataGrid x:Name="dtgOferta" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" Loaded="dtgOferta_Loaded" SelectionChanged="dtgOferta_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding idOferta}"  />
+                <DataGridTextColumn Header="TelePhone" Binding="{Binding PlayerPhone}"  />
+                <DataGridTemplateColumn Header="Vista previa" Width="300" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding bvistaPrevia}" Width="200" Height="200"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Label x:Name="label" Content="Cantidad máxima:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="115,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
         <Label x:Name="label_Copy" Content="Cantidad mínima:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
