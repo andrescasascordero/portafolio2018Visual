@@ -79,8 +79,8 @@ namespace Negocio
                 objOferta.precioOferta = Convert.ToInt32(dr["precio_oferta"]);
                 objOferta.fecha = Convert.ToDateTime(dr["fecha"]);
                 objOferta.imagen = (dr["imagen"]).ToString();
-                objOferta.campanaFk = dr["campana_fk"].ToString();
-                objOferta.productoFk = dr["producto_fk"].ToString();
+                objOferta.campanaFk = dr["nombre_campana"].ToString();
+                objOferta.productoFk = dr["nombre_producto"].ToString();
                 
                 objOferta.bvistaPrevia = descargarImagen(objOferta.imagen);
 
@@ -228,16 +228,9 @@ namespace Negocio
 
         public Byte[] descargarImagen (string pDireccion)
         {
-            Stream resultado = null;
             string usuario = "usuarioftp";
             string pass = "Portafolio2018";
             string ftp = "ftp://18.222.173.173/";
-            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp + "/" + pDireccion);
-            req.Method = WebRequestMethods.Ftp.DownloadFile;
-            req.Credentials = new NetworkCredential(usuario, pass);
-            req.UseBinary = true;
-            req.UsePassive = true;
-            FtpWebResponse respuesta = (FtpWebResponse)req.GetResponse();
             var webClient = new WebClient();
             webClient.Credentials = new NetworkCredential(usuario, pass);
             byte[] imageBytes = webClient.DownloadData(ftp+"/"+pDireccion);

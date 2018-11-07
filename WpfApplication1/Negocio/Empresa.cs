@@ -166,10 +166,7 @@ namespace Negocio
             OracleParameter parametro1 = new OracleParameter();
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pEmpresa.idEmpresa;
-            parametro1.OracleDbType = OracleDbType.Varchar2;
-            parametro1.Value = "Eliminada";
             cmd.Parameters.Add(parametro0);
-            cmd.Parameters.Add(parametro1);
             cmd.ExecuteNonQuery();
 
             cn.Close();

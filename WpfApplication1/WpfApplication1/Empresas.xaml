@@ -5,27 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Empresas" Height="567" Width="888.108" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="Empresas" Height="567" Width="901.108" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Margin="0,0,0,-2">
-        <DataGrid x:Name="dtgEmpresa" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Height="514" Width="648" SelectionChanged="dtgEmpresa_SelectionChanged" SelectedCellsChanged="dtgEmpresa_SelectedCellsChanged"/>
-        <Label x:Name="lblNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRazonSocial" Content="Razón social:" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.692"/>
-        <Label x:Name="lblRut" Content="Rut: " HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBNombre" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.nombre}"/>
-        <TextBox x:Name="txtBRazonSocial" HorizontalAlignment="Left" Height="23" Margin="10,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.razonSocial}" />
-        <TextBox x:Name="txtBRut" HorizontalAlignment="Left" Height="23" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.rut}" TextChanged="txtBRut_TextChanged"/>
+        <Rectangle Height="303" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
+                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <DataGrid x:Name="dtgEmpresa" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Height="514" Width="648" SelectionChanged="dtgEmpresa_SelectionChanged" SelectedCellsChanged="dtgEmpresa_SelectedCellsChanged" AutoGenerateColumns="False">
+            <DataGrid.Effect>
+                <DropShadowEffect Opacity="0.7" RenderingBias="Quality" ShadowDepth="3" Color="#FF423D3D"/>
+            </DataGrid.Effect>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="40" IsReadOnly="True" Binding="{Binding idEmpresa}"/>
+                <DataGridTextColumn Header="Nombre" Width="180" IsReadOnly="True" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Razón Social" Width="200" IsReadOnly="True" Binding="{Binding razonSocial}"/>
+                <DataGridTextColumn Header="Rut" Width="120" IsReadOnly="True" Binding="{Binding rut}"/>
+                <DataGridTextColumn Header="Estado" Width="70" IsReadOnly="True" Binding="{Binding estado}"/>
+            </DataGrid.Columns>
+            </DataGrid>
+            <Label x:Name="lblNombre" Foreground="White" Content="Nombre:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblRazonSocial" Foreground="White" Content="Razón social:" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.692"/>
+        <Label x:Name="lblRut" Foreground="White" Content="Rut: " HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBNombre" Foreground="White" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.nombre}"/>
+        <TextBox x:Name="txtBRazonSocial" Foreground="White" HorizontalAlignment="Left" Height="23" Margin="10,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.razonSocial}" />
+        <TextBox x:Name="txtBRut" Foreground="White" HorizontalAlignment="Left" Height="23" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.rut}" TextChanged="txtBRut_TextChanged"/>
         <Button x:Name="btnInsertar" Content="Insertar" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top" Width="120" Click="btnInsertar_Click"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Width="120" Click="btnEditar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,428,0,0" VerticalAlignment="Top" Width="120" Click="btnEliminar_Click"/>
-        <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="207" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.estado}">
+        <Label x:Name="lblEstado" Foreground="White" Content="Estado" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbxEstado" Background="#FF33288B" Foreground="White" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="207" Text="{Binding ElementName=dtgEmpresa,Path=SelectedItem.estado}">
             <ComboBoxItem Content="Pendiente"/>
             <ComboBoxItem Content="Inscrita"/>
             <ComboBoxItem Content="Eliminada"/>
             <ComboBoxItem Content="Suspendida"/>
         </ComboBox>
-        <Label x:Name="lblNombre_Copy" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBId" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding SelectedItem.idEmpresa, ElementName=dtgEmpresa}" IsEnabled="False"/>
+        <Label x:Name="lblNombre_Copy" Foreground="White" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBId" HorizontalAlignment="Left" Foreground="White" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.15,0.435" TextChanged="txtBNombre_TextChanged" Text="{Binding SelectedItem.idEmpresa, ElementName=dtgEmpresa}" IsEnabled="False"/>
         <CheckBox x:Name="checkBox" Content="Eliminar permanentemente" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top" Checked="checkBox_Checked"/>
 
     </Grid>

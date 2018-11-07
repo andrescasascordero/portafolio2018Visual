@@ -20,12 +20,13 @@ namespace Negocio
         public DateTime fecha { get; set; }
         public string estado { get; set; }
         public string usuarioFk { get; set; }
+        public string tiendaFk { get; set; }
 
         public Campana()
         {
 
         }
-        public Campana(string nombre, string descripcion, DateTime fechaInicio, DateTime fechaFin, DateTime fecha, string estado, string usuarioFk)
+        public Campana(string nombre, string descripcion, DateTime fechaInicio, DateTime fechaFin, DateTime fecha, string estado, string usuarioFk, string tiendaFk)
         {
             this.idCampana = idCampana;
             this.nombre = nombre;
@@ -35,6 +36,7 @@ namespace Negocio
             this.fecha = fecha;
             this.estado = estado;
             this.usuarioFk = usuarioFk;
+            this.tiendaFk = tiendaFk;
         }
 
         public List<Campana> getCampana()
@@ -68,6 +70,8 @@ namespace Negocio
                 objCampana.fecha = Convert.ToDateTime(dr["fecha"]);
                 objCampana.estado = dr["estado"].ToString();
                 objCampana.usuarioFk = dr["creador"].ToString();
+                objCampana.tiendaFk = dr["nombre_tienda"].ToString();
+
 
                 listaCampana.Add(objCampana);
             }
@@ -96,6 +100,7 @@ namespace Negocio
             OracleParameter parametro5 = new OracleParameter();
             OracleParameter parametro6 = new OracleParameter();
             OracleParameter parametro7 = new OracleParameter();
+            OracleParameter parametro8 = new OracleParameter();
             parametro1.OracleDbType = OracleDbType.Varchar2;
             parametro1.Value = pCampana.nombre;
             parametro2.OracleDbType = OracleDbType.Varchar2;
@@ -110,6 +115,8 @@ namespace Negocio
             parametro6.Value = pCampana.estado;
             parametro7.OracleDbType = OracleDbType.Varchar2;
             parametro7.Value = pCampana.usuarioFk;
+            parametro8.OracleDbType = OracleDbType.Varchar2;
+            parametro8.Value = pCampana.tiendaFk;
             cmd.Parameters.Add(parametro1);
             cmd.Parameters.Add(parametro2);
             cmd.Parameters.Add(parametro3);
@@ -117,6 +124,7 @@ namespace Negocio
             cmd.Parameters.Add(parametro5);
             cmd.Parameters.Add(parametro6);
             cmd.Parameters.Add(parametro7);
+            cmd.Parameters.Add(parametro8);
             cmd.ExecuteNonQuery();
 
             cn.Close();
@@ -148,6 +156,8 @@ namespace Negocio
             OracleParameter parametro4 = new OracleParameter();
             OracleParameter parametro6 = new OracleParameter();
             OracleParameter parametro7 = new OracleParameter();
+            OracleParameter parametro8 = new OracleParameter();
+            OracleParameter parametro9 = new OracleParameter();
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pCampana.idCampana;
             parametro1.OracleDbType = OracleDbType.Varchar2;
@@ -162,6 +172,10 @@ namespace Negocio
             parametro6.Value = pCampana.fecha;
             parametro7.OracleDbType = OracleDbType.Varchar2;
             parametro7.Value = pCampana.estado;
+            parametro8.OracleDbType = OracleDbType.Varchar2;
+            parametro8.Value = pCampana.usuarioFk;
+            parametro9.OracleDbType = OracleDbType.Varchar2;
+            parametro9.Value = pCampana.tiendaFk;
             cmd.Parameters.Add(parametro0);
             cmd.Parameters.Add(parametro1);
             cmd.Parameters.Add(parametro2);
@@ -169,7 +183,9 @@ namespace Negocio
             cmd.Parameters.Add(parametro4);
             cmd.Parameters.Add(parametro6);
             cmd.Parameters.Add(parametro7);
-
+            cmd.Parameters.Add(parametro8);
+            cmd.Parameters.Add(parametro9);
+            cmd.ExecuteNonQuery();
             cn.Close();
             parametro0.Dispose();
             parametro1.Dispose();
@@ -178,6 +194,8 @@ namespace Negocio
             parametro4.Dispose();
             parametro6.Dispose();
             parametro7.Dispose();
+            parametro8.Dispose();
+            parametro9.Dispose();
 
 
             cmd.Dispose();
@@ -197,10 +215,7 @@ namespace Negocio
             OracleParameter parametro1 = new OracleParameter();
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pCampana.idCampana;
-            parametro1.OracleDbType = OracleDbType.Varchar2;
-            parametro1.Value = "Eliminada";
             cmd.Parameters.Add(parametro0);
-            cmd.Parameters.Add(parametro1);
             cmd.ExecuteNonQuery();
 
             cn.Close();

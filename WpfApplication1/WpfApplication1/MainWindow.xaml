@@ -33,7 +33,7 @@
                 <PasswordBox materialDesign:HintAssist.Hint="Contraseña" Name="txtPassword"  Margin="0,10" FontSize="18" Width="250"></PasswordBox>
             </StackPanel>
         </Grid>
-        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,90"  Content="Login"></Button>
+        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,90"  Content="Login" Click="Button_Click"></Button>
         <TextBlock Text="¿Olvido su contraseña?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" Foreground="Gray" Cursor="Hand"></TextBlock> 
     </Grid>
 </Window>

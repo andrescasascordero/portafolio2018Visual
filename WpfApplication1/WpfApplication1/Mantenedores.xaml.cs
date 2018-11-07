@@ -71,5 +71,44 @@ namespace WpfApplication1
             Oferta oferta = new Oferta();
             oferta.ShowDialog();
         }
+
+        private void dataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            actualizarGrilla();
+        }
+
+        private void actualizarGrilla()
+        {
+            try
+            {
+                Negocio.Oferta us = new Negocio.Oferta();
+                var list = us.getOferta();
+                Negocio.Campana campanas = new Negocio.Campana();
+                var list2 = campanas.getCampana();
+                Negocio.Tienda users = new Negocio.Tienda();
+                var list3 = users.getTienda();
+                dataGrid.ItemsSource = list;
+                dataGrid1.ItemsSource = list2;
+                dataGrid1_Copy.ItemsSource = list3;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al cargar datos, compruebe su conexión a internet y vuelva a iniciar la aplicación");
+            }
+
+
+
+        }
+
+        private void dataGrid1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dataGrid1_Copy_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

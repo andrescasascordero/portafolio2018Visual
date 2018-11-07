@@ -53,6 +53,7 @@ namespace WpfApplication1
             campana.fecha = DateTime.Now;
             campana.estado = cbxEstado.SelectionBoxItem.ToString();
             campana.usuarioFk = cbxDueno.SelectedValue.ToString();
+            campana.tiendaFk = cbxTienda.SelectedValue.ToString();
 
             campana.insertarCampana(campana);
             actualizarGrilla();
@@ -100,6 +101,8 @@ namespace WpfApplication1
             campana.fechaFin = dpFin.SelectedDate.Value;
             campana.fecha = DateTime.Now;
             campana.estado = cbxEstado.SelectionBoxItem.ToString();
+            campana.usuarioFk = cbxDueno.SelectedValue.ToString();
+            campana.tiendaFk = cbxTienda.SelectedValue.ToString();
 
             campana.editarCampana(campana);
             actualizarGrilla();
@@ -109,6 +112,16 @@ namespace WpfApplication1
         private void cbxDueno_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void cbxTienda_Loaded(object sender, RoutedEventArgs e)
+        {
+            Negocio.Tienda us = new Tienda();
+            List<Tienda> lista = new List<Tienda>();
+            var Tiendas = us.getTienda();
+            lista = Tiendas;
+            cbxTienda.SelectedValuePath = "idTienda";
+            cbxTienda.ItemsSource = lista;
         }
     }
 }

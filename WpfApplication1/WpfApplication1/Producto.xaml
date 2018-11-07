@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="Producto" Height="518.112" Width="817.219" Loaded="Window_Loaded">
     <Grid>
+        <Rectangle Height="280" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
+                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
         <Label x:Name="label" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" Margin="82,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.idProducto}" IsEnabled="False"/>
         <Label x:Name="label1" Content="Nombre:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>

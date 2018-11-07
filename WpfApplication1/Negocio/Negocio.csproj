@@ -96,6 +96,7 @@
     <Compile Include="Consumidor.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="Escala.cs" />
+    <Compile Include="HashMD5.cs" />
     <Compile Include="Oferta.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

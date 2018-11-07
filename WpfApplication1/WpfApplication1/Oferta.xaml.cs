@@ -17,6 +17,7 @@ using System.Net;
 using System.ComponentModel;
 using Microsoft.Win32;
 using Negocio;
+using System.Text.RegularExpressions;
 
 namespace WpfApplication1
 {
@@ -109,7 +110,40 @@ namespace WpfApplication1
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            Negocio.Oferta oferta = new Negocio.Oferta();
+            oferta.cantidadMinima = int.Parse(txtCantMin.Text);
+            oferta.cantidadMaxima = int.Parse(txtCantMax.Text);
+            oferta.precioNormal = int.Parse(txtPrecioNormal.Text);
+            oferta.precioOferta = int.Parse(txtPrecioOferta.Text);
+            oferta.fecha = DateTime.Now;
+            oferta.imagen = fd.SafeFileName;
+            oferta.campanaFk = cbxCampana.SelectedValue.ToString();
+            oferta.productoFk = cbxProducto.SelectedValue.ToString();
 
+            string usuario = "usuarioftp";
+            string pass = "Portafolio2018";
+            string ftp = "ftp://18.222.173.173/";
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp + "/" + fd.SafeFileName);
+            req.Proxy = null;
+            req.Method = WebRequestMethods.Ftp.UploadFile;
+            req.Credentials = new NetworkCredential(usuario, pass);
+            req.UseBinary = true;
+            req.UsePassive = true;
+            req.ContentLength = imagen.Length;
+            Stream streams;
+            streams = req.GetRequestStream();
+            streams.Write(imagen, 0, imagen.Length);
+            streams.Close();
+            FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+
+            oferta.editarOferta(oferta);
+            actualizarGrilla();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)

@@ -7,6 +7,7 @@ using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using DALC;
 using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Negocio
 {
@@ -114,7 +115,8 @@ namespace Negocio
             parametro4.OracleDbType = OracleDbType.Varchar2;
             parametro4.Value = pUsuario.correo;
             parametro5.OracleDbType = OracleDbType.Varchar2;
-            parametro5.Value = pUsuario.contrasena;
+            var pass = HashMD5.getMd5Hash(pUsuario.contrasena);
+            parametro5.Value = pass.ToString();
             parametro6.OracleDbType = OracleDbType.Varchar2;
             parametro6.Value = pUsuario.rut;
             parametro7.OracleDbType = OracleDbType.Varchar2;
@@ -163,8 +165,11 @@ namespace Negocio
             OracleParameter parametro2 = new OracleParameter();
             OracleParameter parametro3 = new OracleParameter();
             OracleParameter parametro4 = new OracleParameter();
+            OracleParameter parametro5 = new OracleParameter();
             OracleParameter parametro6 = new OracleParameter();
             OracleParameter parametro7 = new OracleParameter();
+            OracleParameter parametro8 = new OracleParameter();
+
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pUsuario.idUsuario;
             parametro1.OracleDbType = OracleDbType.Varchar2;
@@ -175,18 +180,25 @@ namespace Negocio
             parametro3.Value = pUsuario.apellidoMaterno;
             parametro4.OracleDbType = OracleDbType.Varchar2;
             parametro4.Value = pUsuario.correo;
+            parametro5.OracleDbType = OracleDbType.Varchar2;
+            var pass = HashMD5.getMd5Hash(pUsuario.contrasena);
+            parametro5.Value = pass.ToString();
             parametro6.OracleDbType = OracleDbType.Varchar2;
             parametro6.Value = pUsuario.rut;
             parametro7.OracleDbType = OracleDbType.Varchar2;
             parametro7.Value = pUsuario.estado;
+            parametro8.OracleDbType = OracleDbType.Varchar2;
+            parametro8.Value = pUsuario.rolUsuarioFk;
             cmd.Parameters.Add(parametro0);
             cmd.Parameters.Add(parametro1);
             cmd.Parameters.Add(parametro2);
             cmd.Parameters.Add(parametro3);
             cmd.Parameters.Add(parametro4);
+            cmd.Parameters.Add(parametro5);
             cmd.Parameters.Add(parametro6);
             cmd.Parameters.Add(parametro7);
-
+            cmd.Parameters.Add(parametro8);
+            cmd.ExecuteNonQuery();
             cn.Close();
             parametro0.Dispose();
             parametro1.Dispose();
@@ -214,10 +226,7 @@ namespace Negocio
             OracleParameter parametro1 = new OracleParameter();
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pUsuario.idUsuario;
-            parametro1.OracleDbType = OracleDbType.Varchar2;
-            parametro1.Value = "Eliminada";
             cmd.Parameters.Add(parametro0);
-            cmd.Parameters.Add(parametro1);
             cmd.ExecuteNonQuery();
 
             cn.Close();
@@ -253,7 +262,39 @@ namespace Negocio
         }
         public override string ToString()
         {
-            return this.nombres;
+            return this.nombres+" "+this.apellidoPaterno+" "+this.apellidoMaterno ;
+        }
+
+        public string getLogin(Usuarios pUsuario)
+        {
+            Conexion con = new Conexion();
+            OracleConnection cn = con.getConexion();
+            cn.Open();
+            OracleCommand cmd = cn.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_Login";
+            OracleParameter parametro1 = new OracleParameter();
+            parametro1.OracleDbType = OracleDbType.Varchar2;
+            OracleParameter parametro2 = new OracleParameter();
+            parametro2.OracleDbType = OracleDbType.Varchar2;
+            var pass = HashMD5.getMd5Hash(pUsuario.contrasena);
+            parametro2.Value = pUsuario.correo;
+            OracleParameter parametro3 = new OracleParameter();
+            parametro3.Value = pass.ToString();
+            parametro1.Direction = System.Data.ParameterDirection.Output;
+            cmd.Parameters.Add(parametro2);
+            cmd.Parameters.Add(parametro3);
+            cmd.Parameters.Add("nombre_rol", OracleDbType.Varchar2, 32767, "x".PadRight(500, 'x'), System.Data.ParameterDirection.Output);
+            cmd.ExecuteNonQuery();
+            var respuesta = cmd.Parameters["nombre_rol"].Value.ToString();
+            cn.Close();
+            parametro1.Dispose();
+            cmd.Dispose();
+            cn.Dispose();
+            con = null;
+            return respuesta;
+
+
         }
 
     }

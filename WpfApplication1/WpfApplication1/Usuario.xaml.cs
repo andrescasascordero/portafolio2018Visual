@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Negocio;
+using System.Security.Cryptography;
 
 
 namespace WpfApplication1
@@ -95,6 +96,8 @@ namespace WpfApplication1
             usuario.correo = txtCorreo.Text;
             usuario.rut = txtRut.Text;
             usuario.estado = cbxEstado.SelectionBoxItem.ToString();
+            usuario.rolUsuarioFk = (cbxRol.SelectedValue.ToString());
+            usuario.contrasena = passwordBox.Password;
 
             usuario.editarUsuario(usuario);
             actualizarGrilla();
@@ -122,5 +125,6 @@ namespace WpfApplication1
         {
             MessageBox.Show("Esta acción no se podrá deshacer, seleccione eliminar para continuar");
         }
+
     }
 }

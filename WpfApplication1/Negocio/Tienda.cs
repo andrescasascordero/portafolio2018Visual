@@ -151,7 +151,7 @@ namespace Negocio
             cmd.Parameters.Add(parametro3);
             cmd.Parameters.Add(parametro4);
             cmd.Parameters.Add(parametro5);
-
+            cmd.ExecuteNonQuery();
             cn.Close();
             parametro0.Dispose();
             parametro1.Dispose();
@@ -179,10 +179,7 @@ namespace Negocio
             OracleParameter parametro1 = new OracleParameter();
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pTienda.idTienda;
-            parametro1.OracleDbType = OracleDbType.Varchar2;
-            parametro1.Value = "Eliminada";
             cmd.Parameters.Add(parametro0);
-            cmd.Parameters.Add(parametro1);
             cmd.ExecuteNonQuery();
 
             cn.Close();
@@ -215,6 +212,11 @@ namespace Negocio
             cmd.Dispose();
             cn.Dispose();
             con = null;
+        }
+
+        public override string ToString()
+        {
+            return this.nombre;
         }
 
     }

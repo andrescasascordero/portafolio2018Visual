@@ -5,37 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Oferta" Height="768.481" Width="1251.074">
+        Title="Oferta" Height="768.481" Width="1507.574">
     <Grid>
-        <DataGrid x:Name="dtgOferta" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" Loaded="dtgOferta_Loaded" SelectionChanged="dtgOferta_SelectionChanged">
+        <Rectangle Height="280" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
+                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <DataGrid x:Name="dtgOferta" HorizontalAlignment="Left" Margin="305,10,0,0" VerticalAlignment="Top" Loaded="dtgOferta_Loaded" SelectionChanged="dtgOferta_SelectionChanged" AutoGenerateColumns="False" UseLayoutRounding="True">
+            <DataGrid.Effect>
+                <DropShadowEffect Opacity="0.7" RenderingBias="Quality" ShadowDepth="3" Color="#FF423D3D"/>
+            </DataGrid.Effect>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding idOferta}"  />
-                <DataGridTextColumn Header="TelePhone" Binding="{Binding PlayerPhone}"  />
-                <DataGridTemplateColumn Header="Vista previa" Width="300" IsReadOnly="True">
+                <DataGridTemplateColumn Header="Vista previa" Width="210" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding bvistaPrevia}" Width="200" Height="200"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="ID" Width="45" IsReadOnly="True" Binding="{Binding idOferta}"/>
+                <DataGridTextColumn Header="Cant. Min." Width="90" IsReadOnly="True" Binding="{Binding cantidadMinima}"/>
+                <DataGridTextColumn Header="Cant. Max." Width="90" IsReadOnly="True" Binding="{Binding cantidadMaxima}"/>
+                <DataGridTextColumn Header="Precio Normal" Width="120" IsReadOnly="True" Binding="{Binding precioNormal}"/>
+                <DataGridTextColumn Header="Precio Oferta" Width="120" IsReadOnly="True" Binding="{Binding precioOferta}"/>
+                <DataGridTextColumn Header="Fecha" Width="100" IsReadOnly="True" Binding="{Binding fecha}"/>
+                <DataGridTextColumn Header="Campaña" Width="150" IsReadOnly="True" Binding="{Binding campanaFk}"/>
+                <DataGridTextColumn Header="Producto" Width="160" IsReadOnly="True" Binding="{Binding productoFk}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Content="Cantidad máxima:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="115,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <Label x:Name="label_Copy" Content="Cantidad mínima:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy1" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy2" Content="Precio normal:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy3" Content="Precio oferta:" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy4" Content="Imagen:" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy5" Content="Campaña:" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy6" Content="Producto:" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCantMax" HorizontalAlignment="Left" Height="23" Margin="115,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <TextBox x:Name="txtCantMin" HorizontalAlignment="Left" Height="23" Margin="115,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <TextBox x:Name="txtPrecioNormal" HorizontalAlignment="Left" Height="23" Margin="115,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <TextBox x:Name="txtPrecioOferta" HorizontalAlignment="Left" Height="23" Margin="115,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <TextBox x:Name="txtImagen" HorizontalAlignment="Left" Height="23" Margin="115,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84"/>
-        <ComboBox x:Name="cbxCampana" HorizontalAlignment="Left" Margin="115,200,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxCampana_Loaded"/>
-        <ComboBox x:Name="cbxProducto" HorizontalAlignment="Left" Margin="115,231,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxProducto_Loaded"/>
+        <Label x:Name="label"  Foreground="White" Content="Cantidad máxima:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtId" Foreground="White"  HorizontalAlignment="Left" Height="23" Margin="115,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Text="{Binding ElementName=dtgOferta,Path=SelectedItem.idOferta}" IsEnabled="False"/>
+        <Label x:Name="label_Copy"  Foreground="White" Content="Cantidad mínima:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="ID:" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy2" Content="Precio normal:" Foreground="White" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy3" Content="Precio oferta:" Foreground="White"  HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy4" Content="Imagen:" Foreground="White" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy5" Content="Campaña:" Foreground="White" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy6" Content="Producto:" Foreground="White" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCantMax" HorizontalAlignment="Left" Foreground="White" Height="23" Margin="115,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.cantidadMaxima, ElementName=dtgOferta}"/>
+        <TextBox x:Name="txtCantMin" HorizontalAlignment="Left" Foreground="White"  Height="23" Margin="115,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.cantidadMinima, ElementName=dtgOferta}"/>
+        <TextBox x:Name="txtPrecioNormal" HorizontalAlignment="Left" Foreground="White" Height="23" Margin="115,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.precioNormal, ElementName=dtgOferta}"/>
+        <TextBox x:Name="txtPrecioOferta" HorizontalAlignment="Left" Foreground="White" Height="23" Margin="115,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.precioOferta, ElementName=dtgOferta}"/>
+        <TextBox x:Name="txtImagen" HorizontalAlignment="Left" Height="23" Foreground="White" Margin="115,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Text="{Binding SelectedItem.imagen, ElementName=dtgOferta}" IsEnabled="False" />
+        <ComboBox x:Name="cbxCampana" HorizontalAlignment="Left" Margin="115,200,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxCampana_Loaded" Text="{Binding ElementName=dtgOferta,Path=SelectedItem.campanaFk}" Background="#FF33288B" Foreground="White"/>
+        <ComboBox x:Name="cbxProducto" HorizontalAlignment="Left" Margin="115,231,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxProducto_Loaded" Text="{Binding ElementName=dtgOferta,Path=SelectedItem.productoFk}" Background="#FF33288B" Foreground="White"/>
         <Button x:Name="btnExaminar" Content="..." HorizontalAlignment="Left" Margin="209,169,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btnExaminar_Click"/>
         <Image x:Name="vtPrevia" HorizontalAlignment="Left" Height="169" Margin="115,266,0,0" VerticalAlignment="Top" Width="169"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,442,0,0" VerticalAlignment="Top" Width="94" Click="btnAgregar_Click"/>

@@ -5,26 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Usuario" Height="509.558" Width="803.677" Loaded="Window_Loaded">
+        Title="Usuario" Height="509.558" Width="1178.449" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="237,8,0,0" VerticalAlignment="Top" SelectionChanged="dtgUsuario_SelectionChanged" UseLayoutRounding="True"/>
-        <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblNombre" Content="Nombres:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblApellidoP" Content="Apellido&#xD;&#xA;Paterno:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Apellido &#xD;&#xA;Materno:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.532,-0.475"/>
-        <Label x:Name="label4" Content="Correo:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label5" Content="Rol:" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label6" Content="Rut:" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.159,-0.233"/>
-        <Label x:Name="label7" Content="Contraseña:" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label8" Content="Estado:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.35,-0.613"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.idUsuario}" IsEnabled="False"/>
-        <TextBox x:Name="txtNombres" HorizontalAlignment="Left" Height="23" Margin="87,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.nombres}"/>
-        <TextBox x:Name="txtApellidoP" HorizontalAlignment="Left" Height="23" Margin="87,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoPaterno}"/>
-        <TextBox x:Name="txtApellidoM" HorizontalAlignment="Left" Height="23" Margin="87,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoMaterno}"/>
-        <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="87,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.correo}"/>
-        <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="87,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rut}"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="87,191,0,0" VerticalAlignment="Top" Width="145" Height="21" RenderTransformOrigin="0.479,-0.695"/>
-        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="87,217,0,0" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.estado}">
+        <Rectangle Height="248" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
+                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="250,8,0,0" VerticalAlignment="Top" SelectionChanged="dtgUsuario_SelectionChanged" UseLayoutRounding="True" Height="461" Width="893" AutoGenerateColumns="False">
+            <DataGrid.Effect>
+                <DropShadowEffect RenderingBias="Quality" Opacity="0.7" ShadowDepth="3" Color="#FF423D3D"/>
+            </DataGrid.Effect>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="45" IsReadOnly="True" Binding="{Binding idUsuario}"/>
+                <DataGridTextColumn Header="Nombres" Width="160" IsReadOnly="True" Binding="{Binding nombres}"/>
+                <DataGridTextColumn Header="Apellido Paterno" Width="150" IsReadOnly="True" Binding="{Binding apellidoPaterno}"/>
+                <DataGridTextColumn Header="Apellido Materno" Width="150" IsReadOnly="True" Binding="{Binding apellidoMaterno}"/>
+                <DataGridTextColumn Header="Correo" Width="150" IsReadOnly="True" Binding="{Binding correo}"/>
+                <DataGridTextColumn Header="Rut" Width="100" IsReadOnly="True" Binding="{Binding rut}"/>
+                <DataGridTextColumn Header="Estado" Width="90" IsReadOnly="True" Binding="{Binding estado}"/>
+                <DataGridTextColumn Header="Rol Usuario" Width="130" IsReadOnly="True" Binding="{Binding rolUsuarioFk}"/>
+                <DataGridTextColumn Header="Fecha" Width="140" IsReadOnly="True" Binding="{Binding fecha}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lblNombre" Content="Nombres:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lblApellidoP" Content="Apellido&#xD;&#xA;Paterno:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label3" Content="Apellido &#xD;&#xA;Materno:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.532,-0.475" Foreground="White"/>
+        <Label x:Name="label4" Content="Correo:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label5" Content="Rol:" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Foreground="Black"/>
+        <Label x:Name="label6" Content="Rut:" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.159,-0.233" Foreground="White"/>
+        <Label x:Name="label7" Content="Contraseña:" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label8" Content="Estado:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.35,-0.613" Foreground="White"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.idUsuario}" IsEnabled="False" Foreground="White"/>
+        <TextBox x:Name="txtNombres" HorizontalAlignment="Left" Height="23" Margin="87,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.nombres}" Foreground="White"/>
+        <TextBox x:Name="txtApellidoP" HorizontalAlignment="Left" Height="23" Margin="87,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoPaterno}" Foreground="White"/>
+        <TextBox x:Name="txtApellidoM" HorizontalAlignment="Left" Height="23" Margin="87,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoMaterno}" Foreground="White"/>
+        <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="87,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.correo}" Foreground="White"/>
+        <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="87,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rut}" Foreground="White"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="87,191,0,0" VerticalAlignment="Top" Width="145" Height="21" RenderTransformOrigin="0.479,-0.695" Foreground="White"/>
+        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="87,217,0,0" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.estado}" Background="#FF33288B" Foreground="White">
             <ComboBoxItem Content="Pendiente"/>
             <ComboBoxItem Content="Inscrita"/>
             <ComboBoxItem Content="Eliminada"/>

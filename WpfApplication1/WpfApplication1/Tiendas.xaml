@@ -5,25 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Tiendas" Height="360.294" Width="690.441" Loaded="Window_Loaded">
+        Title="Tiendas" Height="545.739" Width="987.154" Loaded="Window_Loaded">
     <Grid>
-        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="61" Margin="0,34,0,0"/>
-        <Label x:Name="label1" Content="Dirección" HorizontalAlignment="Left" Margin="0,65,0,0" VerticalAlignment="Top" Width="61"/>
-        <Label x:Name="label2" Content="Estado:" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.483,0.537"/>
-        <Label x:Name="label3" Content="Empresa:" HorizontalAlignment="Left" Margin="0,128,0,0" VerticalAlignment="Top"/>
+        <Rectangle Height="163" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
+                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="61" Margin="0,34,0,0" Foreground="White"/>
+        <Label x:Name="label1" Content="Dirección" HorizontalAlignment="Left" Margin="0,65,0,0" VerticalAlignment="Top" Width="61" Foreground="White"/>
+        <Label x:Name="label2" Content="Estado:" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.483,0.537" Foreground="White"/>
+        <Label x:Name="label3" Content="Empresa:" HorizontalAlignment="Left" Margin="0,128,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="label4" Content="Administrador:" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label5" Content="ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,7,0,0"/>
-        <TextBox x:Name="txtIdTienda" HorizontalAlignment="Left" Height="23" Margin="93,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.idTienda}" IsEnabled="False"/>
-        <ComboBox x:Name="cbxAdministrador" HorizontalAlignment="Left" Margin="93,163,0,0" VerticalAlignment="Top" Width="120" Loaded="cbxAdministrador_Loaded"/>
-        <ComboBox x:Name="cbxEmpresa" HorizontalAlignment="Left" Margin="93,132,0,0" VerticalAlignment="Top" Width="120" Loaded="cbxEmpresa_Loaded"/>
-        <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" Height="23" Margin="93,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.nombre}"/>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="93,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.direccion}"/>
+        <Label x:Name="label5" Content="ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,7,0,0" Foreground="White"/>
+        <TextBox x:Name="txtIdTienda" HorizontalAlignment="Left" Height="23" Margin="93,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.idTienda}" IsEnabled="False" Foreground="White"/>
+        <ComboBox x:Name="cbxAdministrador" HorizontalAlignment="Left" Margin="93,163,0,0" VerticalAlignment="Top" Width="120" Loaded="cbxAdministrador_Loaded" TextOptions.TextHintingMode="Animated" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.usuarioFk}"/>
+        <ComboBox x:Name="cbxEmpresa" Background="#FF33288B" Foreground="White" HorizontalAlignment="Left" Margin="93,132,0,0" VerticalAlignment="Top" Width="120" Loaded="cbxEmpresa_Loaded" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.empresaFk}" />
+        <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" Height="23" Margin="93,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.direccion}"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="93,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Text="{Binding ElementName=dtgTienda,Path=SelectedItem.nombre}" AutomationProperties.IsRequiredForForm="True"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" Width="90" Click="btnAgregar_Click_1"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="111,219,0,0" VerticalAlignment="Top" Width="102" Click="btnEditar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" Width="90" Click="btnEliminar_Click_1"/>
         <CheckBox x:Name="chkEliminar" Content="Eliminar&#xD;&#xA;permanente" HorizontalAlignment="Left" Margin="111,265,0,0" VerticalAlignment="Top" Checked="chkEliminar_Checked_1"/>
-        <DataGrid x:Name="dtgTienda" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Height="309" Width="454"/>
-        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Height="26" Margin="93,98,0,0" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgTienda, Path=SelectedItem.estado}">
+        <DataGrid x:Name="dtgTienda" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Height="495" Width="751" ClipToBounds="True" AutoGenerateColumns="False">
+            <DataGrid.Effect>
+                <DropShadowEffect ShadowDepth="3" Opacity="0.7" RenderingBias="Quality" Color="#FF423D3D"/>
+            </DataGrid.Effect>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="40" IsReadOnly="True" Binding="{Binding idTienda}"/>
+                <DataGridTextColumn Header="Nombre" Width="180" IsReadOnly="True" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Dirección" Width="180" IsReadOnly="True" Binding="{Binding direccion}"/>
+                <DataGridTextColumn Header="Estado" Width="160" IsReadOnly="True" Binding="{Binding estado}"/>
+                <DataGridTextColumn Header="Encargado" Width="160" IsReadOnly="True" Binding="{Binding usuarioFk}"/>
+                <DataGridTextColumn Header="Empresa" Width="180" IsReadOnly="True" Binding="{Binding empresaFk}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Background="#FF33288B" Foreground="White" Height="26" Margin="93,98,0,0" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=dtgTienda, Path=SelectedItem.estado}">
             <ComboBoxItem Content="Pendiente"/>
             <ComboBoxItem Content="Inscrita"/>
             <ComboBoxItem Content="Eliminada"/>
