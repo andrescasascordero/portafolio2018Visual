@@ -110,5 +110,10 @@ namespace WpfApplication1
         {
 
         }
+
+        private void Window_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

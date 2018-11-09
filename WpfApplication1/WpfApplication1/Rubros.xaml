@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Rubros" Height="340" Width="432.353" Loaded="Window_Loaded">
+        Title="Rubros" Height="340" Width="432.353" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <Rectangle Height="145" VerticalAlignment="Top">
             <Rectangle.Fill>

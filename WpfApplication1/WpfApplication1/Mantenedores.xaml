@@ -6,14 +6,11 @@
         xmlns:local="clr-namespace:WpfApplication1"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Mantenedores" Height="698.456" Width="1128.5">
+        Title="Mantenedores" Height="698.456" Width="1101.5" ResizeMode="NoResize" GotFocus="Window_GotFocus">
 
     <Grid>
-        <fa:ImageAwesome Icon="Refresh" Spin="True" Height="48" Width="48" SpinDuration="4" >
-            <fa:ImageAwesome.Effect>
-                <DropShadowEffect/>
-            </fa:ImageAwesome.Effect>
-        </fa:ImageAwesome>
+
+
         <Rectangle Height="280" VerticalAlignment="Top" Grid.ColumnSpan="3">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
@@ -23,14 +20,14 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="button" Content="Campañas" HorizontalAlignment="Left" Margin="18,383,0,0" VerticalAlignment="Top" Width="107" Click="button_Click" Height="35"/>
-        <Button x:Name="button1" Content="Empresas" HorizontalAlignment="Left" Margin="18,91,0,0" VerticalAlignment="Top" Width="107" Click="button1_Click" RenderTransformOrigin="-0.158,0.392" Height="35"/>
-        <Button x:Name="button2" Content="Productos" HorizontalAlignment="Left" Margin="18,326,0,0" VerticalAlignment="Top" Width="107" Click="button2_Click" Height="35"/>
-        <Button x:Name="button3" Content="Rubros" HorizontalAlignment="Left" Margin="18,438,0,0" VerticalAlignment="Top" Width="107" Click="button3_Click" Height="35"/>
-        <Button x:Name="button4" Content="Tiendas" HorizontalAlignment="Left" Margin="18,27,0,0" VerticalAlignment="Top" Width="107" Click="button4_Click" Height="35"/>
-        <Button x:Name="button5" Content="Tramos" HorizontalAlignment="Left" Margin="18,151,0,0" VerticalAlignment="Top" Width="107" Click="button5_Click" Height="35"/>
-        <Button x:Name="button6" Content="Usuarios" HorizontalAlignment="Left" Margin="18,208,0,0" VerticalAlignment="Top" Width="107" Click="button6_Click" Height="35"/>
-        <Button x:Name="button7" Content="Ofertas" HorizontalAlignment="Left" Margin="18,267,0,0" VerticalAlignment="Top" Width="107" Click="button7_Click" Height="35"/>
+        <Button x:Name="button" Content="Campañas" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top" Width="107" Click="button_Click" Height="35"/>
+        <Button x:Name="button1" Content="Empresas" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top" Width="107" Click="button1_Click" RenderTransformOrigin="-0.158,0.392" Height="35"/>
+        <Button x:Name="button2" Content="Productos" HorizontalAlignment="Left" Margin="10,442,0,0" VerticalAlignment="Top" Width="107" Click="button2_Click" Height="35"/>
+        <Button x:Name="button3" Content="Rubros" HorizontalAlignment="Left" Margin="10,554,0,0" VerticalAlignment="Top" Width="107" Click="button3_Click" Height="35"/>
+        <Button x:Name="button4" Content="Tiendas" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="107" Click="button4_Click" Height="35"/>
+        <Button x:Name="button5" Content="Tramos" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" Width="107" Click="button5_Click" Height="35"/>
+        <Button x:Name="button6" Content="Usuarios" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="107" Click="button6_Click" Height="35"/>
+        <Button x:Name="button7" Content="Ofertas" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Width="107" Click="button7_Click" Height="35"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="144,27,0,0" VerticalAlignment="Top" Loaded="dataGrid_Loaded" Height="334" Width="916" AutoGenerateColumns="False" BorderThickness="2,2,1,1">
             <DataGrid.Effect>
                 <DropShadowEffect Color="#FF423D3D" Opacity="0.7" RenderingBias="Quality" ShadowDepth="3"/>
@@ -69,7 +66,8 @@
                 <DataGridTextColumn Header="Encargado" Width="180" IsReadOnly="True" Binding="{Binding usuarioFk}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Image x:Name="image" Source="Assets/img1.jpeg" Height="99" VerticalAlignment="Top" Margin="10,27,979,0" RenderTransformOrigin="0.923,0.428"/>
 
     </Grid>
-    
+
 </Window>

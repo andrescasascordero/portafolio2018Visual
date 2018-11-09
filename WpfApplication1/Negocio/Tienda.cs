@@ -79,139 +79,175 @@ namespace Negocio
 
         public void insertarTienda(Tienda pTienda)
         {
-            Conexion con = new Conexion();
-            OracleConnection cn = con.getConexion();
-            cn.Open();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "InsertTienda";
-            OracleParameter parametro1 = new OracleParameter();
-            OracleParameter parametro2 = new OracleParameter();
-            OracleParameter parametro3 = new OracleParameter();
-            OracleParameter parametro4 = new OracleParameter();
-            OracleParameter parametro5 = new OracleParameter();
-            parametro1.OracleDbType = OracleDbType.Varchar2;
-            parametro1.Value = pTienda.nombre;
-            parametro2.OracleDbType = OracleDbType.Varchar2;
-            parametro2.Value = pTienda.direccion;
-            parametro3.OracleDbType = OracleDbType.Varchar2;
-            parametro3.Value = pTienda.estado;
-            parametro4.OracleDbType = OracleDbType.Int32;
-            parametro4.Value = pTienda.empresaFk;
-            parametro5.OracleDbType = OracleDbType.Int32;
-            parametro5.Value = pTienda.usuarioFk;
-            cmd.Parameters.Add(parametro1);
-            cmd.Parameters.Add(parametro2);
-            cmd.Parameters.Add(parametro3);
-            cmd.Parameters.Add(parametro4);
-            cmd.Parameters.Add(parametro5);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                Conexion con = new Conexion();
+                OracleConnection cn = con.getConexion();
+                cn.Open();
+                OracleCommand cmd = cn.CreateCommand();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "InsertTienda";
+                OracleParameter parametro1 = new OracleParameter();
+                OracleParameter parametro2 = new OracleParameter();
+                OracleParameter parametro3 = new OracleParameter();
+                OracleParameter parametro4 = new OracleParameter();
+                OracleParameter parametro5 = new OracleParameter();
+                parametro1.OracleDbType = OracleDbType.Varchar2;
+                parametro1.Value = pTienda.nombre;
+                parametro2.OracleDbType = OracleDbType.Varchar2;
+                parametro2.Value = pTienda.direccion;
+                parametro3.OracleDbType = OracleDbType.Varchar2;
+                parametro3.Value = pTienda.estado;
+                parametro4.OracleDbType = OracleDbType.Int32;
+                parametro4.Value = pTienda.empresaFk;
+                parametro5.OracleDbType = OracleDbType.Int32;
+                parametro5.Value = pTienda.usuarioFk;
+                cmd.Parameters.Add(parametro1);
+                cmd.Parameters.Add(parametro2);
+                cmd.Parameters.Add(parametro3);
+                cmd.Parameters.Add(parametro4);
+                cmd.Parameters.Add(parametro5);
+                cmd.ExecuteNonQuery();
 
-            cn.Close();
-            parametro1.Dispose();
-            parametro2.Dispose();
-            parametro3.Dispose();
-            parametro4.Dispose();
-            parametro5.Dispose();
+                cn.Close();
+                parametro1.Dispose();
+                parametro2.Dispose();
+                parametro3.Dispose();
+                parametro4.Dispose();
+                parametro5.Dispose();
 
-            cmd.Dispose();
-            cn.Dispose();
-            con = null;
+                cmd.Dispose();
+                cn.Dispose();
+                con = null;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
         }
 
         public void editarTienda(Tienda pTienda)
         {
-            Conexion con = new Conexion();
-            OracleConnection cn = con.getConexion();
-            cn.Open();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "updateTienda";
-            OracleParameter parametro0 = new OracleParameter();
-            OracleParameter parametro1 = new OracleParameter();
-            OracleParameter parametro2 = new OracleParameter();
-            OracleParameter parametro3 = new OracleParameter();
-            OracleParameter parametro4 = new OracleParameter();
-            OracleParameter parametro5 = new OracleParameter();
-            parametro0.OracleDbType = OracleDbType.Int32;
-            parametro0.Value = pTienda.idTienda;
-            parametro1.OracleDbType = OracleDbType.Varchar2;
-            parametro1.Value = pTienda.nombre;
-            parametro2.OracleDbType = OracleDbType.Varchar2;
-            parametro2.Value = pTienda.direccion;
-            parametro3.OracleDbType = OracleDbType.Varchar2;
-            parametro3.Value = pTienda.estado;
-            parametro4.OracleDbType = OracleDbType.Int32;
-            parametro4.Value = pTienda.empresaFk;
-            parametro5.OracleDbType = OracleDbType.Int32;
-            parametro5.Value = pTienda.usuarioFk;
-            cmd.Parameters.Add(parametro0);
-            cmd.Parameters.Add(parametro1);
-            cmd.Parameters.Add(parametro2);
-            cmd.Parameters.Add(parametro3);
-            cmd.Parameters.Add(parametro4);
-            cmd.Parameters.Add(parametro5);
-            cmd.ExecuteNonQuery();
-            cn.Close();
-            parametro0.Dispose();
-            parametro1.Dispose();
-            parametro2.Dispose();
-            parametro3.Dispose();
-            parametro4.Dispose();
-            parametro5.Dispose();
+            try
+            {
+                Conexion con = new Conexion();
+                OracleConnection cn = con.getConexion();
+                cn.Open();
+                OracleCommand cmd = cn.CreateCommand();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "updateTienda";
+                OracleParameter parametro0 = new OracleParameter();
+                OracleParameter parametro1 = new OracleParameter();
+                OracleParameter parametro2 = new OracleParameter();
+                OracleParameter parametro3 = new OracleParameter();
+                OracleParameter parametro4 = new OracleParameter();
+                OracleParameter parametro5 = new OracleParameter();
+                parametro0.OracleDbType = OracleDbType.Int32;
+                parametro0.Value = pTienda.idTienda;
+                parametro1.OracleDbType = OracleDbType.Varchar2;
+                parametro1.Value = pTienda.nombre;
+                parametro2.OracleDbType = OracleDbType.Varchar2;
+                parametro2.Value = pTienda.direccion;
+                parametro3.OracleDbType = OracleDbType.Varchar2;
+                parametro3.Value = pTienda.estado;
+                parametro4.OracleDbType = OracleDbType.Int32;
+                parametro4.Value = pTienda.empresaFk;
+                parametro5.OracleDbType = OracleDbType.Int32;
+                parametro5.Value = pTienda.usuarioFk;
+                cmd.Parameters.Add(parametro0);
+                cmd.Parameters.Add(parametro1);
+                cmd.Parameters.Add(parametro2);
+                cmd.Parameters.Add(parametro3);
+                cmd.Parameters.Add(parametro4);
+                cmd.Parameters.Add(parametro5);
+                cmd.ExecuteNonQuery();
+                cn.Close();
+                parametro0.Dispose();
+                parametro1.Dispose();
+                parametro2.Dispose();
+                parametro3.Dispose();
+                parametro4.Dispose();
+                parametro5.Dispose();
 
 
 
-            cmd.Dispose();
-            cn.Dispose();
-            con = null;
-        }
+                cmd.Dispose();
+                cn.Dispose();
+                con = null;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+                    }
 
         public void eliminarTienda(Tienda pTienda)
         {
-            Conexion con = new Conexion();
-            OracleConnection cn = con.getConexion();
-            cn.Open();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "eliminarTienda";
-            OracleParameter parametro0 = new OracleParameter();
-            OracleParameter parametro1 = new OracleParameter();
-            parametro0.OracleDbType = OracleDbType.Decimal;
-            parametro0.Value = pTienda.idTienda;
-            cmd.Parameters.Add(parametro0);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                Conexion con = new Conexion();
+                OracleConnection cn = con.getConexion();
+                cn.Open();
+                OracleCommand cmd = cn.CreateCommand();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "eliminarTienda";
+                OracleParameter parametro0 = new OracleParameter();
+                OracleParameter parametro1 = new OracleParameter();
+                parametro0.OracleDbType = OracleDbType.Decimal;
+                parametro0.Value = pTienda.idTienda;
+                cmd.Parameters.Add(parametro0);
+                cmd.ExecuteNonQuery();
 
-            cn.Close();
-            parametro0.Dispose();
-            parametro1.Dispose();
+                cn.Close();
+                parametro0.Dispose();
+                parametro1.Dispose();
 
 
-            cmd.Dispose();
-            cn.Dispose();
-            con = null;
+                cmd.Dispose();
+                cn.Dispose();
+                con = null;
+            }
+            catch (Exception e)
+            {
+                throw e;
+               
+            }            
+            
+            
         }
 
         public void eliminarPermanenteTienda(Tienda pTienda)
         {
-            Conexion con = new Conexion();
-            OracleConnection cn = con.getConexion();
-            cn.Open();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "deleteTienda";
-            OracleParameter parametro0 = new OracleParameter();
-            parametro0.OracleDbType = OracleDbType.Decimal;
-            parametro0.Value = pTienda.idTienda;
-            cmd.Parameters.Add(parametro0);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                Conexion con = new Conexion();
+                OracleConnection cn = con.getConexion();
+                cn.Open();
+                OracleCommand cmd = cn.CreateCommand();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "deleteTienda";
+                OracleParameter parametro0 = new OracleParameter();
+                parametro0.OracleDbType = OracleDbType.Decimal;
+                parametro0.Value = pTienda.idTienda;
+                cmd.Parameters.Add(parametro0);
+                cmd.ExecuteNonQuery();
 
-            cn.Close();
-            parametro0.Dispose();
+                cn.Close();
+                parametro0.Dispose();
 
-            cmd.Dispose();
-            cn.Dispose();
-            con = null;
+                cmd.Dispose();
+                cn.Dispose();
+                con = null;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+                 
+            
         }
 
         public override string ToString()

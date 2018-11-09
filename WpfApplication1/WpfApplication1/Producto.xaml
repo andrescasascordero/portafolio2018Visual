@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Producto" Height="518.112" Width="817.219" Loaded="Window_Loaded">
+        Title="Producto" Height="518.112" Width="1087.704" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
     <Grid>
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
@@ -16,22 +19,22 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Label x:Name="label" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" Margin="82,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.idProducto}" IsEnabled="False"/>
-        <Label x:Name="label1" Content="Nombre:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="82,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.nombre}"/>
-        <Label x:Name="label2" Content="Color:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtColor" HorizontalAlignment="Left" Height="23" Margin="82,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.color}"/>
-        <Label x:Name="label3" Content="Perecible:" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxPerecible" HorizontalAlignment="Left" Margin="82,108,0,0" VerticalAlignment="Top" Width="162">
+        <Label x:Name="label" Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" Margin="82,13,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.idProducto}" IsEnabled="False"/>
+        <Label x:Name="label1" Content="Nombre:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="82,44,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.nombre}"/>
+        <Label x:Name="label2" Content="Color:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtColor" HorizontalAlignment="Left" Height="23" Margin="82,76,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.color}"/>
+        <Label x:Name="label3" Content="Perecible:" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="cbxPerecible" HorizontalAlignment="Left" Margin="82,108,0,0" VerticalAlignment="Top" Width="162" Background="#FF33288B" Foreground="White" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.perecible}">
         <ComboBoxItem Content="Si"/>
         <ComboBoxItem Content="No"/>
         </ComboBox>
-        <Label x:Name="label4" Content="Rubro:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxRubro" HorizontalAlignment="Left" Margin="82,139,0,0" VerticalAlignment="Top" Width="162" Loaded="cbxRubro_Loaded"/>
-        <Label x:Name="label5" Content="Marca:" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label6" Content="Descripción:" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtMarca" HorizontalAlignment="Left" Height="23" Margin="82,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.marca}"/>
+        <Label x:Name="label4" Content="Rubro:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="cbxRubro" HorizontalAlignment="Left" Margin="82,139,0,0" VerticalAlignment="Top" Width="162" Foreground="White" Background="#FF33288B" Loaded="cbxRubro_Loaded" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.rubroFk}"/>
+        <Label x:Name="label5" Content="Marca:" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label6" Content="Descripción:" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtMarca" HorizontalAlignment="Left" Height="23" Margin="82,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="162" Text="{Binding ElementName=dtgProducto,Path=SelectedItem.marca}"/>
         <RichTextBox x:Name="rtbDescripcion" HorizontalAlignment="Left" Height="100" Margin="82,201,0,0" VerticalAlignment="Top" Width="162">
             <FlowDocument>
                 <Paragraph>
@@ -39,7 +42,18 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <DataGrid x:Name="dtgProducto" HorizontalAlignment="Left" Margin="253,13,0,0" VerticalAlignment="Top" Height="464" Width="546"/>
+        <DataGrid x:Name="dtgProducto" HorizontalAlignment="Left" Margin="253,13,0,0" VerticalAlignment="Top" Height="464" Width="807">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="50" IsReadOnly="True" Binding="{Binding idPRoducto}"/>
+                <DataGridTextColumn Header="Nombre" Width="170" IsReadOnly="True" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Descripción" Width="200" IsReadOnly="True" Binding="{Binding descripción}"/>
+                <DataGridTextColumn Header="color" Width="100" IsReadOnly="True" Binding="{Binding color}"/>
+                <DataGridTextColumn Header="Perecible" Width="50" IsReadOnly="True" Binding="{Binding perecible}"/>
+                <DataGridTextColumn Header="Marca" Width="120" IsReadOnly="True" Binding="{Binding marca}"/>
+                <DataGridTextColumn Header="Rubro" Width="120" IsReadOnly="True" Binding="{Binding rubroFk}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,328,0,0" VerticalAlignment="Top" Width="126" Click="btnAgregar_Click"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Width="126" Click="btnEditar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Width="126" Click="btnEliminar_Click"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Tramos" Height="427.723" Width="659.406" Loaded="Window_Loaded">
+        Title="Tramos" Height="427.723" Width="659.406" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <Rectangle Height="220" VerticalAlignment="Top">
             <Rectangle.Fill>

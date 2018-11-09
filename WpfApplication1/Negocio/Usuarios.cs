@@ -180,9 +180,6 @@ namespace Negocio
             parametro3.Value = pUsuario.apellidoMaterno;
             parametro4.OracleDbType = OracleDbType.Varchar2;
             parametro4.Value = pUsuario.correo;
-            parametro5.OracleDbType = OracleDbType.Varchar2;
-            var pass = HashMD5.getMd5Hash(pUsuario.contrasena);
-            parametro5.Value = pass.ToString();
             parametro6.OracleDbType = OracleDbType.Varchar2;
             parametro6.Value = pUsuario.rut;
             parametro7.OracleDbType = OracleDbType.Varchar2;
@@ -194,7 +191,6 @@ namespace Negocio
             cmd.Parameters.Add(parametro2);
             cmd.Parameters.Add(parametro3);
             cmd.Parameters.Add(parametro4);
-            cmd.Parameters.Add(parametro5);
             cmd.Parameters.Add(parametro6);
             cmd.Parameters.Add(parametro7);
             cmd.Parameters.Add(parametro8);
@@ -294,7 +290,33 @@ namespace Negocio
             con = null;
             return respuesta;
 
+        }
+        public void editarContrasena(Usuarios pUsuario)
+        {
+            Conexion con = new Conexion();
+            OracleConnection cn = con.getConexion();
+            cn.Open();
+            OracleCommand cmd = cn.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "updateContrasena";
+            OracleParameter parametro0 = new OracleParameter();
+            OracleParameter parametro1 = new OracleParameter();
 
+            parametro0.OracleDbType = OracleDbType.Decimal;
+            parametro0.Value = pUsuario.idUsuario;
+            parametro1.OracleDbType = OracleDbType.Varchar2;
+            var pass = HashMD5.getMd5Hash(pUsuario.contrasena);
+            parametro1.Value = pass.ToString();
+            cmd.Parameters.Add(parametro0);
+            cmd.Parameters.Add(parametro1);
+            cmd.ExecuteNonQuery();
+            cn.Close();
+            parametro0.Dispose();
+            parametro1.Dispose();
+
+            cmd.Dispose();
+            cn.Dispose();
+            con = null;
         }
 
     }

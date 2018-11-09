@@ -8,9 +8,9 @@
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="500" Width="350" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="500" Width="389" WindowStartupLocation="CenterScreen" KeyDown="enter" WindowStyle="None">
     <Grid>
-        <Rectangle Height="280" VerticalAlignment="Top">
+        <Rectangle Height="294" VerticalAlignment="Top" Margin="0,-14,0,0" ClipToBounds="True">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
                     <GradientStop Color="#FF2281D1"></GradientStop>
@@ -34,6 +34,6 @@
             </StackPanel>
         </Grid>
         <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,90"  Content="Login" Click="Button_Click"></Button>
-        <TextBlock Text="¿Olvido su contraseña?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" Foreground="Gray" Cursor="Hand"></TextBlock> 
+        <TextBlock Text="¿Olvido su contraseña?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" Foreground="Gray" Cursor="Hand"></TextBlock>
     </Grid>
 </Window>

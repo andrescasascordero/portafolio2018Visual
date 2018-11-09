@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Empresas" Height="567" Width="901.108" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="Empresas" Height="567" Width="901.108" Closed="Window_Closed" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid Margin="0,0,0,-2">
         <Rectangle Height="303" VerticalAlignment="Top">
             <Rectangle.Fill>

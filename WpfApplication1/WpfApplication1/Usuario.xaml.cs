@@ -126,5 +126,14 @@ namespace WpfApplication1
             MessageBox.Show("Esta acción no se podrá deshacer, seleccione eliminar para continuar");
         }
 
+        private void btnContrasena_Click(object sender, RoutedEventArgs e)
+        {
+            Usuarios usuario = new Usuarios();
+            usuario.idUsuario = Int32.Parse(txtId.Text);
+            usuario.contrasena = passwordBox.Password;
+
+            usuario.editarContrasena(usuario);
+            actualizarGrilla();
+        }
     }
 }

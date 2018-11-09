@@ -133,8 +133,10 @@ namespace WpfApplication1
             Tienda tienda = new Tienda();
             tienda.idTienda = Int32.Parse(txtIdTienda.Text);
             tienda.nombre = txtNombre.Text;
+            tienda.direccion = txtDireccion.Text;
             tienda.estado = cbxEstado.SelectionBoxItem.ToString();
-
+            tienda.empresaFk = cbxEmpresa.SelectedValue.ToString();
+            tienda.usuarioFk = cbxAdministrador.SelectedValue.ToString();
             tienda.editarTienda(tienda);
             actualizarGrilla();
         }

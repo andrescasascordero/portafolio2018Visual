@@ -158,7 +158,7 @@ namespace Negocio
             cmd.Parameters.Add(parametro3);
             cmd.Parameters.Add(parametro4);
             cmd.Parameters.Add(parametro5);
-
+            cmd.ExecuteNonQuery();
             cn.Close();
             parametro0.Dispose();
             parametro1.Dispose();

@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Usuario" Height="509.558" Width="1178.449" Loaded="Window_Loaded">
+        Title="Usuario" Height="550.058" Width="1178.449" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
-        <Rectangle Height="248" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition Width="346*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Height="248" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
                     <GradientStop Color="#FF2281D1"></GradientStop>
@@ -16,7 +20,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="250,8,0,0" VerticalAlignment="Top" SelectionChanged="dtgUsuario_SelectionChanged" UseLayoutRounding="True" Height="461" Width="893" AutoGenerateColumns="False">
+        <DataGrid x:Name="dtgUsuario" HorizontalAlignment="Left" Margin="250,8,0,0" VerticalAlignment="Top" SelectionChanged="dtgUsuario_SelectionChanged" UseLayoutRounding="True" Height="461" Width="893" AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Effect>
                 <DropShadowEffect RenderingBias="Quality" Opacity="0.7" ShadowDepth="3" Color="#FF423D3D"/>
             </DataGrid.Effect>
@@ -27,7 +31,7 @@
                 <DataGridTextColumn Header="Apellido Materno" Width="150" IsReadOnly="True" Binding="{Binding apellidoMaterno}"/>
                 <DataGridTextColumn Header="Correo" Width="150" IsReadOnly="True" Binding="{Binding correo}"/>
                 <DataGridTextColumn Header="Rut" Width="100" IsReadOnly="True" Binding="{Binding rut}"/>
-                <DataGridTextColumn Header="Estado" Width="90" IsReadOnly="True" Binding="{Binding estado}"/>
+                <DataGridTextColumn Header="Contraseña" Width="90" IsReadOnly="True" Binding="{Binding contrasena}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Rol Usuario" Width="130" IsReadOnly="True" Binding="{Binding rolUsuarioFk}"/>
                 <DataGridTextColumn Header="Fecha" Width="140" IsReadOnly="True" Binding="{Binding fecha}"/>
             </DataGrid.Columns>
@@ -55,10 +59,11 @@
             <ComboBoxItem Content="Suspendida"/>
         </ComboBox>
         <ComboBox x:Name="cbxRol" HorizontalAlignment="Left" Margin="87,248,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="cbxRol_SelectionChanged" Loaded="cbxRol_Loaded" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rolUsuarioFk}"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="129" Click="btnAgregar_Click"/>
-        <Button x:Name="btnActualizar" Content="Editar" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="129" Click="btnActualizar_Click"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="129" Click="btnEliminar_Click"/>
-        <CheckBox x:Name="chkEliminar" Content="Eliminar Permanentemente" HorizontalAlignment="Left" Margin="10,433,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.072,-0.324" Checked="chkEliminar_Checked"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="163" Click="btnAgregar_Click"/>
+        <Button x:Name="btnActualizar" Content="Editar" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="163" Click="btnActualizar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,431,0,0" VerticalAlignment="Top" Width="163" Click="btnEliminar_Click"/>
+        <CheckBox x:Name="chkEliminar" Content="Eliminar Permanentemente" HorizontalAlignment="Left" Margin="10,475,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.072,-0.324" Checked="chkEliminar_Checked"/>
+        <Button x:Name="btnContrasena" Content="Actualizar contrasena" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Width="163" Click="btnContrasena_Click"/>
 
     </Grid>
 </Window>

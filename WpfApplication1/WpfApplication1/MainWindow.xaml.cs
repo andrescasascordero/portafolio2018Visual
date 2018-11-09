@@ -57,5 +57,35 @@ namespace WpfApplication1
                 MessageBox.Show("Usuario o contraseña incorrecta"); 
             }
         }
+
+        private void enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) {
+                Usuarios usuarios = new Usuarios();
+                usuarios.contrasena = txtPassword.Password;
+                usuarios.correo = tXtUser.Text;
+
+                try
+                {
+                    var resultado = usuarios.getLogin(usuarios);
+                    if (resultado == "Administrador")
+                    {
+                        MessageBox.Show("Dirigiendo a la pantalla principal");
+                        Mantenedores mantenedores = new Mantenedores();
+                        this.Close();
+                        mantenedores.ShowDialog();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No posee los privilegios necesarios para acceder a este sistema: ingrese desde la página web.");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Usuario o contraseña incorrecta");
+                }
+            }
+        }
     }
 }

@@ -167,6 +167,8 @@ namespace Negocio
             OracleParameter parametro4 = new OracleParameter();
             OracleParameter parametro5 = new OracleParameter();
             OracleParameter parametro6 = new OracleParameter();
+            OracleParameter parametro7 = new OracleParameter();
+            OracleParameter parametro8 = new OracleParameter();
             parametro0.OracleDbType = OracleDbType.Decimal;
             parametro0.Value = pOferta.idOferta;
             parametro1.OracleDbType = OracleDbType.Int32;
@@ -181,6 +183,10 @@ namespace Negocio
             parametro5.Value = pOferta.imagen;
             parametro6.OracleDbType = OracleDbType.Date;
             parametro6.Value = pOferta.fecha;
+            parametro7.OracleDbType = OracleDbType.Varchar2;
+            parametro7.Value = pOferta.campanaFk;
+            parametro8.OracleDbType = OracleDbType.Varchar2;
+            parametro8.Value = pOferta.productoFk;
             cmd.Parameters.Add(parametro0);
             cmd.Parameters.Add(parametro1);
             cmd.Parameters.Add(parametro2);
@@ -188,6 +194,8 @@ namespace Negocio
             cmd.Parameters.Add(parametro4);
             cmd.Parameters.Add(parametro5);
             cmd.Parameters.Add(parametro6);
+            cmd.Parameters.Add(parametro7);
+            cmd.Parameters.Add(parametro8);
 
             cn.Close();
             parametro0.Dispose();
