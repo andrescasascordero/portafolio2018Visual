@@ -28,7 +28,16 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            actualizarGrilla();
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
+            
         }
 
         private void txtId_TextChanged(object sender, TextChangedEventArgs e)
@@ -38,32 +47,82 @@ namespace WpfApplication1
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            Tramo tramo = new Tramo();
-            tramo.minimo= Int32.Parse(txtMinimo.Text);
-            tramo.maximo = Int32.Parse(txtMaximo.Text);
-            tramo.insertarTramo(tramo);
-            actualizarGrilla();
+            try
+            {
+                Tramo tramo = new Tramo();
+                tramo.minimo = Int32.Parse(txtMinimo.Text);
+                tramo.maximo = Int32.Parse(txtMaximo.Text);
+                tramo.insertarTramo(tramo);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Rellene todos los campos para agregar un nuevo tramo");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Tramo tramo = new Tramo();
+                tramo.idTramo = Int32.Parse(txtId.Text);
+                tramo.minimo = Int32.Parse(txtMinimo.Text);
+                tramo.maximo = Int32.Parse(txtMaximo.Text);
+                tramo.editarTramo(tramo);
+            }
+            catch (Exception)
+            {
 
-            Tramo tramo = new Tramo();
-            tramo.idTramo = Int32.Parse(txtId.Text);
-            tramo.minimo = Int32.Parse(txtMinimo.Text);
-            tramo.maximo = Int32.Parse(txtMaximo.Text);
-            tramo.editarTramo(tramo);
-            actualizarGrilla();
+                MessageBox.Show("Seleccione un tramo y rellene los campos a editar");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
 
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            Tramo tramo = new Tramo();
-            tramo.idTramo = Int32.Parse(txtId.Text);
+            try
+            {
+                Tramo tramo = new Tramo();
+                tramo.idTramo = Int32.Parse(txtId.Text);
 
-            tramo.eliminarPermanenteTramo(tramo);
-            actualizarGrilla();
+                tramo.eliminarPermanenteTramo(tramo);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Seleccione un tramo para eliminar");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
         private void actualizarGrilla()
         {

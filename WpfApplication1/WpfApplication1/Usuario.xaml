@@ -46,11 +46,11 @@
         <Label x:Name="label7" Content="Contraseña:" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="label8" Content="Estado:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.35,-0.613" Foreground="White"/>
         <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.idUsuario}" IsEnabled="False" Foreground="White"/>
-        <TextBox x:Name="txtNombres" HorizontalAlignment="Left" Height="23" Margin="87,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.nombres}" Foreground="White"/>
+        <TextBox x:Name="txtNombres" HorizontalAlignment="Left" Height="23" Margin="87,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.nombres, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Foreground="White" AutomationProperties.IsRequiredForForm="True" />
         <TextBox x:Name="txtApellidoP" HorizontalAlignment="Left" Height="23" Margin="87,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoPaterno}" Foreground="White"/>
         <TextBox x:Name="txtApellidoM" HorizontalAlignment="Left" Height="23" Margin="87,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.apellidoMaterno}" Foreground="White"/>
         <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="87,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.correo}" Foreground="White"/>
-        <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="87,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rut}" Foreground="White"/>
+        <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="87,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rut}" Foreground="White" />
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="87,191,0,0" VerticalAlignment="Top" Width="145" Height="21" RenderTransformOrigin="0.479,-0.695" Foreground="White"/>
         <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="87,217,0,0" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.estado}" Background="#FF33288B" Foreground="White">
             <ComboBoxItem Content="Pendiente"/>
@@ -60,10 +60,10 @@
         </ComboBox>
         <ComboBox x:Name="cbxRol" HorizontalAlignment="Left" Margin="87,248,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="cbxRol_SelectionChanged" Loaded="cbxRol_Loaded" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rolUsuarioFk}"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="163" Click="btnAgregar_Click"/>
+ 
         <Button x:Name="btnActualizar" Content="Editar" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="163" Click="btnActualizar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="10,431,0,0" VerticalAlignment="Top" Width="163" Click="btnEliminar_Click"/>
         <CheckBox x:Name="chkEliminar" Content="Eliminar Permanentemente" HorizontalAlignment="Left" Margin="10,475,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.072,-0.324" Checked="chkEliminar_Checked"/>
         <Button x:Name="btnContrasena" Content="Actualizar contrasena" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Width="163" Click="btnContrasena_Click"/>
-
     </Grid>
 </Window>

@@ -38,26 +38,34 @@ namespace WpfApplication1
 
         private void btnExaminar_Click(object sender, RoutedEventArgs e)
         {
-    
-            fd.Filter = "Imagenes (*.jpg; *.png; *.jpeg)|*.jpg; *.png; *.jpeg|All Files(*.*)|*.*";
-            if (fd.ShowDialog() == true)
+            try
             {
-                using (Stream stream = fd.OpenFile())
+                fd.Filter = "Imagenes (*.jpg; *.png; *.jpeg)|*.jpg; *.png; *.jpeg|All Files(*.*)|*.*";
+                if (fd.ShowDialog() == true)
                 {
-                    bitCoder = BitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-                    vtPrevia.Source = bitCoder.Frames[0];
-                    txtImagen.Text = fd.FileName; 
+                    using (Stream stream = fd.OpenFile())
+                    {
+                        bitCoder = BitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+                        vtPrevia.Source = bitCoder.Frames[0];
+                        txtImagen.Text = fd.FileName;
+                    }
                 }
-            }
-            else
-            {
-                vtPrevia.Source = null;
-            }
-            System.IO.FileStream fs;
+                else
+                {
+                    vtPrevia.Source = null;
+                }
+                System.IO.FileStream fs;
 
-            fs = new System.IO.FileStream(txtImagen.Text, System.IO.FileMode.Open);
-            imagen = new byte[Convert.ToInt32(fs.Length.ToString())];
-            fs.Read(imagen, 0, imagen.Length);
+                fs = new System.IO.FileStream(txtImagen.Text, System.IO.FileMode.Open);
+                imagen = new byte[Convert.ToInt32(fs.Length.ToString())];
+                fs.Read(imagen, 0, imagen.Length);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Seleccione una imagen para cargar");
+                
+            }
+
 
 
 
@@ -65,7 +73,16 @@ namespace WpfApplication1
 
         private void dtgOferta_Loaded(object sender, RoutedEventArgs e)
         {
-           actualizarGrilla();
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
+           
         }
 
         private void actualizarGrilla()
@@ -78,66 +95,84 @@ namespace WpfApplication1
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            Negocio.Oferta oferta = new Negocio.Oferta();
-            oferta.cantidadMinima = int.Parse(txtCantMin.Text);
-            oferta.cantidadMaxima = int.Parse(txtCantMax.Text);
-            oferta.precioNormal = int.Parse(txtPrecioNormal.Text);
-            oferta.precioOferta = int.Parse(txtPrecioOferta.Text);
-            oferta.fecha = DateTime.Now;
-            oferta.imagen = fd.SafeFileName;
-            oferta.campanaFk = cbxCampana.SelectedValue.ToString();
-            oferta.productoFk = cbxProducto.SelectedValue.ToString();
+            try
+            {
+                Negocio.Oferta oferta = new Negocio.Oferta();
+                oferta.cantidadMinima = int.Parse(txtCantMin.Text);
+                oferta.cantidadMaxima = int.Parse(txtCantMax.Text);
+                oferta.precioNormal = int.Parse(txtPrecioNormal.Text);
+                oferta.precioOferta = int.Parse(txtPrecioOferta.Text);
+                oferta.fecha = DateTime.Now;
+                oferta.imagen = fd.SafeFileName;
+                oferta.campanaFk = cbxCampana.SelectedValue.ToString();
+                oferta.productoFk = cbxProducto.SelectedValue.ToString();
 
-            string usuario = "usuarioftp";
-            string pass = "Portafolio2018";
-            string ftp = "ftp://18.222.173.173/";
-            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp+"/"+ fd.SafeFileName);
-            req.Proxy = null;
-            req.Method = WebRequestMethods.Ftp.UploadFile;
-            req.Credentials = new NetworkCredential(usuario, pass);
-            req.UseBinary = true;
-            req.UsePassive = true;
-            req.ContentLength = imagen.Length;
-            Stream streams;
-            streams = req.GetRequestStream();
-            streams.Write(imagen, 0, imagen.Length);
-            streams.Close();
-            FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+                string usuario = "usuarioftp";
+                string pass = "Portafolio2018";
+                string ftp = "ftp://18.222.173.173/";
+                FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp + "/" + fd.SafeFileName);
+                req.Proxy = null;
+                req.Method = WebRequestMethods.Ftp.UploadFile;
+                req.Credentials = new NetworkCredential(usuario, pass);
+                req.UseBinary = true;
+                req.UsePassive = true;
+                req.ContentLength = imagen.Length;
+                Stream streams;
+                streams = req.GetRequestStream();
+                streams.Write(imagen, 0, imagen.Length);
+                streams.Close();
+                FtpWebResponse res = (FtpWebResponse)req.GetResponse();
 
-            oferta.insertarOferta(oferta);
-            actualizarGrilla();
+                oferta.insertarOferta(oferta);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Debe rellenar todos los campos para agregar una oferta");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            Negocio.Oferta oferta = new Negocio.Oferta();
-            oferta.cantidadMinima = int.Parse(txtCantMin.Text);
-            oferta.cantidadMaxima = int.Parse(txtCantMax.Text);
-            oferta.precioNormal = int.Parse(txtPrecioNormal.Text);
-            oferta.precioOferta = int.Parse(txtPrecioOferta.Text);
-            oferta.fecha = DateTime.Now;
-            oferta.imagen = fd.SafeFileName;
-            oferta.campanaFk = cbxCampana.SelectedValue.ToString();
-            oferta.productoFk = cbxProducto.SelectedValue.ToString();
+            try
+            {
+                Negocio.Oferta oferta = new Negocio.Oferta();
+                oferta.idOferta = int.Parse(txtId.Text);
+                oferta.cantidadMinima = int.Parse(txtCantMin.Text);
+                oferta.cantidadMaxima = int.Parse(txtCantMax.Text);
+                oferta.precioNormal = int.Parse(txtPrecioNormal.Text);
+                oferta.precioOferta = int.Parse(txtPrecioOferta.Text);
+                oferta.fecha = DateTime.Now;
+                oferta.campanaFk = cbxCampana.SelectedValue.ToString();
+                oferta.productoFk = cbxProducto.SelectedValue.ToString();
 
-            string usuario = "usuarioftp";
-            string pass = "Portafolio2018";
-            string ftp = "ftp://18.222.173.173/";
-            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp + "/" + fd.SafeFileName);
-            req.Proxy = null;
-            req.Method = WebRequestMethods.Ftp.UploadFile;
-            req.Credentials = new NetworkCredential(usuario, pass);
-            req.UseBinary = true;
-            req.UsePassive = true;
-            req.ContentLength = imagen.Length;
-            Stream streams;
-            streams = req.GetRequestStream();
-            streams.Write(imagen, 0, imagen.Length);
-            streams.Close();
-            FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+                oferta.editarOferta(oferta);
+            }
+            catch (Exception)
+            {
 
-            oferta.editarOferta(oferta);
-            actualizarGrilla();
+                MessageBox.Show("Rellene los campos de la oferta a editar");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -148,6 +183,18 @@ namespace WpfApplication1
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Negocio.Oferta oferta = new Negocio.Oferta();
+                oferta.idOferta = Int32.Parse(txtId.Text);
+                oferta.eliminarOferta(oferta);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Seleccione una oferta para eliminar");
+            }
+
 
         }
 
@@ -175,6 +222,51 @@ namespace WpfApplication1
 
         private void dtgOferta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void btnCfoto_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Negocio.Oferta oferta = new Negocio.Oferta();
+                oferta.idOferta = int.Parse(txtId.Text);
+                oferta.imagen = fd.SafeFileName;
+
+                string usuario = "usuarioftp";
+                string pass = "Portafolio2018";
+                string ftp = "ftp://18.222.173.173/";
+                FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(ftp + "/" + fd.SafeFileName);
+                req.Proxy = null;
+                req.Method = WebRequestMethods.Ftp.UploadFile;
+                req.Credentials = new NetworkCredential(usuario, pass);
+                req.UseBinary = true;
+                req.UsePassive = true;
+                req.ContentLength = imagen.Length;
+                Stream streams;
+                streams = req.GetRequestStream();
+                streams.Write(imagen, 0, imagen.Length);
+                streams.Close();
+                FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+
+                oferta.editarFoto(oferta);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Seleccione una nueva foto para la oferta");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
+
 
         }
     }

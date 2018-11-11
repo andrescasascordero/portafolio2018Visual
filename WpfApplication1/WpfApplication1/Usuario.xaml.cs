@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Negocio;
 using System.Security.Cryptography;
+using System.ComponentModel;
 
 
 namespace WpfApplication1
@@ -20,14 +21,38 @@ namespace WpfApplication1
     /// <summary>
     /// Lógica de interacción para Usuario.xaml
     /// </summary>
-    public partial class Usuario : Window
+    public partial class Usuario : Window, IDataErrorInfo
     {
-        public Usuario()
+        public string Error
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Usuario() 
         {
             InitializeComponent();
-            actualizarGrilla();
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
 
-            
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
+
+
         }
         private void actualizarGrilla()
         {
@@ -64,61 +89,119 @@ namespace WpfApplication1
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            Usuarios usuarios = new Usuarios();
-            usuarios.nombres = txtNombres.Text;
-            usuarios.apellidoPaterno = txtApellidoP.Text;
-            usuarios.apellidoMaterno = txtApellidoM.Text;
-            usuarios.correo = txtCorreo.Text;
-            usuarios.contrasena = passwordBox.Password;
-            usuarios.rut = txtRut.Text;
-            usuarios.estado = cbxEstado.SelectionBoxItem.ToString();
-            usuarios.fecha =  DateTime.Now;
-            usuarios.rolUsuarioFk = (cbxRol.SelectedValue.ToString()); 
+            try
+            {
+                Usuarios usuarios = new Usuarios();
+                usuarios.nombres = txtNombres.Text;
+                usuarios.apellidoPaterno = txtApellidoP.Text;
+                usuarios.apellidoMaterno = txtApellidoM.Text;
+                usuarios.correo = txtCorreo.Text;
+                usuarios.contrasena = passwordBox.Password;
+                usuarios.rut = txtRut.Text;
+                usuarios.estado = cbxEstado.SelectionBoxItem.ToString();
+                usuarios.fecha = DateTime.Now;
+                usuarios.rolUsuarioFk = (cbxRol.SelectedValue.ToString());
 
 
 
-            usuarios.insertarUsuarios(usuarios);
-            actualizarGrilla();
+                usuarios.insertarUsuarios(usuarios);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Debe rellenar todos los campos para agregar un nuevo usuario");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.actualizarGrilla();
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
 
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
-            Usuarios usuario = new Usuarios();
-            usuario.idUsuario = Int32.Parse(txtId.Text);
-            usuario.nombres = txtNombres.Text;
-            usuario.apellidoPaterno = txtApellidoP.Text;
-            usuario.apellidoMaterno = txtApellidoM.Text;
-            usuario.correo = txtCorreo.Text;
-            usuario.rut = txtRut.Text;
-            usuario.estado = cbxEstado.SelectionBoxItem.ToString();
-            usuario.rolUsuarioFk = (cbxRol.SelectedValue.ToString());
-            usuario.contrasena = passwordBox.Password;
+            try
+            {
+                Usuarios usuario = new Usuarios();
+                usuario.idUsuario = Int32.Parse(txtId.Text);
+                usuario.nombres = txtNombres.Text;
+                usuario.apellidoPaterno = txtApellidoP.Text;
+                usuario.apellidoMaterno = txtApellidoM.Text;
+                usuario.correo = txtCorreo.Text;
+                usuario.rut = txtRut.Text;
+                usuario.estado = cbxEstado.SelectionBoxItem.ToString();
+                usuario.rolUsuarioFk = (cbxRol.SelectedValue.ToString());
 
-            usuario.editarUsuario(usuario);
-            actualizarGrilla();
+                usuario.editarUsuario(usuario);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Seleccione un usuario y rellene los campos a editar");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            if (chkEliminar.IsChecked ?? true)
+            try
             {
-                Usuarios usuario = new Usuarios();
-                usuario.idUsuario = Int32.Parse(txtId.Text);
-                usuario.eliminarPermanenteUsuario(usuario);
+                if (chkEliminar.IsChecked ?? true)
+                {
+                    Usuarios usuario = new Usuarios();
+                    usuario.idUsuario = Int32.Parse(txtId.Text);
+                    usuario.eliminarPermanenteUsuario(usuario);
+                }
+                else
+                {
+                    Usuarios usuario = new Usuarios(); ;
+                    usuario.idUsuario = Int32.Parse(txtId.Text);
+                    usuario.eliminarUsuario(usuario);
+                }
             }
-            else
+            catch (Exception)
             {
-                Usuarios usuario = new Usuarios(); ;
-                usuario.idUsuario = Int32.Parse(txtId.Text);
-                usuario.eliminarUsuario(usuario);
+
+                MessageBox.Show("Seleccione un usuario para eliminar");
             }
 
-            actualizarGrilla();
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
+            
         }
 
         private void chkEliminar_Checked(object sender, RoutedEventArgs e)
@@ -128,12 +211,29 @@ namespace WpfApplication1
 
         private void btnContrasena_Click(object sender, RoutedEventArgs e)
         {
-            Usuarios usuario = new Usuarios();
-            usuario.idUsuario = Int32.Parse(txtId.Text);
-            usuario.contrasena = passwordBox.Password;
+            try
+            {
+                Usuarios usuario = new Usuarios();
+                usuario.idUsuario = Int32.Parse(txtId.Text);
+                usuario.contrasena = passwordBox.Password;
 
-            usuario.editarContrasena(usuario);
-            actualizarGrilla();
+                usuario.editarContrasena(usuario);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Se debe seleccionar un usuario y la nueva contraseña");
+            }
+
+            try
+            {
+                actualizarGrilla();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
         }
     }
 }

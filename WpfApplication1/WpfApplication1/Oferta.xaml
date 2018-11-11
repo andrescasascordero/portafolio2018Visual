@@ -51,7 +51,7 @@
         <TextBox x:Name="txtCantMin" HorizontalAlignment="Left" Foreground="White"  Height="23" Margin="115,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.cantidadMinima, ElementName=dtgOferta}"/>
         <TextBox x:Name="txtPrecioNormal" HorizontalAlignment="Left" Foreground="White" Height="23" Margin="115,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.precioNormal, ElementName=dtgOferta}"/>
         <TextBox x:Name="txtPrecioOferta" HorizontalAlignment="Left" Foreground="White" Height="23" Margin="115,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" PreviewTextInput="NumberValidationTextBox" Text="{Binding SelectedItem.precioOferta, ElementName=dtgOferta}"/>
-        <TextBox x:Name="txtImagen" HorizontalAlignment="Left" Height="23" Foreground="White" Margin="115,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Text="{Binding SelectedItem.imagen, ElementName=dtgOferta}" IsEnabled="False" />
+        <TextBox x:Name="txtImagen" HorizontalAlignment="Left" Height="23" Foreground="White" Margin="115,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" Text="{Binding SelectedItem.imagen, ElementName=dtgOferta}" IsEnabled="False"/>
         <ComboBox x:Name="cbxCampana" HorizontalAlignment="Left" Margin="115,200,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxCampana_Loaded" Text="{Binding ElementName=dtgOferta,Path=SelectedItem.campanaFk}" Background="#FF33288B" Foreground="White"/>
         <ComboBox x:Name="cbxProducto" HorizontalAlignment="Left" Margin="115,231,0,0" VerticalAlignment="Top" Width="169" Loaded="cbxProducto_Loaded" Text="{Binding ElementName=dtgOferta,Path=SelectedItem.productoFk}" Background="#FF33288B" Foreground="White"/>
         <Button x:Name="btnExaminar" Content="..." HorizontalAlignment="Left" Margin="209,169,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btnExaminar_Click"/>
@@ -59,6 +59,7 @@
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,442,0,0" VerticalAlignment="Top" Width="94" Click="btnAgregar_Click"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="21,488,0,0" VerticalAlignment="Top" Width="92" Click="btnEditar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="21,535,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="-2.075,-0.714" Click="btnEliminar_Click"/>
+        <Button x:Name="btnCfoto" Content="Cambiar Foto" HorizontalAlignment="Left" Margin="21,583,0,0" VerticalAlignment="Top" Width="94" Click="btnCfoto_Click"/>
 
     </Grid>
 </Window>
