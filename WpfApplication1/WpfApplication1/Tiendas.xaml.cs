@@ -27,16 +27,7 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-            
+            actualizarGrilla();
         }
     
     private void actualizarGrilla()
@@ -127,96 +118,45 @@ namespace WpfApplication1
 
         private void btnAgregar_Click_1(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Tienda tienda = new Tienda();
-                tienda.nombre = txtNombre.Text;
-                tienda.direccion = txtDireccion.Text;
-                tienda.estado = cbxEstado.SelectionBoxItem.ToString();
-                tienda.empresaFk = (cbxEmpresa.SelectedValue.ToString());
-                tienda.usuarioFk = (cbxAdministrador.SelectedValue.ToString());
-                tienda.insertarTienda(tienda);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Debe rellenar todos los campos para agregar una tienda");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            Tienda tienda = new Tienda();
+            tienda.nombre = txtNombre.Text;
+            tienda.direccion = txtDireccion.Text;
+            tienda.estado = cbxEstado.SelectionBoxItem.ToString();
+            tienda.empresaFk = (cbxEmpresa.SelectedValue.ToString());
+            tienda.usuarioFk = (cbxAdministrador.SelectedValue.ToString());
+            tienda.insertarTienda(tienda);
+            actualizarGrilla();
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Tienda tienda = new Tienda();
-                tienda.idTienda = Int32.Parse(txtIdTienda.Text);
-                tienda.nombre = txtNombre.Text;
-                tienda.direccion = txtDireccion.Text;
-                tienda.estado = cbxEstado.SelectionBoxItem.ToString();
-                tienda.empresaFk = cbxEmpresa.SelectedValue.ToString();
-                tienda.usuarioFk = cbxAdministrador.SelectedValue.ToString();
-                tienda.editarTienda(tienda);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Seleccione la tienda a editar y rellene todos los campos");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            Tienda tienda = new Tienda();
+            tienda.idTienda = Int32.Parse(txtIdTienda.Text);
+            tienda.nombre = txtNombre.Text;
+            tienda.direccion = txtDireccion.Text;
+            tienda.estado = cbxEstado.SelectionBoxItem.ToString();
+            tienda.empresaFk = cbxEmpresa.SelectedValue.ToString();
+            tienda.usuarioFk = cbxAdministrador.SelectedValue.ToString();
+            tienda.editarTienda(tienda);
+            actualizarGrilla();
         }
 
         private void btnEliminar_Click_1(object sender, RoutedEventArgs e)
         {
-            try
+            if (chkEliminar.IsChecked ?? true)
             {
-                if (chkEliminar.IsChecked ?? true)
-                {
-                    Tienda tienda = new Tienda();
-                    tienda.idTienda = Int32.Parse(txtIdTienda.Text);
-                    tienda.eliminarPermanenteTienda(tienda);
-                }
-                else
-                {
-                    Tienda tienda = new Tienda(); ;
-                    tienda.idTienda = Int32.Parse(txtIdTienda.Text);
-                    tienda.eliminarTienda(tienda);
-                }
+                Tienda tienda = new Tienda();
+                tienda.idTienda = Int32.Parse(txtIdTienda.Text);
+                tienda.eliminarPermanenteTienda(tienda);
             }
-            catch (Exception)
+            else
             {
-
-                MessageBox.Show("Seleccione la tienda a eliminar");
+                Tienda tienda = new Tienda(); ;
+                tienda.idTienda = Int32.Parse(txtIdTienda.Text);
+                tienda.eliminarTienda(tienda);
             }
 
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            actualizarGrilla();
         }
 
         private void chkEliminar_Checked_1(object sender, RoutedEventArgs e)

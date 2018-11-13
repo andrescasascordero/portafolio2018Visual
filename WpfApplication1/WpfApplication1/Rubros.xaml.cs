@@ -27,93 +27,34 @@ namespace WpfApplication1
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Rubro rubro = new Rubro();
-                rubro.nombreRubro = txtNombre.Text;
-                rubro.insertarRubro(rubro);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Debe rellenar todos los campos para agregar una tienda");
-            }
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-
+            Rubro rubro = new Rubro();
+            rubro.nombreRubro = txtNombre.Text;
+            rubro.insertarRubro(rubro);
+            actualizarGrilla();
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Rubro rubro = new Rubro();
-                rubro.idRubro = Int32.Parse(txtID.Text);
-                rubro.nombreRubro = txtNombre.Text;
+            Rubro rubro = new Rubro();
+            rubro.idRubro = Int32.Parse(txtID.Text);
+            rubro.nombreRubro = txtNombre.Text;
 
-                rubro.editarRubro(rubro);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Selecione un rubro y rellene los campos a editar");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            rubro.editarRubro(rubro);
+            actualizarGrilla();
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Rubro rubro = new Rubro();
-                rubro.idRubro = Int32.Parse(txtID.Text);
+            Rubro rubro = new Rubro();
+            rubro.idRubro = Int32.Parse(txtID.Text);
 
-                rubro.eliminarPermanenteRubro(rubro);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("No ha seleccionado ningún rubro o este se encuentra siendo usado por algún producto");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            rubro.eliminarPermanenteRubro(rubro);
+            actualizarGrilla();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            actualizarGrilla();
         }
 
         private void actualizarGrilla()

@@ -27,102 +27,45 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-            
+            actualizarGrilla();
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string rich = new TextRange(rtbDescripcion.Document.ContentStart, rtbDescripcion.Document.ContentEnd).Text;
-                Negocio.Producto producto = new Negocio.Producto();
-                producto.nombre = txtNombre.Text;
-                producto.descripcion = rich;
-                producto.color = txtColor.Text;
-                producto.perecible = cbxPerecible.SelectionBoxItem.ToString();
-                producto.marca = txtMarca.Text;
-                producto.rubroFk = cbxRubro.SelectedValue.ToString();
+            string rich = new TextRange(rtbDescripcion.Document.ContentStart, rtbDescripcion.Document.ContentEnd).Text;
+            Negocio.Producto producto = new Negocio.Producto();
+            producto.nombre = txtNombre.Text;
+            producto.descripcion = rich;
+            producto.color = txtColor.Text;
+            producto.perecible = cbxPerecible.SelectionBoxItem.ToString();
+            producto.marca = txtMarca.Text;
+            producto.rubroFk = cbxRubro.SelectedValue.ToString();
 
-                producto.insertarProducto(producto);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Rellene todos los campos para agregar un producto");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            producto.insertarProducto(producto);
+            actualizarGrilla();
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string rich = new TextRange(rtbDescripcion.Document.ContentStart, rtbDescripcion.Document.ContentEnd).Text;
+            string rich = new TextRange(rtbDescripcion.Document.ContentStart, rtbDescripcion.Document.ContentEnd).Text;
 
-                Negocio.Producto producto = new Negocio.Producto();
-                producto.idProducto = Int32.Parse(txtID.Text);
-                producto.nombre = txtNombre.Text;
-                producto.descripcion = rich;
-                producto.color = txtColor.Text;
-                producto.perecible = cbxPerecible.SelectionBoxItem.ToString();
-                producto.marca = txtMarca.Text;
+            Negocio.Producto producto = new Negocio.Producto();
+            producto.idProducto = Int32.Parse(txtID.Text);
+            producto.nombre = txtNombre.Text;
+            producto.descripcion = rich;
+            producto.color = txtColor.Text;
+            producto.perecible = cbxPerecible.SelectionBoxItem.ToString();
+            producto.marca = txtMarca.Text;
 
-                producto.editarProducto(producto);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Seleccione un producto y rellene los campos que desea editar");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            producto.editarProducto(producto);
+            actualizarGrilla();
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Negocio.Producto producto = new Negocio.Producto();
-                producto.idProducto = Int32.Parse(txtID.Text);
-                producto.eliminarProducto(producto);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Debe elegir un producto desde la grilla para eliminar");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            Negocio.Producto producto = new Negocio.Producto();
+            producto.idProducto = Int32.Parse(txtID.Text);
+            producto.eliminarProducto(producto);
         }
 
         private void cbxRubro_Loaded(object sender, RoutedEventArgs e)

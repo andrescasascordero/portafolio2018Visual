@@ -27,69 +27,36 @@ namespace WpfApplication1
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (chkEliminar.IsChecked ?? true)
             {
-                if (chkEliminar.IsChecked ?? true)
-                {
-                    Negocio.Campana campana = new Negocio.Campana();
-                    campana.idCampana = Int32.Parse(txtID.Text);
-                    campana.eliminarPermanenteCampana(campana);
-                }
-                else
-                {
-                    Negocio.Campana campana = new Negocio.Campana();
-                    campana.idCampana = Int32.Parse(txtID.Text);
-                    campana.eliminarCampana(campana);
-                }
+                Negocio.Campana campana = new Negocio.Campana();
+                campana.idCampana = Int32.Parse(txtID.Text);
+                campana.eliminarPermanenteCampana(campana);
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Seleccione una campaña para eliminar");
+                Negocio.Campana campana = new Negocio.Campana();
+                campana.idCampana = Int32.Parse(txtID.Text);
+                campana.eliminarCampana(campana);
             }
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-
+            actualizarGrilla();
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string rich = new TextRange(rtDescripcion.Document.ContentStart, rtDescripcion.Document.ContentEnd).Text;
-                Negocio.Campana campana = new Negocio.Campana();
-                campana.nombre = txtNombre.Text;
-                campana.descripcion = rich;
-                campana.fechaInicio = dpInicio.SelectedDate.Value;
-                campana.fechaFin = dpFin.SelectedDate.Value;
-                campana.fecha = DateTime.Now;
-                campana.estado = cbxEstado.SelectionBoxItem.ToString();
-                campana.usuarioFk = cbxDueno.SelectedValue.ToString();
-                campana.tiendaFk = cbxTienda.SelectedValue.ToString();
+            string rich = new TextRange(rtDescripcion.Document.ContentStart, rtDescripcion.Document.ContentEnd).Text;
+            Negocio.Campana campana = new Negocio.Campana();
+            campana.nombre = txtNombre.Text;
+            campana.descripcion = rich;
+            campana.fechaInicio = dpInicio.SelectedDate.Value;
+            campana.fechaFin = dpFin.SelectedDate.Value;
+            campana.fecha = DateTime.Now;
+            campana.estado = cbxEstado.SelectionBoxItem.ToString();
+            campana.usuarioFk = cbxDueno.SelectedValue.ToString();
+            campana.tiendaFk = cbxTienda.SelectedValue.ToString();
 
-                campana.insertarCampana(campana);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Rellene todos los campos para agregar una campaña");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            campana.insertarCampana(campana);
+            actualizarGrilla();
         }
 
         private void chkEliminar_Checked(object sender, RoutedEventArgs e)
@@ -100,15 +67,7 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            actualizarGrilla();
         }
 
         private void actualizarGrilla()
@@ -132,38 +91,21 @@ namespace WpfApplication1
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string rich = new TextRange(rtDescripcion.Document.ContentStart, rtDescripcion.Document.ContentEnd).Text;
+            string rich = new TextRange(rtDescripcion.Document.ContentStart, rtDescripcion.Document.ContentEnd).Text;
 
-                Negocio.Campana campana = new Negocio.Campana();
-                campana.idCampana = Int32.Parse(txtID.Text);
-                campana.nombre = txtNombre.Text;
-                campana.descripcion = rich;
-                campana.fechaInicio = dpInicio.SelectedDate.Value;
-                campana.fechaFin = dpFin.SelectedDate.Value;
-                campana.fecha = DateTime.Now;
-                campana.estado = cbxEstado.SelectionBoxItem.ToString();
-                campana.usuarioFk = cbxDueno.SelectedValue.ToString();
-                campana.tiendaFk = cbxTienda.SelectedValue.ToString();
+            Negocio.Campana campana = new Negocio.Campana();
+            campana.idCampana = Int32.Parse(txtID.Text);
+            campana.nombre = txtNombre.Text;
+            campana.descripcion = rich;
+            campana.fechaInicio = dpInicio.SelectedDate.Value;
+            campana.fechaFin = dpFin.SelectedDate.Value;
+            campana.fecha = DateTime.Now;
+            campana.estado = cbxEstado.SelectionBoxItem.ToString();
+            campana.usuarioFk = cbxDueno.SelectedValue.ToString();
+            campana.tiendaFk = cbxTienda.SelectedValue.ToString();
 
-                campana.editarCampana(campana);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Seleccione una campaña y rellene sus campos");
-            }
-
-            try
-            {
-                actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
+            campana.editarCampana(campana);
+            actualizarGrilla();
 
         }
 

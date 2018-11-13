@@ -47,16 +47,7 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                this.actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-            
+            this.actualizarGrilla();
         }
 
         private void txtBNombre_TextChanged(object sender, TextChangedEventArgs e)
@@ -71,38 +62,34 @@ namespace WpfApplication1
 
         private void btnInsertar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Empresa empresa = new Empresa();
-                empresa.nombre = txtBNombre.Text;
-                empresa.razonSocial = txtBRazonSocial.Text;
-                empresa.estado = cbxEstado.SelectionBoxItem.ToString();
-                empresa.rut = txtBRut.Text;
+            Empresa empresa = new Empresa();
+            empresa.nombre = txtBNombre.Text;
+            empresa.razonSocial = txtBRazonSocial.Text;
+            empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+            empresa.rut = txtBRut.Text;
 
-                empresa.insertarEmpresa(empresa);
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Rellene todos los campos para insertar una nueva empresa");
-            }
-
-            try
-            {
-                this.actualizarGrilla();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-
+            empresa.insertarEmpresa(empresa);
+            actualizarGrilla();
         }
 
         private void dtgEmpresa_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e){}
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Empresa empresa = new Empresa();
+            empresa.idEmpresa = Int32.Parse(txtBId.Text);
+            empresa.nombre = txtBNombre.Text;
+            empresa.razonSocial = txtBRazonSocial.Text;
+            empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+            empresa.rut = txtBRut.Text;
+
+            empresa.editarEmpresa(empresa);
+            actualizarGrilla();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkBox.IsChecked ?? true)
             {
                 Empresa empresa = new Empresa();
                 empresa.idEmpresa = Int32.Parse(txtBId.Text);
@@ -110,66 +97,20 @@ namespace WpfApplication1
                 empresa.razonSocial = txtBRazonSocial.Text;
                 empresa.estado = cbxEstado.SelectionBoxItem.ToString();
                 empresa.rut = txtBRut.Text;
-
-                empresa.editarEmpresa(empresa);
+                empresa.eliminarPermanenteEmpresa(empresa);
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Debe seleccionar una empresa y rellenar todos sus campos para editar");
+                Empresa empresa = new Empresa();
+                empresa.idEmpresa = Int32.Parse(txtBId.Text);
+                empresa.nombre = txtBNombre.Text;
+                empresa.razonSocial = txtBRazonSocial.Text;
+                empresa.estado = cbxEstado.SelectionBoxItem.ToString();
+                empresa.rut = txtBRut.Text;
+                empresa.eliminarEmpresa(empresa);
             }
 
-            try
-            {
-                this.actualizarGrilla();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-
-        }
-
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (checkBox.IsChecked ?? true)
-                {
-                    Empresa empresa = new Empresa();
-                    empresa.idEmpresa = Int32.Parse(txtBId.Text);
-                    empresa.nombre = txtBNombre.Text;
-                    empresa.razonSocial = txtBRazonSocial.Text;
-                    empresa.estado = cbxEstado.SelectionBoxItem.ToString();
-                    empresa.rut = txtBRut.Text;
-                    empresa.eliminarPermanenteEmpresa(empresa);
-                }
-                else
-                {
-                    Empresa empresa = new Empresa();
-                    empresa.idEmpresa = Int32.Parse(txtBId.Text);
-                    empresa.nombre = txtBNombre.Text;
-                    empresa.razonSocial = txtBRazonSocial.Text;
-                    empresa.estado = cbxEstado.SelectionBoxItem.ToString();
-                    empresa.rut = txtBRut.Text;
-                    empresa.eliminarEmpresa(empresa);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("La empresa seleccionada está asociada a una tienda existente");
-            }
-
-
-            try
-            {
-                this.actualizarGrilla();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Compruebe su conexión a internet");
-            }
-
+            actualizarGrilla();
         }
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)

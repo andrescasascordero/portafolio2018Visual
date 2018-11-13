@@ -16,7 +16,7 @@ using System.Media;
 
 namespace Negocio
 {
-    public class Oferta : ViewModelBase
+    public class Oferta
     {
         public decimal idOferta { get; set; }
         public decimal cantidadMinima{ get; set; }
@@ -165,6 +165,7 @@ namespace Negocio
             OracleParameter parametro2 = new OracleParameter();
             OracleParameter parametro3 = new OracleParameter();
             OracleParameter parametro4 = new OracleParameter();
+            OracleParameter parametro5 = new OracleParameter();
             OracleParameter parametro6 = new OracleParameter();
             OracleParameter parametro7 = new OracleParameter();
             OracleParameter parametro8 = new OracleParameter();
@@ -178,6 +179,8 @@ namespace Negocio
             parametro3.Value = pOferta.precioNormal;
             parametro4.OracleDbType = OracleDbType.Int32;
             parametro4.Value = pOferta.precioOferta;
+            parametro5.OracleDbType = OracleDbType.Varchar2;
+            parametro5.Value = pOferta.imagen;
             parametro6.OracleDbType = OracleDbType.Date;
             parametro6.Value = pOferta.fecha;
             parametro7.OracleDbType = OracleDbType.Varchar2;
@@ -189,10 +192,11 @@ namespace Negocio
             cmd.Parameters.Add(parametro2);
             cmd.Parameters.Add(parametro3);
             cmd.Parameters.Add(parametro4);
+            cmd.Parameters.Add(parametro5);
             cmd.Parameters.Add(parametro6);
             cmd.Parameters.Add(parametro7);
             cmd.Parameters.Add(parametro8);
-            cmd.ExecuteNonQuery();
+
             cn.Close();
             parametro0.Dispose();
             parametro1.Dispose();
@@ -207,34 +211,8 @@ namespace Negocio
             con = null;
         }
 
-        public void editarFoto(Oferta pOferta)
-        {
-            Conexion con = new Conexion();
-            OracleConnection cn = con.getConexion();
-            cn.Open();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "updateImagen";
-            OracleParameter parametro1 = new OracleParameter();
-            OracleParameter parametro2 = new OracleParameter();
-            parametro1.OracleDbType = OracleDbType.Int32;
-            parametro1.Value = pOferta.idOferta;
-            parametro2.OracleDbType = OracleDbType.Varchar2;
-            parametro2.Value = pOferta.imagen;
-            cmd.Parameters.Add(parametro1);
-            cmd.Parameters.Add(parametro2);
-            cmd.ExecuteNonQuery();
 
-            cn.Close();
-            parametro1.Dispose();
-            parametro2.Dispose();
-
-            cmd.Dispose();
-            cn.Dispose();
-            con = null;
-        }
-
-        public void eliminarOferta(Oferta pOferta)
+        public void eliminarProducto(Oferta pOferta)
         {
             Conexion con = new Conexion();
             OracleConnection cn = con.getConexion();

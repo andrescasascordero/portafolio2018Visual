@@ -8,11 +8,10 @@ using Oracle.DataAccess.Types;
 using DALC;
 using System.Reflection;
 using System.Security.Cryptography;
-using System.ComponentModel;
 
 namespace Negocio
 {
-    public class Usuarios : IDataErrorInfo
+    public class Usuarios
     {
 
         public decimal idUsuario { get; set; }
@@ -318,25 +317,6 @@ namespace Negocio
             cmd.Dispose();
             cn.Dispose();
             con = null;
-        }
-
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                string result = null;
-                if (columnName == "nombres")
-                {
-                    if (string.IsNullOrEmpty(nombres))
-                        result = "Ingresa los nombres del usuario";
-                }
-                return result;
-            }
         }
 
     }
