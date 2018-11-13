@@ -86,6 +86,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -97,6 +98,7 @@
     <Compile Include="Campana.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Consumidor.cs" />
+    <Compile Include="Correos.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="Escala.cs" />
     <Compile Include="HashMD5.cs" />

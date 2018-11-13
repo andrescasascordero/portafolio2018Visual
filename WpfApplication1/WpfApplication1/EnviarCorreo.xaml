@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApplication1.EnviarCorreo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="EnviarCorreo" Height="440" Width="665.088" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Rectangle Height="213" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,1">
+                    <GradientStop Color="#FF2281D1"></GradientStop>
+                    <GradientStop Color="#FF34268A" Offset="1"></GradientStop>
+                    <GradientStop Color="#FF33288B" Offset="0.5"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="btnEnviarCorreos" Content="Enviar&#xD;&#xA; Correos" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="94" Click="btnEnviarCorreos_Click"/>
+        <DataGrid x:Name="dtgMails" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="389" Width="528">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="50" IsReadOnly="True" Binding="{Binding idMailist}"/>
+                <DataGridTextColumn Header="Nombre" Width="150" IsReadOnly="True" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Apellido" Width="150" IsReadOnly="True" Binding="{Binding apellido}" TextOptions.TextFormattingMode="Ideal"/>
+                <DataGridTextColumn Header="Correo" Width="150" IsReadOnly="True" Binding="{Binding correo}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
