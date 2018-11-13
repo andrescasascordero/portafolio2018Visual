@@ -81,14 +81,25 @@ namespace Negocio
 
         public void enviarCorreos(List<Correos> listaCorreos)
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
             foreach (var item in listaCorreos)
             {
-                Uri siteuri = new Uri("https://misofertas.azurewebsites.net/GeneraMail/rest/usuario/data/");
+                
+                Uri siteuri = new Uri("http://misofertas.azurewebsites.net/GeneraMail/rest/usuario/data");
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(siteuri);
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+
+                //httpWebRequest.UserAgent = ("Mozilla/5.0 (compatible; AcmeInc/1.0");
+                httpWebRequest.KeepAlive = true;
+                httpWebRequest.UserAgent = "(Apache-HttpClient/4.1.1(java 1.5)";
+
+
+
+                //httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream(), Encoding.UTF8))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
@@ -101,9 +112,10 @@ namespace Negocio
                     //streamWriter.Flush();
                     //streamWriter.Close();
                 }
+                
 
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8, true))
                 {
                     var result = streamReader.ReadToEnd();
                 }

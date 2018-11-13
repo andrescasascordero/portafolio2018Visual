@@ -107,10 +107,10 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>misOfertasEscritorio_ClaveTemporal.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>portafolio2018.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -280,6 +280,7 @@
     </EmbeddedResource>
     <None Include="misOfertasEscritorio_ClaveTemporal.pfx" />
     <None Include="packages.config" />
+    <None Include="portafolio2018.pfx" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
