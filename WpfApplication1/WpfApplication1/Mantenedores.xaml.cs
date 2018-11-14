@@ -115,5 +115,11 @@ namespace WpfApplication1
         {
 
         }
+
+        private void button8_Click(object sender, RoutedEventArgs e)
+        {
+            EnviarCorreo correos = new EnviarCorreo();
+            correos.ShowDialog();
+        }
     }
 }

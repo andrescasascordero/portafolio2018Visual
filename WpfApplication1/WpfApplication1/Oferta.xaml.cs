@@ -124,6 +124,7 @@ namespace WpfApplication1
                 FtpWebResponse res = (FtpWebResponse)req.GetResponse();
 
                 oferta.insertarOferta(oferta);
+                vtPrevia.Source = null;
             }
             catch (Exception)
             {

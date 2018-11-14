@@ -74,6 +74,8 @@ namespace WpfApplication1
                 campana.tiendaFk = cbxTienda.SelectedValue.ToString();
 
                 campana.insertarCampana(campana);
+                new TextRange(rtDescripcion.Document.ContentStart, rtDescripcion.Document.ContentEnd).Text = null;
+                
             }
             catch (Exception)
             {

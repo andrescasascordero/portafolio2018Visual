@@ -16,10 +16,10 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="btnEnviarCorreos" Content="Enviar&#xD;&#xA; Correos" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="94" Click="btnEnviarCorreos_Click"/>
-        <DataGrid x:Name="dtgMails" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="389" Width="528">
+        <Button x:Name="btnEnviarCorreos" Content="Enviar&#xD;&#xA; Correos" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="94" Click="btnEnviarCorreos_Click" Height="75"/>
+        <DataGrid x:Name="dtgMails" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="389" Width="528" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="50" IsReadOnly="True" Binding="{Binding idMailist}"/>
+                <DataGridTextColumn Header="ID" Width="50" IsReadOnly="True" Binding="{Binding idMailList}"/>
                 <DataGridTextColumn Header="Nombre" Width="150" IsReadOnly="True" Binding="{Binding nombre}"/>
                 <DataGridTextColumn Header="Apellido" Width="150" IsReadOnly="True" Binding="{Binding apellido}" TextOptions.TextFormattingMode="Ideal"/>
                 <DataGridTextColumn Header="Correo" Width="150" IsReadOnly="True" Binding="{Binding correo}"/>

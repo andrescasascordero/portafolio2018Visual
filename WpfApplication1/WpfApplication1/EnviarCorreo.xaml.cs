@@ -28,17 +28,18 @@ namespace WpfApplication1
 
         private void btnEnviarCorreos_Click(object sender, RoutedEventArgs e)
         {
-           // try
-            //{
+            try
+            {
                 Correos emp = new Negocio.Correos();
                 var list = emp.getCorreos();
-                emp.enviarCorreos(list);
-            //}
-            //catch (Exception)
-            //{
+                emp.enviarCorreosPost(list);
+                MessageBox.Show("Correos enviados con éxito");
+            }
+            catch (Exception)
+            {
 
-              //  MessageBox.Show("Compruebe su conexión a internet");
-            //}
+                MessageBox.Show("Compruebe su conexión a internet");
+            }
 
         }
         private void actualizarGrilla()

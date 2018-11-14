@@ -59,7 +59,7 @@
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,442,0,0" VerticalAlignment="Top" Width="94" Click="btnAgregar_Click"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="21,488,0,0" VerticalAlignment="Top" Width="92" Click="btnEditar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="21,535,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="-2.075,-0.714" Click="btnEliminar_Click"/>
-        <Button x:Name="btnCfoto" Content="Cambiar Foto" HorizontalAlignment="Left" Margin="21,583,0,0" VerticalAlignment="Top" Width="94" Click="btnCfoto_Click"/>
+        <Button x:Name="btnCfoto" Content="Cambiar&#xD;&#xA;Foto" HorizontalAlignment="Left" Margin="21,583,0,0" VerticalAlignment="Top" Width="94" Click="btnCfoto_Click" Height="43"/>
 
     </Grid>
 </Window>

@@ -52,6 +52,7 @@ namespace WpfApplication1
                 producto.rubroFk = cbxRubro.SelectedValue.ToString();
 
                 producto.insertarProducto(producto);
+                new TextRange(rtbDescripcion.Document.ContentStart, rtbDescripcion.Document.ContentEnd).Text = null;
             }
             catch (Exception)
             {
@@ -84,6 +85,7 @@ namespace WpfApplication1
                 producto.marca = txtMarca.Text;
 
                 producto.editarProducto(producto);
+                new TextRange(rtbDescripcion.Document.ContentStart, rtbDescripcion.Document.ContentEnd).Text = null;
             }
             catch (Exception)
             {
