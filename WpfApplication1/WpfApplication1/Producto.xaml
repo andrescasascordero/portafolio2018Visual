@@ -44,7 +44,7 @@
         </RichTextBox>
         <DataGrid x:Name="dtgProducto" HorizontalAlignment="Left" Margin="253,13,0,0" VerticalAlignment="Top" Height="464" Width="807" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="50" IsReadOnly="True" Binding="{Binding idPRoducto}"/>
+                <DataGridTextColumn Header="ID" Width="50" IsReadOnly="True" Binding="{Binding idProducto}"/>
                 <DataGridTextColumn Header="Nombre" Width="170" IsReadOnly="True" Binding="{Binding nombre}"/>
                 <DataGridTextColumn Header="Descripción" Width="200" IsReadOnly="True" Binding="{Binding descripcion}"/>
                 <DataGridTextColumn Header="color" Width="100" IsReadOnly="True" Binding="{Binding color}"/>

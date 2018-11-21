@@ -53,10 +53,9 @@
         <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="87,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rut}" Foreground="White" />
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="87,191,0,0" VerticalAlignment="Top" Width="145" Height="21" RenderTransformOrigin="0.479,-0.695" Foreground="White"/>
         <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="87,217,0,0" VerticalAlignment="Top" Width="145" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.estado}" Background="#FF33288B" Foreground="White">
-            <ComboBoxItem Content="Pendiente"/>
-            <ComboBoxItem Content="Inscrita"/>
+            <ComboBoxItem Content="Activo"/>
             <ComboBoxItem Content="Eliminada"/>
-            <ComboBoxItem Content="Suspendida"/>
+
         </ComboBox>
         <ComboBox x:Name="cbxRol" HorizontalAlignment="Left" Margin="87,248,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="cbxRol_SelectionChanged" Loaded="cbxRol_Loaded" Text="{Binding ElementName=dtgUsuario,Path=SelectedItem.rolUsuarioFk}"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="163" Click="btnAgregar_Click"/>
