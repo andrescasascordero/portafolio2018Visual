@@ -46,7 +46,7 @@ namespace Negocio
         }
 
         public List<Correos> getCorreos()
-        {
+         {
             Conexion con = new Conexion();
             OracleConnection cn = con.getConexion();
             cn.Open();
